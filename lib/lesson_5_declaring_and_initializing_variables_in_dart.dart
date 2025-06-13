@@ -44,4 +44,6 @@ void main() {
   print('Greeting: $greeting');
   print('Creation date: $creationDate');
   print('App name: $appName');
+
+  // https://dartpad.dev/?id=9003a40c6304ea8c3e0d225da6574465
 }
