@@ -5,10 +5,12 @@ void main() {
   int age = 25;
   String name = 'Anna';
   bool isStudent = true;
+  late String studentName = 'Renat';
 
   print('Age: $age');
   print('Name: $name');
   print('Is Student: $isStudent');
+  print('Student name: $studentName');
 
   // Оголошення змінної через var (тип визначається автоматично)
   var city = 'Kyiv'; // city має тип String
