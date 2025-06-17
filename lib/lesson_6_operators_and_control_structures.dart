@@ -1,6 +1,8 @@
+// ignore_for_file: dead_code
+
 void main() {
   // Математичні оператори
-  mathOperatorsExample();
+  // mathOperatorsExample();
 
   // Оператори порівняння
   // comparisonOperatorsExample();
@@ -23,22 +25,20 @@ void main() {
   // Конструкція switchExpression
   // switchExpressionExample();
 
-  // Конструкція switch
-  // switchStatementExample();
-
-  // Цикли for, while, do-while
+  // Цикли for, while, do-while, for-in
   // forLoopExample();
   // whileLoopExample();
   // doWhileLoopExample();
+  // forInExample();
 
   // Break, continue, return
-  // breakContinueReturnExample();
+  breakContinueReturnExample();
 }
 
 // 📍 Математичні оператори
 void mathOperatorsExample() {
-  int a = 10;
-  double b = 3.4;
+  int a = 25;
+  double b = 5.3;
   print('Додавання: ${a + b}');
   print('Віднімання: ${a - b}');
   print('Множення: ${a * b}');
@@ -55,8 +55,8 @@ void mathOperatorsExample() {
 
 // 📍 Оператори порівняння
 void comparisonOperatorsExample() {
-  int a = 10;
-  int b = 5;
+  int a = 88;
+  int b = 33;
   print('a == b: ${a == b}');
   print('a != b: ${a != b}');
   print('a > b: ${a > b}');
@@ -82,7 +82,7 @@ void logicalOperatorsExample() {
 
 // 📍 Тернарний оператор
 void ternaryOperatorExample() {
-  bool isWeekend = false;
+  bool isWeekend = true;
 
   // Звичайний if-else
   String activity;
@@ -100,7 +100,7 @@ void ternaryOperatorExample() {
 
 // 📍 Оператори присвоєння
 void assignmentOperatorsExample() {
-  int number = 10;
+  int number = 12;
 
   number += 5;
   print('Після додавання: $number');
@@ -111,10 +111,11 @@ void assignmentOperatorsExample() {
   number *= 2;
   print('Після множення: $number');
 
-  number ~/= 5;
+  number ~/=
+      5; // 12/5=2, залишок 2 // Ділення, повернення цілочисельного результату
   print('Після цілочисельного ділення: $number');
 
-  number %= 3;
+  number %= 7; // Отримати остачу від цілочисельного ділення (за модулем)
   print('Після знаходження залишку: $number');
 }
 
@@ -146,7 +147,7 @@ void switchStatementExample() {
   }
 }
 
-// 📍 Конструкція switch expression
+// 📍 Конструкція switch expression (new come with Dart3+)
 void switchExpressionExample() {
   String day = 'понеділок';
 
@@ -187,6 +188,15 @@ void doWhileLoopExample() {
   } while (number > 0);
 }
 
+// Цикл for-in
+void forInExample() {
+  List<int> nums = [1, 2, 33, 43, 88];
+
+  for (var item in nums) {
+    print(item);
+  }
+}
+
 // 📍 Break, continue, return
 void breakContinueReturnExample() {
   for (int i = 0; i < 5; i++) {
@@ -194,12 +204,12 @@ void breakContinueReturnExample() {
       continue;
     }
     if (i == 4) {
-      print('Досягнуто межі, вихід.');
+      print('Досягнуто межі, вихід за допомогою "break".');
       break;
     }
     print('Поточне значення: $i');
   }
 
-  print('Завершення функції.');
+  print('Завершення функції за допомогою "return".');
   return;
 }
