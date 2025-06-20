@@ -85,3 +85,30 @@ void getData4(name, age, [hobby = 'shopping']) {
 // void greetNamedOptional({String? name, String? timeOfDay}) {
 //   print('Доброго $timeOfDay, $name!');
 // }
+
+// SCOPES -----------------------------------------------------------------
+
+// 🌍 Глобальна змінна
+// int globalCounter = 0;
+
+// void main() {
+//   print('🔹 Глобальна змінна:');
+//   print('Початкове значення: $globalCounter');
+//   incrementGlobal();
+//   print('Після збільшення: $globalCounter');
+
+//   print('\n🔸 Локальна змінна:');
+//   showLocalVariable();
+//   // print(localCounter); // ❌ Error: localCounter is not visible here
+// }
+
+// /// Збільшує глобальну змінну
+// void incrementGlobal() {
+//   globalCounter++;
+// }
+
+// /// Створює локальну змінну
+// void showLocalVariable() {
+//   int localCounter = 10;
+//   print('Локальна змінна всередині функції: $localCounter');
+// }
