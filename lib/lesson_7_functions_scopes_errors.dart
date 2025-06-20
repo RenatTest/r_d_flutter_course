@@ -112,3 +112,5 @@ void getData4(name, age, [hobby = 'shopping']) {
 //   int localCounter = 10;
 //   print('Локальна змінна всередині функції: $localCounter');
 // }
+
+// https://dartpad.dev/?id=bc0aef9a5d0aa7e8ff3ef5df69ffa239
