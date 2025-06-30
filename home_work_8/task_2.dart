@@ -21,13 +21,19 @@ void main() {
     'null',
   };
 
-  Set<String> commonTypes = {};
-  Set<String> forgottenTypes = {};
+  // 1
+  // Set<String> commonTypes = {};
+  // Set<String> forgottenTypes = {};
 
-  for (var element in typesOfDataDoc) {
-    if (typesOfDataMy.contains(element)) commonTypes.add(element);
-    if (!typesOfDataMy.contains(element)) forgottenTypes.add(element);
-  }
+  // for (var element in typesOfDataDoc) {
+  //   if (typesOfDataMy.contains(element)) commonTypes.add(element);
+  //   if (!typesOfDataMy.contains(element)) forgottenTypes.add(element);
+  // }
+
+  // 2
+  final commonTypes = typesOfDataMy.intersection(typesOfDataDoc);
+  final forgottenTypes = typesOfDataDoc.difference(typesOfDataMy);
+
   print('Спільні типи: ${commonTypes.join(', ')}');
   print('Забуті типи: ${forgottenTypes.join(', ')}');
 }

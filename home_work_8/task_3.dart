@@ -13,8 +13,8 @@ void main() {
     'frontend': 'розробка інтерфейсу',
     'backend': 'розробка бекенду',
   };
-  teamsDevs["qa"] = 'тестування';
-  teamsDevs["qa"] = 'тестування сайту/додатку';
+  teamsDevs['qa'] = 'тестування';
+  teamsDevs['qa'] = 'тестування сайту/додатку';
 
   teamsDevs.forEach((key, value) {
     // 1
@@ -26,7 +26,7 @@ void main() {
     print('${entry.key}: ${entry.value}');
   }
 
-  String longestLength = teamsDevs.values.first;
+  String longestLength = '';
   teamsDevs.values.forEach((value) {
     if (value.length > longestLength.length) {
       longestLength = value;
