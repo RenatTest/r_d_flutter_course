@@ -1,0 +1,3 @@
+// Inheritance(extends)
+
+void main() {}
