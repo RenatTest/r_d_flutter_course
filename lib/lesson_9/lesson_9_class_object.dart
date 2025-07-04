@@ -1,4 +1,6 @@
 // Повна версія
+void main() {}
+
 class HeroFull {
   HeroFull({
     required String name,
