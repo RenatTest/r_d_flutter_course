@@ -49,3 +49,32 @@ Future<String> hardWork() async {
 //   });
 //   print('G');
 // }
+
+// 🔍 Детальний розбір:
+// 📌 Основне правило:
+// Future() → подія (event queue)
+// Future.microtask() → мікрозадача (microtask queue)
+// await не чекає мікрозадач, створених після запуску тіла Future.
+
+// 🧾 Поетапно:
+// print('A') → A
+// await Future(() { ... }) запускає тіло синхронно:
+// print('B') → B
+// Future(() => print('C')) → event queue
+// Future.microtask(() => print('D')) → microtask queue
+// Future(() => print('E')) → event queue
+// print('F') → F
+// Тіло Future завершилось → await продовжується → print('G') → G
+// Потім виконується microtask → D
+// Потім event queue:
+// print('C') → C
+// print('E') → E
+
+// 🔁 Підсумок:
+// A    // Синхронний код
+// B    // Синхронний код у Future
+// F    // Синхронний код у Future
+// G    // Після завершення Future
+// D    // Microtask
+// C    // Event (Future)
+// E    // Event (Future)
