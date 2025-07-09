@@ -3,6 +3,7 @@ void main() async {
   final dataFromServer = await getUserNameFromServer();
   print(dataFromServer);
   final result = hardWork();
+  print(result);
 }
 
 Future<String> getUserNameFromServer() async {
@@ -34,3 +35,17 @@ Future<String> hardWork() async {
 // віддає керування назад в event loop;
 // дозволяє UI залишатися реактивним і "живим";
 // не блокує головний потік (main/UI thread).
+
+// Microtask
+
+// void main() async {
+//   print('A');
+//   await Future(() {
+//     print('B');
+//     Future(() => print('C'));
+//     Future.microtask(() => print('D'));
+//     Future(() => print('E'));
+//     print('F');
+//   });
+//   print('G');
+// }
