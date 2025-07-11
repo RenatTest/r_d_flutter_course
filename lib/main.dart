@@ -1,11 +1,13 @@
 // ignore_for_file: depend_on_referenced_packages
 
+// import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:r_d_flutter_course/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:r_d_flutter_course/router/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +32,8 @@ final GoRouter _router = GoRouter(
   ],
 );
 
+// final _appRouter = AppRouter();
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -39,6 +43,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// @RoutePage()
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -81,6 +86,8 @@ class _HomePageState extends State<HomePage> {
                     print('Logged in with GOOGLE - success!');
                     // ignore: use_build_context_synchronously
                     context.go('/settings');
+                    // ignore: use_build_context_synchronously
+                    // AutoRouter.of(context).push(SettingsRoute());
                   }
                 },
                 child: Text('Sign in with Google'),
@@ -90,6 +97,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+// @RoutePage()
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
@@ -101,6 +109,7 @@ class SettingsPage extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {
             context.go('/');
+            // AutoRouter.of(context).push(HomeRoute());
           },
           child: Text('Go back to the HomePage'),
         ),
