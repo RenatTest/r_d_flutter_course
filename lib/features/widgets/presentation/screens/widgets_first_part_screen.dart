@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-
-import '../widgets/part1/align_example_screen.dart';
-import '../widgets/part1/buttons_example_screen.dart';
-import '../widgets/part1/center_example_screen.dart';
-import '../widgets/part1/column_example_screen.dart';
-import '../widgets/part1/container_example_screen.dart';
-import '../widgets/part1/expanded_example_screen.dart';
-import '../widgets/part1/padding_example_screen.dart';
-import '../widgets/part1/progress_indicators_example_screen.dart';
-import '../widgets/part1/row_example_screen.dart';
-import '../widgets/part1/scroll_example_screen.dart';
-import '../widgets/part1/sized_box_example_screen.dart';
-import '../widgets/part1/stack_example_screen.dart';
-import '../widgets/part1/text_example_screen.dart';
+import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/align_example_screen.dart';
+import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/buttons_example_screen.dart';
+import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/center_example_screen.dart';
+import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/column_example_screen.dart';
+import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/container_example_screen.dart';
+import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/expanded_example_screen.dart';
+import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/padding_example_screen.dart';
+import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/progress_indicators_example_screen.dart';
+import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/row_example_screen.dart';
+import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/scroll_example_screen.dart';
+import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/sized_box_example_screen.dart';
+import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/stack_example_screen.dart';
+import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/text_example_screen.dart';
 
 class WidgetsFirstPartScreen extends StatelessWidget {
   const WidgetsFirstPartScreen({super.key});

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_13/homework_13_screen.dart';
-
-import 'widgets_first_part_screen.dart';
+import 'package:r_d_flutter_course/features/widgets/presentation/screens/widgets_first_part_screen.dart';
 
 class WidgetsScreen extends StatelessWidget {
   const WidgetsScreen({super.key});

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'features/widgets/presentation/screens/widgets_main_screen.dart';
+import 'package:r_d_flutter_course/features/widgets/presentation/screens/widgets_main_screen.dart';
 
 void main() {
   runApp(const FlutterWidgetsApp());
