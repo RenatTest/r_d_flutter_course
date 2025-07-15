@@ -6,10 +6,17 @@ class Homework13Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Homework_13'),
+      appBar: AppBar(title: const Text('Homework_13')),
+      body: Center(
+        child: Container(
+          width: 300,
+          height: 150,
+          decoration: BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
       ),
-      body: const SizedBox.shrink(),
     );
   }
 }
