@@ -15,6 +15,29 @@ class Homework13Screen extends StatelessWidget {
             color: Colors.grey,
             borderRadius: BorderRadius.circular(16),
           ),
+          child: Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.star, color: Colors.white),
+                  SizedBox(width: 10),
+                  Text(
+                    'Привіт, Flutter!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Icon(Icons.star, color: Colors.white),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
