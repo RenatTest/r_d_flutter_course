@@ -11,100 +11,57 @@ class Homework13Screen extends StatelessWidget {
         child: Column(
           spacing: 8,
           children: [
-            Container(
-              width: 300,
-              height: 150,
-              decoration: BoxDecoration(
+            Expanded(
+              child: MyContainer(
                 color: Colors.blue,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Align(
-                alignment: Alignment.bottomRight,
-                child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.star, color: Colors.white),
-                      SizedBox(width: 10),
-                      Text(
-                        'Привіт, Flutter!',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Icon(Icons.star, color: Colors.white),
-                    ],
-                  ),
-                ),
+                alignment: Alignment.topLeft,
               ),
             ),
-            Container(
-              width: 300,
-              height: 150,
-              decoration: BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Align(
-                alignment: Alignment.bottomRight,
-                child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.star, color: Colors.white),
-                      SizedBox(width: 10),
-                      Text(
-                        'Привіт, Flutter!',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Icon(Icons.star, color: Colors.white),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              width: 300,
-              height: 150,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Align(
-                alignment: Alignment.bottomRight,
-                child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.star, color: Colors.white),
-                      SizedBox(width: 10),
-                      Text(
-                        'Привіт, Flutter!',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Icon(Icons.star, color: Colors.white),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            MyContainer(color: Colors.green, alignment: Alignment.center),
+            MyContainer(color: Colors.red, alignment: Alignment.bottomRight),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class MyContainer extends StatelessWidget {
+  const MyContainer({required this.color, required this.alignment, super.key});
+
+  final Color color;
+  final Alignment alignment;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 300,
+      height: 150,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Align(
+        alignment: alignment,
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.star, color: Colors.white),
+              SizedBox(width: 10),
+              Text(
+                'Привіт, Flutter!',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(width: 10),
+              Icon(Icons.star, color: Colors.white),
+            ],
+          ),
         ),
       ),
     );
