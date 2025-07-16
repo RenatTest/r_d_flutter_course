@@ -30,22 +30,19 @@ class ButtonsExampleScreen extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
                 foregroundColor: Colors.white,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                  vertical: 16,
+                ),
               ),
-              child: const Text(
-                'Custom Elevated Button',
-              ),
+              child: const Text('Custom Elevated Button'),
             ),
             const SizedBox(height: 24),
 
             // Text Button Section
             const Text(
               'Text Button',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             TextButton(
@@ -66,10 +63,7 @@ class ButtonsExampleScreen extends StatelessWidget {
             // Outlined Button Section
             const Text(
               'Outlined Button',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             OutlinedButton(
@@ -82,8 +76,10 @@ class ButtonsExampleScreen extends StatelessWidget {
               style: OutlinedButton.styleFrom(
                 foregroundColor: Colors.orange,
                 side: const BorderSide(color: Colors.orange, width: 2),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                  vertical: 16,
+                ),
               ),
               child: const Text('Custom Outlined Button'),
             ),
@@ -92,10 +88,7 @@ class ButtonsExampleScreen extends StatelessWidget {
             // Icon Button Section
             const Text(
               'Icon Button',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Row(
@@ -125,10 +118,7 @@ class ButtonsExampleScreen extends StatelessWidget {
             // Button with Icon Section
             const Text(
               'Button with Icon',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             ElevatedButton.icon(
@@ -155,10 +145,7 @@ class ButtonsExampleScreen extends StatelessWidget {
             // Disabled Button Section
             const Text(
               'Disabled Button',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             const ElevatedButton(
