@@ -1,16 +1,21 @@
-# r_d_flutter_course
+# ROBOT_DREAMS SCHOOL
 
-A new Flutter project.
+## PART 1 FLUTTER
 
-## Getting Started
+1. LESSON 13 FLUTTER WIDGETS PART 1
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- MaterialApp
+- Scaffold
+- Container
+- Row
+- Column
+- Expanded
+- Stack, Positioned
+- SizedBox
+- Padding
+- Align
+- Center
+- Text
+- Buttons: ElevatedButton, TextButton, OutlinedButton, IconButton, ElevatedButton.icon, OutlinedButton.icon, FloatingActionButton
+- Scroll: SingleChildScrollView, ListView (ListView.builder, ListView.separated), GridView (GridView.builder)
+- Progress Indicators: LinearProgressIndicator, CircularProgressIndicator
