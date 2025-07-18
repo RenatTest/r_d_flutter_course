@@ -5,7 +5,7 @@ class Homework13Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Homework_13')),
@@ -14,9 +14,9 @@ class Homework13Screen extends StatelessWidget {
           child: Column(
             spacing: 8,
             children: [
-              MyContainer(color: Colors.blue, alignment: Alignment.topLeft),
-              MyContainer(color: Colors.green, alignment: Alignment.center),
-              MyContainer(color: Colors.red, alignment: Alignment.bottomRight),
+              _MyContainer(color: Colors.blue, alignment: Alignment.topLeft),
+              _MyContainer(color: Colors.green, alignment: Alignment.center),
+              _MyContainer(color: Colors.red, alignment: Alignment.bottomRight),
               Stack(
                 children: [
                   Container(
@@ -49,9 +49,7 @@ class Homework13Screen extends StatelessWidget {
                     bottom: 20,
                     right: 20,
                     child: IconButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
+                      onPressed: Navigator.of(context).pop,
                       icon: const Icon(Icons.exit_to_app),
                       color: Colors.lightGreenAccent,
                       iconSize: 50,
@@ -90,8 +88,8 @@ class Homework13Screen extends StatelessWidget {
   }
 }
 
-class MyContainer extends StatelessWidget {
-  const MyContainer({required this.color, required this.alignment, super.key});
+class _MyContainer extends StatelessWidget {
+  const _MyContainer({required this.color, required this.alignment});
 
   final Color color;
   final Alignment alignment;
@@ -111,9 +109,9 @@ class MyContainer extends StatelessWidget {
           padding: EdgeInsets.all(10),
           child: Row(
             mainAxisSize: MainAxisSize.min,
+            spacing: 10,
             children: [
               Icon(Icons.star, color: Colors.white),
-              SizedBox(width: 10),
               Text(
                 'Привіт, Flutter!',
                 style: TextStyle(
@@ -122,7 +120,6 @@ class MyContainer extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(width: 10),
               Icon(Icons.star, color: Colors.white),
             ],
           ),
