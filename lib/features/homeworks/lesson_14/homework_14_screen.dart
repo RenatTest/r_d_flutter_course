@@ -9,8 +9,10 @@ class Homework14Screen extends StatefulWidget {
 }
 
 class _Homework14ScreenState extends State<Homework14Screen> {
+  final _formKey = GlobalKey<FormState>();
   final ScrollController _scrollController = ScrollController();
   bool _scrolled = false;
+  final _focus = FocusNode();
 
   @override
   void initState() {
@@ -32,6 +34,8 @@ class _Homework14ScreenState extends State<Homework14Screen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.sizeOf(context).width;
+
     return Scaffold(
       backgroundColor: HexColor('#eef2fc'),
       appBar: AppBar(
@@ -71,59 +75,104 @@ class _Homework14ScreenState extends State<Homework14Screen> {
       ),
       body: Stack(
         children: [
-          SingleChildScrollView(
-            controller: _scrollController,
-            child: Column(
-              spacing: 8,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: HexColor('#ffffff'),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(24),
-                      bottomRight: Radius.circular(24),
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              FocusScope.of(context).requestFocus(_focus);
+            },
+            child: SingleChildScrollView(
+              controller: _scrollController,
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  spacing: 8,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: HexColor('#ffffff'),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(24),
+                          bottomRight: Radius.circular(24),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        spacing: 8,
+                        children: List.generate(5, (index) => StarImage()),
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 8,
-                    children: List.generate(5, (index) => StarImage()),
-                  ),
-                ),
-                SizedBox(height: 16),
-                TextWidget(
-                  text: 'Яку оціночку поставите відділам?',
-                  size: 18,
-                  weight: FontWeight.w600,
-                  color: HexColor('#13131e'),
-                ),
-                SizedBox(height: 16),
-                ItemContainer(title: 'Овочі, Фрукти', isDesc: false),
-                ItemContainer(title: 'Випічка', isDesc: true),
-                ItemContainer(title: 'Лавка традицій', isDesc: true),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 16, left: 16),
-                    child: TextWidget(
-                      text: 'Є що додати?',
+                    SizedBox(height: 16),
+                    TextWidget(
+                      text: 'Яку оціночку поставите відділам?',
                       size: 18,
                       weight: FontWeight.w600,
-                      color: HexColor('#202124'),
+                      color: HexColor('#13131e'),
                     ),
-                  ),
+                    SizedBox(height: 11),
+                    ItemContainer(title: 'Овочі, Фрукти', isDesc: false),
+                    ItemContainer(title: 'Випічка', isDesc: true),
+                    ItemContainer(title: 'Лавка традицій', isDesc: true),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 16, left: 16),
+                        child: TextWidget(
+                          text: 'Є що додати?',
+                          size: 18,
+                          weight: FontWeight.w600,
+                          color: HexColor('#202124'),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 16, right: 16),
+                      child: CustomTextFormField(
+                        labelText: 'Поділіться загальним враженням',
+                      ),
+                    ),
+                    SizedBox(height: 94),
+                  ],
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: 16, right: 16),
-                  child: CustomTextFormField(
-                    labelText: 'Поділіться загальним враженням',
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
-          Positioned(bottom: 0, child: ButtonContainer()),
+          Positioned(
+            bottom: 0,
+            child: Container(
+              padding: EdgeInsets.only(
+                top: 12,
+                left: 16,
+                right: 16,
+                bottom: 34,
+              ),
+              color: Colors.white,
+              height: 94,
+              width: screenWidth,
+              child: ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    FocusScope.of(context).requestFocus(_focus);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Відправлено!'),
+                        backgroundColor: Colors.green,
+                      ),
+                    );
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: HexColor('#1135ba'),
+                ),
+                child: TextWidget(
+                  text: 'Надіслати',
+                  size: 16,
+                  weight: FontWeight.w600,
+                  color: HexColor('#ffffff'),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -179,7 +228,7 @@ class ItemContainer extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.only(top: 0, left: 16, right: 16),
-      height: isDesc ? 270 : 198,
+      height: isDesc ? 275 : 198,
       width: screenWidth,
       decoration: BoxDecoration(
         color: HexColor('#ffffff'),
@@ -321,6 +370,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           errorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.red, width: 1),
           ),
+          errorStyle: TextStyle(height: 0.6, color: Colors.red),
           focusedErrorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.red, width: 1),
           ),
@@ -341,7 +391,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 }
 
 class ButtonContainer extends StatelessWidget {
-  const ButtonContainer({super.key});
+  const ButtonContainer({required this.formKey, super.key});
+
+  final GlobalKey formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -353,9 +405,7 @@ class ButtonContainer extends StatelessWidget {
       height: 94,
       width: screenWidth,
       child: ElevatedButton(
-        onPressed: () {
-          print('Sended');
-        },
+        onPressed: () {},
         style: ElevatedButton.styleFrom(backgroundColor: HexColor('#1135ba')),
         child: TextWidget(
           text: 'Надіслати',
