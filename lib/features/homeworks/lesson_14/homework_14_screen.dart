@@ -6,10 +6,8 @@ class Homework14Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Homework_14'),
-      ),
-      body: const SizedBox.shrink(),
+      appBar: AppBar(title: const Text('Homework_14')),
+      body: Container(),
     );
   }
 }
