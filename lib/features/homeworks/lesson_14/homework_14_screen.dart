@@ -1,16 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class Homework14Screen extends StatelessWidget {
+class Homework14Screen extends StatefulWidget {
   const Homework14Screen({super.key});
+
+  @override
+  State<Homework14Screen> createState() => _Homework14ScreenState();
+}
+
+class _Homework14ScreenState extends State<Homework14Screen> {
+  final ScrollController _scrollController = ScrollController();
+  bool _scrolled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() {
+      if (_scrollController.offset > 5 && !_scrolled) {
+        setState(() => _scrolled = true);
+      } else if (_scrollController.offset <= 5 && _scrolled) {
+        setState(() => _scrolled = false);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor('#eef2fc'),
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: _scrolled
+                  ? [HexColor('#f8d9a0'), HexColor('#FFFFFF')]
+                  : [HexColor('#FFFFFF'), HexColor('#FFFFFF')],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+        ),
         scrolledUnderElevation: 0,
-        backgroundColor: HexColor('#ffffff'),
         automaticallyImplyLeading: false,
         title: Row(
           spacing: 16,
@@ -36,6 +72,7 @@ class Homework14Screen extends StatelessWidget {
       body: Stack(
         children: [
           SingleChildScrollView(
+            controller: _scrollController,
             child: Column(
               spacing: 8,
               mainAxisAlignment: MainAxisAlignment.start,
