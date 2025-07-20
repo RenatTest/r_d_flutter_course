@@ -5,10 +5,16 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_14/widgets/item_row
 import 'package:r_d_flutter_course/features/homeworks/lesson_14/widgets/text_widget.dart';
 
 class ItemContainer extends StatelessWidget {
-  const ItemContainer({required this.title, required this.isDesc, super.key});
+  const ItemContainer({
+    required this.title,
+    required this.isDesc,
+    this.controller,
+    super.key,
+  });
 
   final String title;
   final bool isDesc;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +49,16 @@ class ItemContainer extends StatelessWidget {
           ItemRowContainer(rowTitle: 'Обслуговування'),
           ItemRowContainer(rowTitle: 'Асортимент'),
           isDesc
-              ? CustomTextFormField(labelText: 'Розкажіть докладніше')
+              ? CustomTextFormField(
+                  controller: controller,
+                  labelText: 'Розкажіть докладніше',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Будь-ласка введіть повідомлення';
+                    }
+                    return null;
+                  },
+                )
               : Container(),
         ],
       ),

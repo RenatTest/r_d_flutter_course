@@ -18,6 +18,9 @@ class _Homework14ScreenState extends State<Homework14Screen> {
   final ScrollController _scrollController = ScrollController();
   bool _scrolled = false;
   final _focus = FocusNode();
+  final TextEditingController _textController1 = TextEditingController();
+  final TextEditingController _textController2 = TextEditingController();
+  final TextEditingController _generalController = TextEditingController();
 
   @override
   void initState() {
@@ -117,8 +120,16 @@ class _Homework14ScreenState extends State<Homework14Screen> {
                     ),
                     SizedBox(height: 11),
                     ItemContainer(title: 'Овочі, Фрукти', isDesc: false),
-                    ItemContainer(title: 'Випічка', isDesc: true),
-                    ItemContainer(title: 'Лавка традицій', isDesc: true),
+                    ItemContainer(
+                      title: 'Випічка',
+                      isDesc: true,
+                      controller: _textController1,
+                    ),
+                    ItemContainer(
+                      title: 'Лавка традицій',
+                      isDesc: true,
+                      controller: _textController2,
+                    ),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Padding(
@@ -134,6 +145,13 @@ class _Homework14ScreenState extends State<Homework14Screen> {
                     Padding(
                       padding: EdgeInsets.only(left: 16, right: 16),
                       child: CustomTextFormField(
+                        controller: _generalController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Будь-ласка введіть повідомлення';
+                          }
+                          return null;
+                        },
                         labelText: 'Поділіться загальним враженням',
                       ),
                     ),
@@ -158,6 +176,12 @@ class _Homework14ScreenState extends State<Homework14Screen> {
               child: MyButton(
                 onTap: () {
                   if (_formKey.currentState!.validate()) {
+                    final value1 = _textController1.text;
+                    final value2 = _textController2.text;
+                    final valueGeneral = _generalController.text;
+                    print('Про випічку: $value1');
+                    print('Про лавку традицій: $value2');
+                    print('Поділіться загальним враженням: $valueGeneral');
                     FocusScope.of(context).requestFocus(_focus);
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(

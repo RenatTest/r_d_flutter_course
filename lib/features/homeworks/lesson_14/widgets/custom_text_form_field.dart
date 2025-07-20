@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatefulWidget {
-  const CustomTextFormField({required this.labelText, super.key});
+  const CustomTextFormField({
+    required this.labelText,
+    required this.validator,
+    required this.controller,
+    super.key,
+  });
 
   final String labelText;
+  final FormFieldValidator<String>? validator;
+  final TextEditingController? controller;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
 }
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
-  final _descController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 8, bottom: 8),
       child: TextFormField(
-        controller: _descController,
+        controller: widget.controller,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
@@ -43,12 +48,13 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         ),
         keyboardType: TextInputType.text,
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Будь-ласка введіть повідомлення';
-          }
-          return null;
-        },
+        validator: widget.validator,
+        // (value) {
+        //   if (value == null || value.isEmpty) {
+        //     return 'Будь-ласка введіть повідомлення';
+        //   }
+        //   return null;
+        // },
       ),
     );
   }
