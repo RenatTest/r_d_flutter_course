@@ -41,6 +41,7 @@ class _ItemRowContainerState extends State<ItemRowContainer> {
       decoration: BoxDecoration(
         color: HexColor('#f6f8fd'),
         borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Color.fromRGBO(19, 19, 30, 0.04), width: 1),
       ),
       child: Row(
         children: [

@@ -21,6 +21,9 @@ class ItemContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: HexColor('#ffffff'),
         borderRadius: BorderRadius.circular(24),
+        boxShadow: [
+          BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.06), offset: Offset(0, 1)),
+        ],
       ),
       child: Column(
         spacing: 8,

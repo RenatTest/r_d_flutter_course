@@ -98,6 +98,12 @@ class _Homework14ScreenState extends State<Homework14Screen> {
                           bottomLeft: Radius.circular(24),
                           bottomRight: Radius.circular(24),
                         ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromRGBO(0, 0, 0, 0.06),
+                            offset: Offset(0, 1),
+                          ),
+                        ],
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
