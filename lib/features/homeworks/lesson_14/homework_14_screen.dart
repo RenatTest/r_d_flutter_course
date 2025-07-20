@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_14/widgets/custom_text_form_field.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_14/widgets/item_container.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_14/widgets/my_button.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_14/widgets/star_image.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_14/widgets/text_widget.dart';
 
@@ -154,8 +155,8 @@ class _Homework14ScreenState extends State<Homework14Screen> {
               color: Colors.white,
               height: 94,
               width: screenWidth,
-              child: ElevatedButton(
-                onPressed: () {
+              child: MyButton(
+                onTap: () {
                   if (_formKey.currentState!.validate()) {
                     FocusScope.of(context).requestFocus(_focus);
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -166,15 +167,6 @@ class _Homework14ScreenState extends State<Homework14Screen> {
                     );
                   }
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: HexColor('#1135ba'),
-                ),
-                child: TextWidget(
-                  text: 'Надіслати',
-                  size: 16,
-                  weight: FontWeight.w600,
-                  color: HexColor('#ffffff'),
-                ),
               ),
             ),
           ),
