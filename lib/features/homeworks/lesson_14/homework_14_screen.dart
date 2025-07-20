@@ -21,6 +21,12 @@ class _Homework14ScreenState extends State<Homework14Screen> {
   final TextEditingController _textController1 = TextEditingController();
   final TextEditingController _textController2 = TextEditingController();
   final TextEditingController _generalController = TextEditingController();
+  String sectionFeedBack1_1 = 'Не вибрано';
+  String sectionFeedBack1_2 = 'Не вибрано';
+  String sectionFeedBack2_1 = 'Не вибрано';
+  String sectionFeedBack2_2 = 'Не вибрано';
+  String sectionFeedBack3_1 = 'Не вибрано';
+  String sectionFeedBack3_2 = 'Не вибрано';
   int _selectedStars = 0;
 
   @override
@@ -126,16 +132,49 @@ class _Homework14ScreenState extends State<Homework14Screen> {
                       color: HexColor('#13131e'),
                     ),
                     SizedBox(height: 11),
-                    ItemContainer(title: 'Овочі, Фрукти', isDesc: false),
+                    ItemContainer(
+                      title: 'Овочі, Фрукти',
+                      isDesc: false,
+                      onSectionFeedbackChanged1: (value) {
+                        setState(() {
+                          sectionFeedBack1_1 = value;
+                        });
+                      },
+                      onSectionFeedbackChanged2: (value) {
+                        setState(() {
+                          sectionFeedBack1_2 = value;
+                        });
+                      },
+                    ),
                     ItemContainer(
                       title: 'Випічка',
                       isDesc: true,
                       controller: _textController1,
+                      onSectionFeedbackChanged1: (value) {
+                        setState(() {
+                          sectionFeedBack2_1 = value;
+                        });
+                      },
+                      onSectionFeedbackChanged2: (value) {
+                        setState(() {
+                          sectionFeedBack2_2 = value;
+                        });
+                      },
                     ),
                     ItemContainer(
                       title: 'Лавка традицій',
                       isDesc: true,
                       controller: _textController2,
+                      onSectionFeedbackChanged1: (value) {
+                        setState(() {
+                          sectionFeedBack3_1 = value;
+                        });
+                      },
+                      onSectionFeedbackChanged2: (value) {
+                        setState(() {
+                          sectionFeedBack3_2 = value;
+                        });
+                      },
                     ),
                     Align(
                       alignment: Alignment.centerLeft,
@@ -187,8 +226,18 @@ class _Homework14ScreenState extends State<Homework14Screen> {
                     final value2 = _textController2.text;
                     final valueGeneral = _generalController.text;
                     print('Зірочок вибрано: $_selectedStars');
+
+                    print('Овочі, Фрукти обслуговування: $sectionFeedBack1_1');
+                    print('Овочі, Фрукти асортимент: $sectionFeedBack1_2');
+
+                    print('Випічка обслуговування: $sectionFeedBack2_1');
+                    print('Випічка асортимент: $sectionFeedBack2_2');
                     print('Про випічку: $value1');
+
+                    print('Лавка традицій обслуговування: $sectionFeedBack3_1');
+                    print('Лавка традицій асортимент: $sectionFeedBack3_2');
                     print('Про лавку традицій: $value2');
+
                     print('Поділіться загальним враженням: $valueGeneral');
                     FocusScope.of(context).requestFocus(_focus);
                     ScaffoldMessenger.of(context).showSnackBar(

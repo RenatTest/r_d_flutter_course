@@ -4,10 +4,12 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_14/widgets/custom_t
 import 'package:r_d_flutter_course/features/homeworks/lesson_14/widgets/item_row_container.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_14/widgets/text_widget.dart';
 
-class ItemContainer extends StatelessWidget {
+class ItemContainer extends StatefulWidget {
   const ItemContainer({
     required this.title,
     required this.isDesc,
+    this.onSectionFeedbackChanged1,
+    this.onSectionFeedbackChanged2,
     this.controller,
     super.key,
   });
@@ -15,14 +17,21 @@ class ItemContainer extends StatelessWidget {
   final String title;
   final bool isDesc;
   final TextEditingController? controller;
+  final void Function(String value)? onSectionFeedbackChanged1;
+  final void Function(String value)? onSectionFeedbackChanged2;
 
+  @override
+  State<ItemContainer> createState() => _ItemContainerState();
+}
+
+class _ItemContainerState extends State<ItemContainer> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
 
     return Container(
       padding: EdgeInsets.only(top: 0, left: 16, right: 16),
-      height: isDesc ? 275 : 198,
+      height: widget.isDesc ? 275 : 198,
       width: screenWidth,
       decoration: BoxDecoration(
         color: HexColor('#ffffff'),
@@ -39,18 +48,28 @@ class ItemContainer extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(left: 12, top: 24, bottom: 8),
               child: TextWidget(
-                text: title,
+                text: widget.title,
                 size: 16,
                 weight: FontWeight.w600,
                 color: HexColor('#13131e'),
               ),
             ),
           ),
-          ItemRowContainer(rowTitle: 'Обслуговування'),
-          ItemRowContainer(rowTitle: 'Асортимент'),
-          isDesc
+          ItemRowContainer(
+            rowTitle: 'Обслуговування',
+            onFeedbackChanged: (value) {
+              widget.onSectionFeedbackChanged1?.call(value);
+            },
+          ),
+          ItemRowContainer(
+            rowTitle: 'Асортимент',
+            onFeedbackChanged: (value) {
+              widget.onSectionFeedbackChanged2?.call(value);
+            },
+          ),
+          widget.isDesc
               ? CustomTextFormField(
-                  controller: controller,
+                  controller: widget.controller,
                   labelText: 'Розкажіть докладніше',
                   validator: (value) {
                     if (value == null || value.isEmpty) {

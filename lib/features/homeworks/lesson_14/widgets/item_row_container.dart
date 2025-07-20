@@ -3,9 +3,14 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_14/widgets/text_widget.dart';
 
 class ItemRowContainer extends StatefulWidget {
-  const ItemRowContainer({required this.rowTitle, super.key});
+  const ItemRowContainer({
+    required this.rowTitle,
+    this.onFeedbackChanged,
+    super.key,
+  });
 
   final String rowTitle;
+  final void Function(String feedback)? onFeedbackChanged;
 
   @override
   State<ItemRowContainer> createState() => _ItemRowContainerState();
@@ -14,14 +19,19 @@ class ItemRowContainer extends StatefulWidget {
 class _ItemRowContainerState extends State<ItemRowContainer> {
   bool isLikePushed = false;
   bool isDislikePushed = false;
+  String feedBack = 'Не вибрано';
 
   void _addLike() {
     setState(() {
       isLikePushed = !isLikePushed;
       if (isLikePushed) {
         isDislikePushed = false;
+        feedBack = 'Добре';
+      } else {
+        feedBack = 'Не вибрано';
       }
     });
+    widget.onFeedbackChanged?.call(feedBack);
   }
 
   void _addDislike() {
@@ -29,8 +39,12 @@ class _ItemRowContainerState extends State<ItemRowContainer> {
       isDislikePushed = !isDislikePushed;
       if (isDislikePushed) {
         isLikePushed = false;
+        feedBack = 'Погано';
+      } else {
+        feedBack = 'Не вибрано';
       }
     });
+    widget.onFeedbackChanged?.call(feedBack);
   }
 
   @override
