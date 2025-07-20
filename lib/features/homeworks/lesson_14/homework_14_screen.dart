@@ -21,6 +21,7 @@ class _Homework14ScreenState extends State<Homework14Screen> {
   final TextEditingController _textController1 = TextEditingController();
   final TextEditingController _textController2 = TextEditingController();
   final TextEditingController _generalController = TextEditingController();
+  int _selectedStars = 0;
 
   @override
   void initState() {
@@ -109,7 +110,13 @@ class _Homework14ScreenState extends State<Homework14Screen> {
                           ),
                         ],
                       ),
-                      child: StarImage(),
+                      child: StarImage(
+                        onChanged: (stars) {
+                          setState(() {
+                            _selectedStars = stars;
+                          });
+                        },
+                      ),
                     ),
                     SizedBox(height: 16),
                     TextWidget(
@@ -179,6 +186,7 @@ class _Homework14ScreenState extends State<Homework14Screen> {
                     final value1 = _textController1.text;
                     final value2 = _textController2.text;
                     final valueGeneral = _generalController.text;
+                    print('Зірочок вибрано: $_selectedStars');
                     print('Про випічку: $value1');
                     print('Про лавку традицій: $value2');
                     print('Поділіться загальним враженням: $valueGeneral');

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class StarImage extends StatefulWidget {
-  const StarImage({super.key});
+  const StarImage({super.key, this.onChanged});
+  final void Function(int)? onChanged;
 
   @override
   State<StarImage> createState() => _StarImageState();
@@ -23,6 +24,7 @@ class _StarImageState extends State<StarImage> {
           onTap: () {
             setState(() {
               selectedStars = index + 1;
+              widget.onChanged!(selectedStars);
             });
           },
           child: AnimatedScale(
