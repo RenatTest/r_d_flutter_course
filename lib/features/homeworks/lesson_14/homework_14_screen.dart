@@ -105,11 +105,7 @@ class _Homework14ScreenState extends State<Homework14Screen> {
                           ),
                         ],
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        spacing: 8,
-                        children: List.generate(5, (index) => StarImage()),
-                      ),
+                      child: StarImage(),
                     ),
                     SizedBox(height: 16),
                     TextWidget(
