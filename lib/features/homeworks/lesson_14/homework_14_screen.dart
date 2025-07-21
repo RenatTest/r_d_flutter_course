@@ -18,6 +18,7 @@ class _Homework14ScreenState extends State<Homework14Screen> {
   final ScrollController _scrollController = ScrollController();
   bool _scrolled = false;
   final _focus = FocusNode();
+
   final TextEditingController _textController1 = TextEditingController();
   final TextEditingController _textController2 = TextEditingController();
   final TextEditingController _generalController = TextEditingController();
@@ -96,6 +97,9 @@ class _Homework14ScreenState extends State<Homework14Screen> {
               FocusScope.of(context).requestFocus(_focus);
             },
             child: SingleChildScrollView(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
               controller: _scrollController,
               child: Form(
                 key: _formKey,

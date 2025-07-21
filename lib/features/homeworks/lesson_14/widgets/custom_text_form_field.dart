@@ -49,12 +49,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ),
         keyboardType: TextInputType.text,
         validator: widget.validator,
-        // (value) {
-        //   if (value == null || value.isEmpty) {
-        //     return 'Будь-ласка введіть повідомлення';
-        //   }
-        //   return null;
-        // },
       ),
     );
   }
