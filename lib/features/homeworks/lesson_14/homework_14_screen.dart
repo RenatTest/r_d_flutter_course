@@ -225,24 +225,15 @@ class _Homework14ScreenState extends State<Homework14Screen> {
                     final value1 = _textController1.text;
                     final value2 = _textController2.text;
                     final valueGeneral = _generalController.text;
-                    print('Зірочок вибрано: $_selectedStars');
-
-                    print('Овочі, Фрукти обслуговування: $sectionFeedBack1_1');
-                    print('Овочі, Фрукти асортимент: $sectionFeedBack1_2');
-
-                    print('Випічка обслуговування: $sectionFeedBack2_1');
-                    print('Випічка асортимент: $sectionFeedBack2_2');
-                    print('Про випічку: $value1');
-
-                    print('Лавка традицій обслуговування: $sectionFeedBack3_1');
-                    print('Лавка традицій асортимент: $sectionFeedBack3_2');
-                    print('Про лавку традицій: $value2');
-
-                    print('Поділіться загальним враженням: $valueGeneral');
                     FocusScope.of(context).requestFocus(_focus);
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Відправлено!'),
+                      SnackBar(
+                        padding: EdgeInsets.all(5),
+                        content: Text(
+                          // ignore: lines_longer_than_80_chars
+                          'Відправлено!\n\nЗірочок вибрано: $_selectedStars\n\nОвочі, Фрукти обслуговування: $sectionFeedBack1_1\nОвочі, Фрукти асортимент: $sectionFeedBack1_2\n\nВипічка обслуговування: $sectionFeedBack2_1\nВипічка асортимент: $sectionFeedBack2_2\nПро випічку: $value1\n\nЛавка традицій обслуговування: $sectionFeedBack3_1\nЛавка традицій асортимент: $sectionFeedBack3_2\nПро лавку традицій: $value2\n\nПоділіться загальним враженням: $valueGeneral',
+                          textAlign: TextAlign.left,
+                        ),
                         backgroundColor: Colors.green,
                       ),
                     );
