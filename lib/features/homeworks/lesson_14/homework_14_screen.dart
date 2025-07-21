@@ -97,9 +97,6 @@ class _Homework14ScreenState extends State<Homework14Screen> {
               FocusScope.of(context).requestFocus(_focus);
             },
             child: SingleChildScrollView(
-              padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom,
-              ),
               controller: _scrollController,
               child: Form(
                 key: _formKey,
