@@ -16,37 +16,35 @@ class _WidgetTypesExampleScreenState extends State<WidgetTypesExampleScreen> {
         title: const Text('Stateless vs Stateful Widgets'),
         backgroundColor: Colors.blue.shade100,
       ),
-      body: const SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Stateless Widget Example
-            Text(
+            const Text(
               'Stateless Widget Example',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 16),
-            StatelessExampleWidget(
+            const SizedBox(height: 16),
+            const StatelessExampleWidget(
               title: 'Welcome Message',
               message: 'This is a stateless widget!',
             ),
 
-            SizedBox(height: 32),
+            const SizedBox(height: 32),
+
+            ChangeState(),
+
+            const SizedBox(height: 32),
 
             // Stateful Widget Example
-            Text(
+            const Text(
               'Stateful Widget Example',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 16),
-            StatefulExampleWidget(),
+            const SizedBox(height: 16),
+            const StatefulExampleWidget(),
           ],
         ),
       ),
@@ -79,10 +77,7 @@ class StatelessExampleWidget extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Text(message),
@@ -94,9 +89,7 @@ class StatelessExampleWidget extends StatelessWidget {
 
 // Stateful Widget Example
 class StatefulExampleWidget extends StatefulWidget {
-  const StatefulExampleWidget({
-    super.key,
-  });
+  const StatefulExampleWidget({super.key});
 
   @override
   State<StatefulExampleWidget> createState() => _StatefulExampleWidgetState();
@@ -124,15 +117,39 @@ class _StatefulExampleWidgetState extends State<StatefulExampleWidget> {
         children: [
           Text(
             'Counter: $_counter',
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           ElevatedButton(
             onPressed: _incrementCounter,
             child: const Text('Increment Counter'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class ChangeState extends StatelessWidget {
+  ChangeState({super.key});
+
+  String initText = 'Start text';
+
+  void changeText(BuildContext context) {
+    initText = 'Changed text';
+    (context as Element).markNeedsBuild();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: [
+          Text(initText),
+          ElevatedButton(
+            onPressed: () => changeText(context),
+            child: Text('Change text'),
           ),
         ],
       ),
