@@ -18,7 +18,6 @@ class _Homework14ScreenState extends State<Homework14Screen> {
   final ScrollController _scrollController = ScrollController();
   bool _scrolled = false;
   final _focus = FocusNode();
-
   final TextEditingController _textController1 = TextEditingController();
   final TextEditingController _textController2 = TextEditingController();
   final TextEditingController _generalController = TextEditingController();
@@ -96,115 +95,117 @@ class _Homework14ScreenState extends State<Homework14Screen> {
             onTap: () {
               FocusScope.of(context).requestFocus(_focus);
             },
-            child: SingleChildScrollView(
-              controller: _scrollController,
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  spacing: 8,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: HexColor('#ffffff'),
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(24),
-                          bottomRight: Radius.circular(24),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color.fromRGBO(0, 0, 0, 0.06),
-                            offset: Offset(0, 1),
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 94),
+              child: SingleChildScrollView(
+                controller: _scrollController,
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    spacing: 8,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: HexColor('#ffffff'),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(24),
+                            bottomRight: Radius.circular(24),
                           ),
-                        ],
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color.fromRGBO(0, 0, 0, 0.06),
+                              offset: Offset(0, 1),
+                            ),
+                          ],
+                        ),
+                        child: StarImage(
+                          onChanged: (stars) {
+                            setState(() {
+                              _selectedStars = stars;
+                            });
+                          },
+                        ),
                       ),
-                      child: StarImage(
-                        onChanged: (stars) {
+                      SizedBox(height: 16),
+                      TextWidget(
+                        text: 'Яку оціночку поставите відділам?',
+                        size: 18,
+                        weight: FontWeight.w600,
+                        color: HexColor('#13131e'),
+                      ),
+                      SizedBox(height: 11),
+                      ItemContainer(
+                        title: 'Овочі, Фрукти',
+                        isDesc: false,
+                        onSectionFeedbackChanged1: (value) {
                           setState(() {
-                            _selectedStars = stars;
+                            sectionFeedBack1_1 = value;
+                          });
+                        },
+                        onSectionFeedbackChanged2: (value) {
+                          setState(() {
+                            sectionFeedBack1_2 = value;
                           });
                         },
                       ),
-                    ),
-                    SizedBox(height: 16),
-                    TextWidget(
-                      text: 'Яку оціночку поставите відділам?',
-                      size: 18,
-                      weight: FontWeight.w600,
-                      color: HexColor('#13131e'),
-                    ),
-                    SizedBox(height: 11),
-                    ItemContainer(
-                      title: 'Овочі, Фрукти',
-                      isDesc: false,
-                      onSectionFeedbackChanged1: (value) {
-                        setState(() {
-                          sectionFeedBack1_1 = value;
-                        });
-                      },
-                      onSectionFeedbackChanged2: (value) {
-                        setState(() {
-                          sectionFeedBack1_2 = value;
-                        });
-                      },
-                    ),
-                    ItemContainer(
-                      title: 'Випічка',
-                      isDesc: true,
-                      controller: _textController1,
-                      onSectionFeedbackChanged1: (value) {
-                        setState(() {
-                          sectionFeedBack2_1 = value;
-                        });
-                      },
-                      onSectionFeedbackChanged2: (value) {
-                        setState(() {
-                          sectionFeedBack2_2 = value;
-                        });
-                      },
-                    ),
-                    ItemContainer(
-                      title: 'Лавка традицій',
-                      isDesc: true,
-                      controller: _textController2,
-                      onSectionFeedbackChanged1: (value) {
-                        setState(() {
-                          sectionFeedBack3_1 = value;
-                        });
-                      },
-                      onSectionFeedbackChanged2: (value) {
-                        setState(() {
-                          sectionFeedBack3_2 = value;
-                        });
-                      },
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: EdgeInsets.only(top: 16, left: 16),
-                        child: TextWidget(
-                          text: 'Є що додати?',
-                          size: 18,
-                          weight: FontWeight.w600,
-                          color: HexColor('#202124'),
+                      ItemContainer(
+                        title: 'Випічка',
+                        isDesc: true,
+                        controller: _textController1,
+                        onSectionFeedbackChanged1: (value) {
+                          setState(() {
+                            sectionFeedBack2_1 = value;
+                          });
+                        },
+                        onSectionFeedbackChanged2: (value) {
+                          setState(() {
+                            sectionFeedBack2_2 = value;
+                          });
+                        },
+                      ),
+                      ItemContainer(
+                        title: 'Лавка традицій',
+                        isDesc: true,
+                        controller: _textController2,
+                        onSectionFeedbackChanged1: (value) {
+                          setState(() {
+                            sectionFeedBack3_1 = value;
+                          });
+                        },
+                        onSectionFeedbackChanged2: (value) {
+                          setState(() {
+                            sectionFeedBack3_2 = value;
+                          });
+                        },
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 16, left: 16),
+                          child: TextWidget(
+                            text: 'Є що додати?',
+                            size: 18,
+                            weight: FontWeight.w600,
+                            color: HexColor('#202124'),
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 16, right: 16),
-                      child: CustomTextFormField(
-                        controller: _generalController,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Будь-ласка введіть повідомлення';
-                          }
-                          return null;
-                        },
-                        labelText: 'Поділіться загальним враженням',
+                      Padding(
+                        padding: EdgeInsets.only(left: 16, right: 16),
+                        child: CustomTextFormField(
+                          controller: _generalController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Будь-ласка введіть повідомлення';
+                            }
+                            return null;
+                          },
+                          labelText: 'Поділіться загальним враженням',
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 94),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
