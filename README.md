@@ -19,3 +19,11 @@
 - Buttons: ElevatedButton, TextButton, OutlinedButton, IconButton, ElevatedButton.icon, OutlinedButton.icon, FloatingActionButton
 - Scroll: SingleChildScrollView, ListView (ListView.builder, ListView.separated), GridView (GridView.builder)
 - Progress Indicators: LinearProgressIndicator, CircularProgressIndicator
+
+2. LESSON 14 FLUTTER WIDGETS PART 2
+
+- Custom Widgets
+- Stateless Widget vs Stateful Widget
+- GestureDetector, InkWell
+- TextField, TextFormField with validation
+- Image
