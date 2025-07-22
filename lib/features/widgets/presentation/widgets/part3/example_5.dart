@@ -12,11 +12,36 @@ class UnderstandingConstraintsExample5 extends StatelessWidget {
         title: const Text('Example 5'),
         backgroundColor: Colors.blue.shade100,
       ),
-      body: Container(
-        width: 100,
-        height: 100,
-        color: Colors.amber,
-        child: const Text('Some random text with data'),
+      body: Column(
+        spacing: 10,
+        children: [
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.lightGreen,
+            child: const Text('Some random text with data '),
+          ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.lightGreen,
+            child: FittedBox(child: const Text('Some random text with data ')),
+          ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.greenAccent,
+            child: Image.asset('assets/images/like-active.png'),
+          ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.greenAccent,
+            child: FittedBox(
+              child: Image.asset('assets/images/like-active.png'),
+            ),
+          ),
+        ],
       ),
     );
   }
