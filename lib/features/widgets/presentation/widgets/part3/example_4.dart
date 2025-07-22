@@ -12,23 +12,81 @@ class UnderstandingConstraintsExample4 extends StatelessWidget {
         title: const Text('Example 4'),
         backgroundColor: Colors.blue.shade100,
       ),
-      body: Row(
+      body: Column(
+        spacing: 10,
         children: [
-          Container(
-            color: Colors.orange,
-            height: 100,
-            width: 100,
-          ),
-          Expanded(
-            child: Container(
-              color: Colors.red,
-              child: ListView.builder(
-                itemCount: 300,
-                itemBuilder: (context, index) {
-                  return Text('Item $index');
-                },
+          Row(
+            spacing: 10,
+            children: [
+              Text('In Expanded()'),
+              Expanded(
+                child: Container(
+                  color: Colors.blueAccent,
+                  height: 80,
+                  width: 80,
+                ),
               ),
-            ),
+              Expanded(
+                child: Container(
+                  height: 80,
+                  width: 80,
+                  color: Colors.yellow,
+                  child: ListView.builder(
+                    itemCount: 300,
+                    itemBuilder: (context, index) {
+                      return Text('Item $index');
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            spacing: 10,
+            children: [
+              Text('In Flexible()'),
+              Flexible(
+                child: Container(
+                  color: Colors.blueAccent,
+                  height: 80,
+                  width: 80,
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  height: 80,
+                  width: 80,
+                  color: Colors.yellow,
+                  child: ListView.builder(
+                    itemCount: 300,
+                    itemBuilder: (context, index) {
+                      return Text('Item $index');
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 200,
+                width: 150,
+                child: ListView(
+                  children: [
+                    Text('ListView item 1'),
+                    Text('ListView item 2'),
+                    Text('ListView item 3'),
+                    Text('ListView item 4'),
+                    Text('ListView item 5'),
+                    Text('ListView item 6'),
+                    Text('ListView item 7'),
+                    Text('ListView item 8'),
+                    Text('ListView item 9'),
+                    Text('ListView item 10'),
+                    Text('ListView item 11'),
+                    Text('ListView item 12'),
+                    Text('ListView item 13'),
+                  ],
+                ),
+              ),
+            ],
           ),
         ],
       ),
