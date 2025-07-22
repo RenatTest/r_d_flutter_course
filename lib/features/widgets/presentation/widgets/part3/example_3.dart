@@ -12,12 +12,39 @@ class UnderstandingConstraintsExample3 extends StatelessWidget {
         title: const Text('Example 3'),
         backgroundColor: Colors.blue.shade100,
       ),
-      body: Column(
+      body: Row(
+        spacing: 20,
         children: [
-          Container(
-            color: Colors.orange,
-            height: 100,
-            width: 100,
+          Column(
+            children: [
+              Text('In Expanded()'),
+              Expanded(
+                child: Container(
+                  color: Colors.blueAccent,
+                  height: 300,
+                  width: 150,
+                ),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Text('In Flexible()'),
+              Flexible(
+                child: Container(color: Colors.yellow, height: 300, width: 150),
+              ),
+              SizedBox(
+                height: 100,
+                width: 150,
+                child: ListView(
+                  children: [
+                    Text('ListView item 1'),
+                    Text('ListView item 2'),
+                    Text('ListView item 3'),
+                  ],
+                ),
+              ),
+            ],
           ),
         ],
       ),
