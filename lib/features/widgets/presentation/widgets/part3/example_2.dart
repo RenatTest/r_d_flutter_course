@@ -14,10 +14,13 @@ class UnderstandingConstraintsExample2 extends StatelessWidget {
       ),
       body: Container(
         color: Colors.green,
-        child: Container(
-          color: Colors.orange,
-          height: 300,
-          width: 300,
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+              return Container(color: Colors.orange, height: 200, width: 200);
+            },
+          ),
         ),
       ),
     );
