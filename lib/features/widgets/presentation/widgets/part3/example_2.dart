@@ -18,6 +18,11 @@ class UnderstandingConstraintsExample2 extends StatelessWidget {
           padding: EdgeInsets.all(20),
           child: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
+              // print('maxWidth: ${constraints.maxWidth}');
+              // print('maxHeight: ${constraints.maxHeight}');
+              // print('minWidth: ${constraints.minWidth}');
+              // print('minHeight: ${constraints.minHeight}');
+
               return Container(color: Colors.orange, height: 200, width: 200);
             },
           ),
