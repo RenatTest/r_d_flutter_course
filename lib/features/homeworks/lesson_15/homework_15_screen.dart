@@ -1,16 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class Homework15Screen extends StatelessWidget {
+class Homework15Screen extends StatefulWidget {
   const Homework15Screen({super.key});
+
+  @override
+  State<Homework15Screen> createState() => _Homework15ScreenState();
+}
+
+class _Homework15ScreenState extends State<Homework15Screen> {
+  final ScrollController _scrollController = ScrollController();
+
+  double imageHeight = 151.0;
+  double imageOpacity = 1.0;
+  double imageScale = 1.0;
+  double groundPosition = -36;
+  double containerHeight = 151.0;
+
+  void _scrollListener() {
+    final offset = _scrollController.offset;
+
+    setState(() {
+      imageOpacity = (1.0 - (offset / 100)).clamp(0.0, 1.0);
+      imageScale = (1.0 - (offset / 200)).clamp(0.3, 1.0);
+      // imageScale = (1.0 + (offset / 200)).clamp(1.0, 1.5);
+
+      containerHeight = (151.0 - offset / 2).clamp(0.0, 151.0);
+      groundPosition = (-36.0 - (offset / 2)).clamp(-56.0, -36.0);
+    });
+  }
+
+  @override
+  void initState() {
+    _scrollController.addListener(_scrollListener);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
+      extendBodyBehindAppBar: false,
       backgroundColor: HexColor('#c8ffa2'),
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: HexColor('#c8ffa2'),
         automaticallyImplyLeading: false,
         title: Row(
@@ -51,15 +86,15 @@ class Homework15Screen extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
+        controller: _scrollController,
         physics: BouncingScrollPhysics(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              height: 171,
+              height: containerHeight,
               width: screenWidth,
               decoration: BoxDecoration(
-                color: HexColor('#c8ffa2'),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(24),
                   bottomRight: Radius.circular(24),
@@ -71,16 +106,23 @@ class Homework15Screen extends StatelessWidget {
                     top: 0,
                     right: 20,
                     left: 20,
-                    child: Image.asset(
-                      'assets/images/flowers-with-text.png',
-                      height: 171,
-                      width: screenWidth - 40,
+                    child: Opacity(
+                      opacity: imageOpacity,
+                      child: Transform.scale(
+                        scale: imageScale,
+                        alignment: Alignment.center,
+                        child: Image.asset(
+                          'assets/images/flowers-with-text.png',
+                          height: imageHeight,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
                     ),
                   ),
                   Positioned(
                     left: 0,
                     right: 0,
-                    bottom: -36,
+                    bottom: groundPosition,
                     child: Image.asset(
                       'assets/images/flowers-ground.png',
                       fit: BoxFit.cover,
@@ -94,7 +136,11 @@ class Homework15Screen extends StatelessWidget {
               child: Column(
                 spacing: 10,
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [DiscountButton(), SizedBox(height: 600)],
+                children: [
+                  DiscountButton(),
+                  SizedBox(height: 600),
+                  SizedBox(height: 600),
+                ],
               ),
             ),
           ],
