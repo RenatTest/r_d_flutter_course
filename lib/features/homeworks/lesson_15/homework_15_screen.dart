@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class Homework15Screen extends StatefulWidget {
@@ -23,7 +22,7 @@ class _Homework15ScreenState extends State<Homework15Screen> {
 
     setState(() {
       imageOpacity = (1.0 - (offset / 100)).clamp(0.0, 1.0);
-      imageScale = (1.0 - (offset / 200)).clamp(0.3, 1.0);
+      imageScale = (1.0 - (offset / 300)).clamp(0.3, 1.0);
       // imageScale = (1.0 + (offset / 200)).clamp(1.0, 1.5);
 
       containerHeight = (151.0 - offset / 2).clamp(0.0, 151.0);
@@ -102,10 +101,8 @@ class _Homework15ScreenState extends State<Homework15Screen> {
               ),
               child: Stack(
                 children: [
-                  Positioned(
-                    top: 0,
-                    right: 20,
-                    left: 20,
+                  Align(
+                    alignment: Alignment.center,
                     child: Opacity(
                       opacity: imageOpacity,
                       child: Transform.scale(
@@ -113,7 +110,6 @@ class _Homework15ScreenState extends State<Homework15Screen> {
                         alignment: Alignment.center,
                         child: Image.asset(
                           'assets/images/flowers-with-text.png',
-                          height: imageHeight,
                           fit: BoxFit.contain,
                         ),
                       ),
