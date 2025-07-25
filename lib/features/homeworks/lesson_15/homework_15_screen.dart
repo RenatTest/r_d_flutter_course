@@ -71,7 +71,7 @@ class _Homework15ScreenState extends State<Homework15Screen> {
         actions: [
           GestureDetector(
             onTap: () {
-              print('Navigate to Info page');
+              // print('Navigate to Info page');
             },
             child: Padding(
               padding: EdgeInsets.only(right: 16),
@@ -178,7 +178,7 @@ class DiscountButton extends StatelessWidget {
       height: 72,
       child: ElevatedButton(
         onPressed: () {
-          print('Get discount -45%');
+          // print('Get discount -45%');
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: HexColor('#009741'),
