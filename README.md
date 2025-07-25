@@ -43,3 +43,5 @@
 - Transition with arguments
 - Transition with returning data
 - Navigation to modal bottom sheet
+- Named Rout navigation - Simple transition
+- Named Rout navigation - With arguments

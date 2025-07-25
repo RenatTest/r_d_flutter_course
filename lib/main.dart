@@ -17,9 +17,7 @@ class FlutterWidgetsApp extends StatelessWidget {
       routes: {
         '/new_screen': (context) => const SimpleEmptyScreen(),
         '/simple_screen_with_data': (context) {
-          return SimpleScreenWithData(
-            id: ModalRoute.of(context)!.settings.arguments! as String,
-          );
+          return SimpleScreenWithData(id: '69');
         },
       },
       // onGenerateRoute: (settings) {

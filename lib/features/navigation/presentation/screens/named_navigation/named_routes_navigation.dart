@@ -23,7 +23,7 @@ class NamedRoutesNavigationScreen extends StatelessWidget {
               Navigator.pushNamed(
                 context,
                 '/simple_screen_with_data',
-                arguments: 'best_product_id_ever',
+                arguments: NamedScreenArgs(id: '666999', name: 'Renat'),
               );
             },
           ),
@@ -31,4 +31,11 @@ class NamedRoutesNavigationScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+class NamedScreenArgs {
+  NamedScreenArgs({required this.id, required this.name});
+
+  final String id;
+  final String name;
 }

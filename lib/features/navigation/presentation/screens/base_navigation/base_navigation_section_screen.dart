@@ -83,8 +83,7 @@ class BaseNavigationSectionScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute<Widget>(
-                  builder: (context) =>
-                      const SimpleScreenWithData(id: '999666'),
+                  builder: (context) => const SimpleScreenWithData(id: '69'),
                 ),
               );
             },
