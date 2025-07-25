@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
-class NavagationButton extends StatelessWidget {
-  const NavagationButton({
-    required this.onTap,
-    required this.title,
-    super.key,
-  });
+class NavigationButton extends StatelessWidget {
+  const NavigationButton({required this.onTap, required this.title, super.key});
 
   final String title;
 
@@ -45,11 +41,7 @@ class NavagationButton extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Icon(
-                  Icons.chevron_right,
-                  color: Colors.white,
-                  size: 28,
-                ),
+                const Icon(Icons.chevron_right, color: Colors.white, size: 28),
               ],
             ),
           ),

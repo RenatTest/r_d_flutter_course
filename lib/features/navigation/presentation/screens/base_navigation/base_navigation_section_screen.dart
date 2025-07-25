@@ -14,7 +14,7 @@ class BaseNavigationSectionScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
-          NavagationButton(
+          NavigationButton(
             title: 'Simple transition to new screen',
             onTap: () {
               Navigator.push(
@@ -26,7 +26,7 @@ class BaseNavigationSectionScreen extends StatelessWidget {
             },
           ),
           //https://docs.flutter.dev/cookbook/animation/page-route-animation
-          NavagationButton(
+          NavigationButton(
             title: 'Simple transition with custom transition',
             onTap: () {
               Navigator.push(
@@ -34,35 +34,69 @@ class BaseNavigationSectionScreen extends StatelessWidget {
                 PageRouteBuilder<Widget>(
                   pageBuilder: (context, animation, secondaryAnimation) =>
                       const SimpleEmptyScreen(),
+
                   // transitionsBuilder:
                   //     (context, animation, secondaryAnimation, child) =>
-                  //         RotationTransition(
-                  //   turns: animation,
-                  //   child: child,
-                  // ),
+                  //         RotationTransition(turns: animation, child: child),
+
+                  // transitionsBuilder:
+                  //     (context, animation, secondaryAnimation, child) {
+                  //       // const begin = Offset.zero;
+                  //       const begin = Offset(0.0, 1.0);
+                  //       const end = Offset.zero;
+                  //       final tween = Tween(begin: begin, end: end);
+                  //       animation.drive(tween);
+                  //       return child;
+                  //     },
+
+                  // transitionsBuilder:
+                  //     (context, animation, secondaryAnimation, child) =>
+                  //         FadeTransition(opacity: animation, child: child),
+                  transitionDuration: const Duration(seconds: 1),
+                  reverseTransitionDuration: const Duration(seconds: 1),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                        // const begin = Offset(0.0, 1.0);
+                        const begin = Offset(0.0, -1.0);
+                        const end = Offset.zero;
+                        // const curve = Curves.ease;
+                        const curve = Curves.bounceInOut;
+
+                        final tween = Tween(begin: begin, end: end);
+                        final curvedAnimation = CurvedAnimation(
+                          parent: animation,
+                          curve: curve,
+                        );
+
+                        return SlideTransition(
+                          position: tween.animate(curvedAnimation),
+                          child: child,
+                        );
+                      },
                 ),
               );
             },
           ),
-          NavagationButton(
+          NavigationButton(
             title: 'Transition with arguments',
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute<Widget>(
-                  builder: (context) => const SimpleScreenWithData(id: '123'),
+                  builder: (context) =>
+                      const SimpleScreenWithData(id: '999666'),
                 ),
               );
             },
           ),
-          NavagationButton(
+          NavigationButton(
             title: 'Transition with returning data',
             onTap: () async {
               final result = await Navigator.push(
                 context,
                 MaterialPageRoute<String>(
                   builder: (context) =>
-                      const SimpleScreenWithReturningData(guestName: 'Pavlo'),
+                      const SimpleScreenWithReturningData(guestName: 'Renat'),
                 ),
               );
 
@@ -73,7 +107,7 @@ class BaseNavigationSectionScreen extends StatelessWidget {
               }
             },
           ),
-          NavagationButton(
+          NavigationButton(
             title: 'Navigation to modal bottom sheet',
             onTap: () {
               showModalBottomSheet<void>(

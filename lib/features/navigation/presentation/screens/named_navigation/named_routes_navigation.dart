@@ -11,13 +11,13 @@ class NamedRoutesNavigationScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
-          NavagationButton(
+          NavigationButton(
             title: 'Simple transition to new screen',
             onTap: () {
               Navigator.pushNamed(context, '/new_screen');
             },
           ),
-          NavagationButton(
+          NavigationButton(
             title: 'Simple transition to new screen with data',
             onTap: () {
               Navigator.pushNamed(
