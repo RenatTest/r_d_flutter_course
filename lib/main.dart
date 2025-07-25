@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_empty_screen.dart';
+import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_data.dart';
+import 'package:r_d_flutter_course/features/navigation/presentation/screens/navigation_main_screen.dart';
 import 'package:r_d_flutter_course/features/widgets/presentation/screens/widgets_main_screen.dart';
 
 void main() {
@@ -10,9 +13,31 @@ class FlutterWidgetsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+    return MaterialApp(
+      routes: {
+        '/new_screen': (context) => const SimpleEmptyScreen(),
+        '/simple_screen_with_data': (context) {
+          return SimpleScreenWithData(
+            id: ModalRoute.of(context)!.settings.arguments! as String,
+          );
+        },
+      },
+      // onGenerateRoute: (settings) {
+      //   if (settings.name == '/new_screen') {
+      //     return MaterialPageRoute(
+      //       builder: (context) => const SimpleEmptyScreen(),
+      //     );
+      //   }
+      //   if (settings.name == '/simple_screen_with_data') {
+      //     return MaterialPageRoute(
+      //       builder: (context) => SimpleScreenWithData(
+      //         id: settings.arguments! as String,
+      //       ),
+      //     );
+      //   }
+      //   return null;
+      // },
+      home: const HomeScreen(),
     );
   }
 }
@@ -38,6 +63,15 @@ class HomeScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute<Widget>(
                   builder: (context) => const WidgetsScreen(),
+                ),
+              ),
+            ),
+            FeatureCard(
+              title: 'Navigation',
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute<Widget>(
+                  builder: (context) => const NavigationMainScreen(),
                 ),
               ),
             ),
