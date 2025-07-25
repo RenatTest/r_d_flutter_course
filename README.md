@@ -27,3 +27,11 @@
 - GestureDetector, InkWell
 - TextField, TextFormField with validation
 - Image
+
+3. LESSON 15 WIDGET INTERACTION AND LAYOUT
+
+- Container with sizes
+- LayoutBuilder to check max/min height/width
+- Flexible / Expanded - Column
+- Flexible / Expanded - Row
+- FittedBox examples
