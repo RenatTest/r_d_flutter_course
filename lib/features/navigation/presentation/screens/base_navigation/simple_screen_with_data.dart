@@ -15,9 +15,9 @@ class SimpleScreenWithData extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Text('Product id: $id'),
-            Text('Product id: ${args.id}'),
-            Text('Product id: ${args.name}'),
+            Text('Product id from named parameter: $id'),
+            Text('Product id from arguments: ${args.id}'),
+            Text('Product id from arguments: ${args.name}'),
           ],
         ),
       ),
