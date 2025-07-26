@@ -1,3 +1,5 @@
+// ignore_for_file: inference_failure_on_instance_creation
+
 import 'package:flutter/material.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/widgets/navigation_button.dart';
 import 'package:r_d_flutter_course/main.dart';
@@ -18,10 +20,13 @@ class HomeWorkNavigationMainScreen extends StatelessWidget {
               // Navigator.pushNamed(context, '/home_work_simple_screen');
               Navigator.pushAndRemoveUntil(
                 context,
-                // ignore: inference_failure_on_instance_creation
                 MaterialPageRoute(builder: (context) => HomeScreen()),
                 (Route<dynamic> route) => false, // Видаляє всі попередні
               );
+              // Navigator.pushReplacement(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => HomeScreen()),
+              // );
             },
           ),
           NavigationButton(
