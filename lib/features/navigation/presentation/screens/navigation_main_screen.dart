@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_16/screens/home_work_main_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/base_navigation_section_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/named_navigation/named_routes_navigation.dart';
 import 'package:r_d_flutter_course/features/widgets/presentation/screens/widgets_main_screen.dart';
@@ -30,6 +31,16 @@ class NavigationMainScreen extends StatelessWidget {
               context,
               MaterialPageRoute<Widget>(
                 builder: (context) => const NamedRoutesNavigationScreen(),
+              ),
+            ),
+          ),
+          NavigationCard(
+            title: 'Homework_16',
+            description: '',
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute<Widget>(
+                builder: (context) => const HomeWorkNavigationMainScreen(),
               ),
             ),
           ),
