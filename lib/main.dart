@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_16/screens/home_work_simple_screen.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_16/screens/home_work_simple_screen_with_arguments.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_empty_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_data.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/navigation_main_screen.dart';
@@ -19,6 +21,9 @@ class FlutterWidgetsApp extends StatelessWidget {
         '/simple_screen_with_data': (context) {
           return SimpleScreenWithData(id: '69');
         },
+        '/home_work_simple_screen': (context) => const HomeWorkSimpleScreen(),
+        '/home_work_simple_screen_with_arguments': (context) =>
+            const HomeWorkSimpleScreenWithArguments(),
       },
       // onGenerateRoute: (settings) {
       //   if (settings.name == '/new_screen') {

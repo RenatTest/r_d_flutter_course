@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:r_d_flutter_course/features/navigation/presentation/widgets/navigation_button.dart';
 
 class HomeWorkNavigationMainScreen extends StatelessWidget {
   const HomeWorkNavigationMainScreen({super.key});
@@ -10,31 +11,43 @@ class HomeWorkNavigationMainScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
-          // NavigationButton(
-          //   title: 'Simple transition to new screen',
-          //   onTap: () {
-          //     Navigator.pushNamed(context, '/new_screen');
-          //   },
-          // ),
-          // NavigationButton(
-          //   title: 'Simple transition to new screen with data',
-          //   onTap: () {
-          //     Navigator.pushNamed(
-          //       context,
-          //       '/simple_screen_with_data',
-          //       arguments: NamedScreenArgs(id: '666999', name: 'Renat'),
-          //     );
-          //   },
-          // ),
+          NavigationButton(
+            title: 'Simple transition to new screen',
+            onTap: () {
+              Navigator.pushNamed(context, '/home_work_simple_screen');
+            },
+          ),
+          NavigationButton(
+            title: 'Simple transition to new screen with data',
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/home_work_simple_screen_with_arguments',
+                arguments: Arguments(
+                  name: 'Renat',
+                  age: 39,
+                  profession: 'Flutter dev',
+                  salary: 7000,
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
   }
 }
 
-class NamedScreenArgs {
-  NamedScreenArgs({required this.id, required this.name});
+class Arguments {
+  Arguments({
+    required this.name,
+    required this.age,
+    required this.profession,
+    required this.salary,
+  });
 
-  final String id;
   final String name;
+  final int age;
+  final String profession;
+  final double salary;
 }
