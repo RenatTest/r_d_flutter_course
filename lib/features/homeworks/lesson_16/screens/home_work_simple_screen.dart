@@ -9,6 +9,22 @@ class HomeWorkSimpleScreen extends StatelessWidget {
     final screenWidth = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
+      endDrawer: Drawer(
+        backgroundColor: Colors.green,
+        width: screenWidth / 2,
+        child: Column(
+          children: [
+            SizedBox(height: 100),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: NavigationButton(
+                title: 'Close drawer',
+                onTap: () => Navigator.of(context).pop(),
+              ),
+            ),
+          ],
+        ),
+      ),
       drawer: Drawer(
         backgroundColor: Colors.deepOrange,
         width: screenWidth / 2,
@@ -50,6 +66,7 @@ class HomeWorkSimpleScreen extends StatelessWidget {
                   icon: const Icon(Icons.menu),
                   onPressed: () {
                     Scaffold.of(context).openDrawer();
+                    // Scaffold.of(context).openEndDrawer();
                   },
                 );
               },
