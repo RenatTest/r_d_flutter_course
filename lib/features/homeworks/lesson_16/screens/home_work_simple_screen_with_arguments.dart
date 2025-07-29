@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:r_d_flutter_course/features/homeworks/lesson_16/screens/home_work_main_screen.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_16/screens/home_work_16_screen.dart';
 
 class HomeWorkSimpleScreenWithArguments extends StatelessWidget {
   const HomeWorkSimpleScreenWithArguments({super.key});

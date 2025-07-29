@@ -56,4 +56,7 @@ abstract class ScreenNames {
 
   static const namedRoutesNavigation = 'named-routes-navigation';
   static const homework16 = 'homework-16';
+  static const homeworkSimpleScreen = 'homework-simple-screen';
+  static const homeworkSimpleScreenWithArguments =
+      'homework-simple-screen-with-arguments';
 }

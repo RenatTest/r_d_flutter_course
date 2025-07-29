@@ -17,10 +17,7 @@ class HomeWorkSimpleScreen extends StatelessWidget {
             SizedBox(height: 100),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: NavigationButton(
-                title: 'Close drawer',
-                onTap: () => Navigator.of(context).pop(),
-              ),
+              child: NavigationButton(title: 'Close drawer', onTap: () {}),
             ),
           ],
         ),
@@ -33,10 +30,7 @@ class HomeWorkSimpleScreen extends StatelessWidget {
             SizedBox(height: 100),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: NavigationButton(
-                title: 'Close drawer',
-                onTap: () => Navigator.of(context).pop(),
-              ),
+              child: NavigationButton(title: 'Close drawer', onTap: () {}),
             ),
           ],
         ),
@@ -47,7 +41,7 @@ class HomeWorkSimpleScreen extends StatelessWidget {
           spacing: 10,
           children: [
             InkWell(
-              onTap: () => Navigator.of(context).pop(),
+              onTap: () {},
               child: Container(
                 height: 50,
                 width: 150,
