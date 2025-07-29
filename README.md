@@ -27,3 +27,21 @@
 - GestureDetector, InkWell
 - TextField, TextFormField with validation
 - Image
+
+3. LESSON 15 WIDGET INTERACTION AND LAYOUT
+
+- Container with sizes
+- LayoutBuilder to check max/min height/width
+- Flexible / Expanded - Column
+- Flexible / Expanded - Row
+- FittedBox examples
+
+4. LESSON 16 BASE NAVIGATION
+
+- Simple transition to new screen
+- Simple transition with animation
+- Transition with arguments
+- Transition with returning data
+- Navigation to modal bottom sheet
+- Named Rout navigation - Simple transition
+- Named Rout navigation - With arguments
