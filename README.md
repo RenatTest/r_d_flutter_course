@@ -45,3 +45,8 @@
 - Navigation to modal bottom sheet
 - Named Rout navigation - Simple transition
 - Named Rout navigation - With arguments
+
+5. LESSON 17 GO ROUTER
+
+- Change default navigation to go_router
+- Added go_router navigation with arguments
