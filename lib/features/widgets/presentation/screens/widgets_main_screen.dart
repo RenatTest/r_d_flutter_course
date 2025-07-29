@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:r_d_flutter_course/features/homeworks/lesson_13/homework_13_screen.dart';
-import 'package:r_d_flutter_course/features/homeworks/lesson_14/homework_14_screen.dart';
-import 'package:r_d_flutter_course/features/homeworks/lesson_15/homework_15_screen.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/screens/widgets_first_part_screen.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/screens/widgets_second_part_screen.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/screens/widgets_third_part_screen.dart';
 
 class WidgetsScreen extends StatelessWidget {
   const WidgetsScreen({super.key});
@@ -26,12 +20,7 @@ class WidgetsScreen extends StatelessWidget {
               description:
                   'Container, SizedBox, Padding, Align, Center, Text, Row, '
                   'Column, Expanded, Buttons, Scroll',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const WidgetsFirstPartScreen(),
-                ),
-              ),
+              onTap: () {},
             ),
             NavigationCard(
               title: 'Widgets Part 2',
@@ -39,55 +28,18 @@ class WidgetsScreen extends StatelessWidget {
                   'Custom Widgets, Stateless vs Stateful Widgets, '
                   'Gesture Detector & InkWel, '
                   'TextFields & TextFormFields',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const WidgetsSecondPartScreen(),
-                ),
-              ),
+              onTap: () {},
             ),
             NavigationCard(
               title: 'Understanding constraints',
               description:
                   'Constraints go down. Sizes go up. Parent '
                   'sets position.',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const WidgetsThirdPartScreen(),
-                ),
-              ),
+              onTap: () {},
             ),
-            NavigationCard(
-              title: 'Homework_13',
-              description: '',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const Homework13Screen(),
-                ),
-              ),
-            ),
-            NavigationCard(
-              title: 'Homework_14',
-              description: '',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const Homework14Screen(),
-                ),
-              ),
-            ),
-            NavigationCard(
-              title: 'Homework_15',
-              description: '',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const Homework15Screen(),
-                ),
-              ),
-            ),
+            NavigationCard(title: 'Homework_13', description: '', onTap: () {}),
+            NavigationCard(title: 'Homework_14', description: '', onTap: () {}),
+            NavigationCard(title: 'Homework_15', description: '', onTap: () {}),
           ],
         ),
       ),

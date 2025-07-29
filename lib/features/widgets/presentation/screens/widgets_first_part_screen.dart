@@ -1,17 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/align_example_screen.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/buttons_example_screen.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/center_example_screen.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/column_example_screen.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/container_example_screen.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/expanded_example_screen.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/padding_example_screen.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/progress_indicators_example_screen.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/row_example_screen.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/scroll_example_screen.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/sized_box_example_screen.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/stack_example_screen.dart';
-import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part1/text_example_screen.dart';
 
 class WidgetsFirstPartScreen extends StatelessWidget {
   const WidgetsFirstPartScreen({super.key});
@@ -31,121 +18,66 @@ class WidgetsFirstPartScreen extends StatelessWidget {
             description:
                 'Basic widget that allows you to create a box with a specified '
                 'size, color, and border radius.',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute<Widget>(
-                builder: (context) => const ContainerExampleScreen(),
-              ),
-            ),
+            onTap: () {},
           ),
           WidgetExampleCard(
             title: 'Row',
             description:
                 'A widget that displays its children in a horizontal array.',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute<Widget>(
-                builder: (context) => const RowExampleScreen(),
-              ),
-            ),
+            onTap: () => () {},
           ),
           WidgetExampleCard(
             title: 'Column',
             description:
                 'A widget that displays its children in a vertical array.',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute<Widget>(
-                builder: (context) => const ColumnExampleScreen(),
-              ),
-            ),
+            onTap: () {},
           ),
           WidgetExampleCard(
             title: 'Expanded',
             description:
                 'A widget that expands a child of a Row, Column, or Flex to '
                 'fill the available space.',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute<Widget>(
-                builder: (context) => const ExpandedExampleScreen(),
-              ),
-            ),
+            onTap: () {},
           ),
           WidgetExampleCard(
             title: 'Stack',
             description:
                 'A widget that positions its childred on top of each other.',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute<Widget>(
-                builder: (context) => const StackExampleScreen(),
-              ),
-            ),
+            onTap: () {},
           ),
           WidgetExampleCard(
             title: 'SizedBox',
             description:
                 'A box with a specified size. Useful for creating '
                 'empty spaces.',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute<Widget>(
-                builder: (context) => const SizedBoxExampleScreen(),
-              ),
-            ),
+            onTap: () {},
           ),
           WidgetExampleCard(
             title: 'Padding',
             description: 'A widget that insets its child by the given padding.',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute<Widget>(
-                builder: (context) => const PaddingExampleScreen(),
-              ),
-            ),
+            onTap: () {},
           ),
           WidgetExampleCard(
             title: 'Align',
             description: 'A widget that aligns its child within itself.',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute<Widget>(
-                builder: (context) => const AlignExampleScreen(),
-              ),
-            ),
+            onTap: () {},
           ),
           WidgetExampleCard(
             title: 'Center',
             description: 'A widget that centers its child within itself.',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute<Widget>(
-                builder: (context) => const CenterExampleScreen(),
-              ),
-            ),
+            onTap: () {},
           ),
           WidgetExampleCard(
             title: 'Text',
             description: 'A run of text with a single style.',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute<Widget>(
-                builder: (context) => const TextExampleScreen(),
-              ),
-            ),
+            onTap: () {},
           ),
           WidgetExampleCard(
             title: 'Buttons',
             description:
                 'Various types of buttons including Elevated, Text, Outlined, '
                 'Icon, and Floating Action buttons.',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute<Widget>(
-                builder: (context) => const ButtonsExampleScreen(),
-              ),
-            ),
+            onTap: () {},
           ),
           WidgetExampleCard(
             title: 'Scroll',
@@ -153,24 +85,14 @@ class WidgetsFirstPartScreen extends StatelessWidget {
                 'Examples of SingleChildScrollView and different types of '
                 'ListView including builder, separated, '
                 'and horizontal scrolling.',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute<Widget>(
-                builder: (context) => const ScrollExampleScreen(),
-              ),
-            ),
+            onTap: () {},
           ),
           WidgetExampleCard(
             title: 'Progress Indicators',
             description:
                 'Linear and Circular progress indicators that show progress or '
                 'loading states.',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute<Widget>(
-                builder: (context) => const ProgressIndicatorsExampleScreen(),
-              ),
-            ),
+            onTap: () {},
           ),
         ],
       ),

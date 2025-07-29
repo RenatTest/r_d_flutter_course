@@ -52,7 +52,7 @@ class _Homework15ScreenState extends State<Homework15Screen> {
           children: [
             GestureDetector(
               behavior: HitTestBehavior.opaque,
-              onTap: Navigator.of(context).pop,
+              onTap: () {},
               child: Image.asset(
                 'assets/images/arrow-back.png',
                 width: 9,
