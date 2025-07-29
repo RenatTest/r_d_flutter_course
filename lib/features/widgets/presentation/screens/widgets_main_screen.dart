@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
 
 class WidgetsScreen extends StatelessWidget {
   const WidgetsScreen({super.key});
@@ -20,7 +22,7 @@ class WidgetsScreen extends StatelessWidget {
               description:
                   'Container, SizedBox, Padding, Align, Center, Text, Row, '
                   'Column, Expanded, Buttons, Scroll',
-              onTap: () {},
+              onTap: () => context.goNamed(ScreenNames.widgetsFirstPart),
             ),
             NavigationCard(
               title: 'Widgets Part 2',
@@ -28,18 +30,31 @@ class WidgetsScreen extends StatelessWidget {
                   'Custom Widgets, Stateless vs Stateful Widgets, '
                   'Gesture Detector & InkWel, '
                   'TextFields & TextFormFields',
-              onTap: () {},
+              onTap: () => context.goNamed(ScreenNames.widgetsSecondPart),
             ),
             NavigationCard(
               title: 'Understanding constraints',
               description:
                   'Constraints go down. Sizes go up. Parent '
                   'sets position.',
-              onTap: () {},
+              onTap: () =>
+                  context.goNamed(ScreenNames.understandingConstraints),
             ),
-            NavigationCard(title: 'Homework_13', description: '', onTap: () {}),
-            NavigationCard(title: 'Homework_14', description: '', onTap: () {}),
-            NavigationCard(title: 'Homework_15', description: '', onTap: () {}),
+            NavigationCard(
+              title: 'Homework_13',
+              description: '',
+              onTap: () => context.goNamed(ScreenNames.homework13),
+            ),
+            NavigationCard(
+              title: 'Homework_14',
+              description: '',
+              onTap: () => context.goNamed(ScreenNames.homework14),
+            ),
+            NavigationCard(
+              title: 'Homework_15',
+              description: '',
+              onTap: () => context.goNamed(ScreenNames.homework15),
+            ),
           ],
         ),
       ),

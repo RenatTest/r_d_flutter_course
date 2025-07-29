@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,8 +17,14 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            FeatureCard(title: 'Widgets', onTap: () {}),
-            FeatureCard(title: 'Navigation', onTap: () {}),
+            FeatureCard(
+              title: 'Widgets',
+              onTap: () => context.goNamed(ScreenNames.widgets),
+            ),
+            FeatureCard(
+              title: 'Navigation',
+              onTap: () => context.goNamed(ScreenNames.navigation),
+            ),
           ],
         ),
       ),

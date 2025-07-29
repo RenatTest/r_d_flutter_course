@@ -1,28 +1,24 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SimpleScreenWithReturningData extends StatelessWidget {
-  const SimpleScreenWithReturningData({
-    required this.guestName,
-    super.key,
-  });
+  const SimpleScreenWithReturningData({required this.guestName, super.key});
 
   final String guestName;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Simple Screen With Data'),
-      ),
+      appBar: AppBar(title: const Text('Simple Screen With Data')),
       body: Center(
         child: InkWell(
           onTap: () {
             final randomPresent =
                 'Present for $guestName - ${Random().nextInt(1000)} USDT';
 
-            Navigator.of(context).pop(randomPresent);
+            context.pop(randomPresent);
           },
           child: Container(
             height: 70,

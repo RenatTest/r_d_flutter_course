@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
 
 class WidgetsFirstPartScreen extends StatelessWidget {
   const WidgetsFirstPartScreen({super.key});
@@ -18,66 +20,66 @@ class WidgetsFirstPartScreen extends StatelessWidget {
             description:
                 'Basic widget that allows you to create a box with a specified '
                 'size, color, and border radius.',
-            onTap: () {},
+            onTap: () => context.goNamed(ScreenNames.containerExample),
           ),
           WidgetExampleCard(
             title: 'Row',
             description:
                 'A widget that displays its children in a horizontal array.',
-            onTap: () => () {},
+            onTap: () => context.goNamed(ScreenNames.rowExample),
           ),
           WidgetExampleCard(
             title: 'Column',
             description:
                 'A widget that displays its children in a vertical array.',
-            onTap: () {},
+            onTap: () => context.goNamed(ScreenNames.columnExample),
           ),
           WidgetExampleCard(
             title: 'Expanded',
             description:
                 'A widget that expands a child of a Row, Column, or Flex to '
                 'fill the available space.',
-            onTap: () {},
+            onTap: () => context.goNamed(ScreenNames.expandedExample),
           ),
           WidgetExampleCard(
             title: 'Stack',
             description:
                 'A widget that positions its childred on top of each other.',
-            onTap: () {},
+            onTap: () => context.goNamed(ScreenNames.stackExample),
           ),
           WidgetExampleCard(
             title: 'SizedBox',
             description:
                 'A box with a specified size. Useful for creating '
                 'empty spaces.',
-            onTap: () {},
+            onTap: () => context.goNamed(ScreenNames.sizedBoxExample),
           ),
           WidgetExampleCard(
             title: 'Padding',
             description: 'A widget that insets its child by the given padding.',
-            onTap: () {},
+            onTap: () => context.goNamed(ScreenNames.paddingExample),
           ),
           WidgetExampleCard(
             title: 'Align',
             description: 'A widget that aligns its child within itself.',
-            onTap: () {},
+            onTap: () => context.goNamed(ScreenNames.alignExample),
           ),
           WidgetExampleCard(
             title: 'Center',
             description: 'A widget that centers its child within itself.',
-            onTap: () {},
+            onTap: () => context.goNamed(ScreenNames.centerExample),
           ),
           WidgetExampleCard(
             title: 'Text',
             description: 'A run of text with a single style.',
-            onTap: () {},
+            onTap: () => context.goNamed(ScreenNames.textExample),
           ),
           WidgetExampleCard(
             title: 'Buttons',
             description:
                 'Various types of buttons including Elevated, Text, Outlined, '
                 'Icon, and Floating Action buttons.',
-            onTap: () {},
+            onTap: () => context.goNamed(ScreenNames.buttonsExample),
           ),
           WidgetExampleCard(
             title: 'Scroll',
@@ -85,14 +87,14 @@ class WidgetsFirstPartScreen extends StatelessWidget {
                 'Examples of SingleChildScrollView and different types of '
                 'ListView including builder, separated, '
                 'and horizontal scrolling.',
-            onTap: () {},
+            onTap: () => context.goNamed(ScreenNames.scrollExample),
           ),
           WidgetExampleCard(
             title: 'Progress Indicators',
             description:
                 'Linear and Circular progress indicators that show progress or '
                 'loading states.',
-            onTap: () {},
+            onTap: () => context.goNamed(ScreenNames.progressIndicatorsExample),
           ),
         ],
       ),

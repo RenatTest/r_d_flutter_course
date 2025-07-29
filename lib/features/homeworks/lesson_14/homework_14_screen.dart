@@ -65,20 +65,9 @@ class _Homework14ScreenState extends State<Homework14Screen> {
             ),
           ),
         ),
-        automaticallyImplyLeading: false,
         title: Row(
           spacing: 16,
           children: [
-            GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () {},
-              child: Image.asset(
-                'assets/images/arrow-back.png',
-                width: 9,
-                height: 16,
-                color: Color.fromRGBO(32, 33, 36, 0.72),
-              ),
-            ),
             TextWidget(
               text: 'Оцінка візиту до магазину',
               size: 20,

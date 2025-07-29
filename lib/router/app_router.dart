@@ -292,9 +292,23 @@ final router = GoRouter(
                 ),
                 GoRoute(
                   path: 'home-work-simple-screen-with-arguments',
-                  name: ScreenNames.homeworkSimpleScreen,
-                  builder: (context, state) =>
-                      HomeWorkSimpleScreenWithArguments(),
+                  name: ScreenNames.homeworkSimpleScreenWithArguments,
+                  builder: (context, state) {
+                    final name = state.uri.queryParameters['name'] ?? 'User';
+                    final age = state.uri.queryParameters['age'] ?? 'No set';
+                    final proffesion =
+                        state.uri.queryParameters['proffesion'] ??
+                        'No proffesion';
+                    final salary =
+                        state.uri.queryParameters['salary'] ?? 'No salary';
+
+                    return HomeWorkSimpleScreenWithArguments(
+                      name: name,
+                      age: age,
+                      proffesion: proffesion,
+                      salary: salary,
+                    );
+                  },
                 ),
               ],
             ),

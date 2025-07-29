@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/widgets/navigation_button.dart';
 
 class HomeWorkSimpleScreen extends StatelessWidget {
@@ -17,7 +18,10 @@ class HomeWorkSimpleScreen extends StatelessWidget {
             SizedBox(height: 100),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: NavigationButton(title: 'Close drawer', onTap: () {}),
+              child: NavigationButton(
+                title: 'Close drawer',
+                onTap: () => context.pop(),
+              ),
             ),
           ],
         ),
@@ -30,7 +34,10 @@ class HomeWorkSimpleScreen extends StatelessWidget {
             SizedBox(height: 100),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: NavigationButton(title: 'Close drawer', onTap: () {}),
+              child: NavigationButton(
+                title: 'Close drawer',
+                onTap: () => context.pop(),
+              ),
             ),
           ],
         ),
@@ -41,7 +48,7 @@ class HomeWorkSimpleScreen extends StatelessWidget {
           spacing: 10,
           children: [
             InkWell(
-              onTap: () {},
+              onTap: () => context.pop(),
               child: Container(
                 height: 50,
                 width: 150,

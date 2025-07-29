@@ -1,6 +1,8 @@
 // ignore_for_file: inference_failure_on_instance_creation
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/widgets/navigation_button.dart';
 
 class HomeWork16Screen extends StatelessWidget {
@@ -15,11 +17,19 @@ class HomeWork16Screen extends StatelessWidget {
         children: [
           NavigationButton(
             title: 'Simple transition to new screen',
-            onTap: () {},
+            onTap: () => context.goNamed(ScreenNames.homeworkSimpleScreen),
           ),
           NavigationButton(
             title: 'Simple transition to new screen with data',
-            onTap: () {},
+            onTap: () => context.goNamed(
+              ScreenNames.homeworkSimpleScreenWithArguments,
+              queryParameters: {
+                'name': 'Renat',
+                'age': '39',
+                'proffesion': 'Flutter dev',
+                'salary': '7000',
+              },
+            ),
           ),
         ],
       ),
