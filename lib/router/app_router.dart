@@ -261,8 +261,19 @@ final router = GoRouter(
                       child: const SimpleEmptyScreen(),
                       transitionsBuilder:
                           (context, animation, secondaryAnimation, child) {
-                            return RotationTransition(
-                              turns: animation,
+                            // return RotationTransition(
+                            //   turns: animation,
+                            //   child: child,
+                            // );
+                            // return FadeTransition(
+                            //   opacity: animation,
+                            //   child: child,
+                            // );
+                            return SlideTransition(
+                              position: Tween<Offset>(
+                                begin: const Offset(0, 1),
+                                end: Offset.zero,
+                              ).animate(animation),
                               child: child,
                             );
                           },
