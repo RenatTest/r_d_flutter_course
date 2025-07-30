@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:r_d_flutter_course/features/app/screens/home_screen.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
@@ -59,6 +59,28 @@ final router = GoRouter(
               path: 'widgets-first-part',
               name: ScreenNames.widgetsFirstPart,
               builder: (context, state) => const WidgetsFirstPartScreen(),
+              onExit: (context, state) async {
+                final result = await showDialog<bool>(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('Unsaved changes'),
+                    content: const Text(
+                      'Do you want to discard changes and leave?',
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () => context.pop(false),
+                        child: const Text('Cancel'),
+                      ),
+                      TextButton(
+                        onPressed: () => context.pop(true),
+                        child: const Text('Leave'),
+                      ),
+                    ],
+                  ),
+                );
+                return result ?? false;
+              },
               routes: [
                 GoRoute(
                   path: 'container',
