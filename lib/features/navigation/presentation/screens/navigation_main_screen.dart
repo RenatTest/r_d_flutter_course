@@ -28,6 +28,11 @@ class NavigationMainScreen extends StatelessWidget {
             description: '',
             onTap: () => context.goNamed(ScreenNames.homework16),
           ),
+          NavigationCard(
+            title: 'Homework_17',
+            description: '',
+            onTap: () => context.go('/navigation/home'),
+          ),
         ],
       ),
     );

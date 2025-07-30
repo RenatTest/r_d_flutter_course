@@ -8,6 +8,10 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_15/homework_15_scre
 import 'package:r_d_flutter_course/features/homeworks/lesson_16/screens/home_work_16_screen.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_16/screens/home_work_simple_screen.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_16/screens/home_work_simple_screen_with_arguments.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_17/home_work_17_screen_home.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_17/home_work_17_screen_main.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_17/home_work_17_screen_profile.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_17/home_work_17_screen_settings.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/base_navigation_section_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_empty_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_data.dart';
@@ -242,7 +246,7 @@ final router = GoRouter(
           path: 'navigation',
           name: ScreenNames.navigation,
           builder: (context, state) => const NavigationMainScreen(),
-          routes: [
+          routes: <RouteBase>[
             GoRoute(
               path: 'base-navigation',
               name: ScreenNames.baseNavigation,
@@ -342,6 +346,34 @@ final router = GoRouter(
                       salary: salary,
                     );
                   },
+                ),
+              ],
+            ),
+            ShellRoute(
+              builder: (context, state, child) {
+                return HomeWork17ScreenMain(child: child);
+              },
+              routes: [
+                GoRoute(
+                  path: 'home',
+                  pageBuilder: (context, state) => NoTransitionPage(
+                    key: state.pageKey,
+                    child: const HomeWork17ScreenHome(),
+                  ),
+                ),
+                GoRoute(
+                  path: 'profile',
+                  pageBuilder: (context, state) => NoTransitionPage(
+                    key: state.pageKey,
+                    child: const HomeWork17ScreenProfile(),
+                  ),
+                ),
+                GoRoute(
+                  path: 'settings',
+                  pageBuilder: (context, state) => NoTransitionPage(
+                    key: state.pageKey,
+                    child: const HomeWork17ScreenSettings(),
+                  ),
                 ),
               ],
             ),
