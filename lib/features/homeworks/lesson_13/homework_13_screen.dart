@@ -49,7 +49,7 @@ class Homework13Screen extends StatelessWidget {
                     bottom: 20,
                     right: 20,
                     child: IconButton(
-                      onPressed: Navigator.of(context).pop,
+                      onPressed: () {},
                       icon: const Icon(Icons.exit_to_app),
                       color: Colors.lightGreenAccent,
                       iconSize: 50,

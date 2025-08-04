@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_empty_screen.dart';
-import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_data.dart';
-import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_returning_data.dart';
+import 'package:go_router/go_router.dart';
+import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/widgets/navigation_button.dart';
 
 class BaseNavigationSectionScreen extends StatelessWidget {
@@ -16,87 +15,27 @@ class BaseNavigationSectionScreen extends StatelessWidget {
         children: [
           NavigationButton(
             title: 'Simple transition to new screen',
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const SimpleEmptyScreen(),
-                ),
-              );
-            },
+            onTap: () => context.goNamed(ScreenNames.simpleEmptyScreen),
           ),
-          //https://docs.flutter.dev/cookbook/animation/page-route-animation
           NavigationButton(
             title: 'Simple transition with custom transition',
-            onTap: () {
-              Navigator.push(
-                context,
-                PageRouteBuilder<Widget>(
-                  pageBuilder: (context, animation, secondaryAnimation) =>
-                      const SimpleEmptyScreen(),
-
-                  // transitionsBuilder:
-                  //     (context, animation, secondaryAnimation, child) =>
-                  //         RotationTransition(turns: animation, child: child),
-
-                  // transitionsBuilder:
-                  //     (context, animation, secondaryAnimation, child) {
-                  //       // const begin = Offset.zero;
-                  //       const begin = Offset(0.0, 1.0);
-                  //       const end = Offset.zero;
-                  //       final tween = Tween(begin: begin, end: end);
-                  //       animation.drive(tween);
-                  //       return child;
-                  //     },
-
-                  // transitionsBuilder:
-                  //     (context, animation, secondaryAnimation, child) =>
-                  //         FadeTransition(opacity: animation, child: child),
-                  transitionDuration: const Duration(seconds: 1),
-                  reverseTransitionDuration: const Duration(seconds: 1),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                        // const begin = Offset(0.0, 1.0);
-                        const begin = Offset(0.0, -1.0);
-                        const end = Offset.zero;
-                        // const curve = Curves.ease;
-                        const curve = Curves.bounceInOut;
-
-                        final tween = Tween(begin: begin, end: end);
-                        final curvedAnimation = CurvedAnimation(
-                          parent: animation,
-                          curve: curve,
-                        );
-
-                        return SlideTransition(
-                          position: tween.animate(curvedAnimation),
-                          child: child,
-                        );
-                      },
-                ),
-              );
-            },
+            onTap: () => context.goNamed(
+              ScreenNames.simpleEmptyScreenWithCustomTransition,
+            ),
           ),
           NavigationButton(
             title: 'Transition with arguments',
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const SimpleScreenWithData(id: '69'),
-                ),
-              );
-            },
+            onTap: () => context.goNamed(
+              ScreenNames.simpleTransitionWithArguments,
+              queryParameters: {'id': '666999'},
+            ),
           ),
           NavigationButton(
             title: 'Transition with returning data',
             onTap: () async {
-              final result = await Navigator.push(
-                context,
-                MaterialPageRoute<String>(
-                  builder: (context) =>
-                      const SimpleScreenWithReturningData(guestName: 'Renat'),
-                ),
+              final result = await context.pushNamed<String>(
+                ScreenNames.simpleScreenWithReturningData,
+                queryParameters: {'guestName': 'Renat Bakaiev'},
               );
 
               if (result != null && context.mounted) {

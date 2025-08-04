@@ -46,20 +46,9 @@ class _Homework15ScreenState extends State<Homework15Screen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: HexColor('#c8ffa2'),
-        automaticallyImplyLeading: false,
         title: Row(
           spacing: 16,
           children: [
-            GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: Navigator.of(context).pop,
-              child: Image.asset(
-                'assets/images/arrow-back.png',
-                width: 9,
-                height: 16,
-                color: HexColor('#202124'),
-              ),
-            ),
             TextWidget(
               text: 'Знижки тут',
               size: 20,
