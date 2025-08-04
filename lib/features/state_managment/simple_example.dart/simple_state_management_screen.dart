@@ -44,6 +44,8 @@ class CounterScreen extends StatelessWidget {
     // final provider = context
     //     .watch<CounterProvider>(); // 3 варіант запису без ListenableBuilder
 
+    final data = ValueNotifier<int>(0);
+
     return ColoredBox(
       color: const Color(0xFFF5F5F5),
       child: Center(
@@ -109,7 +111,19 @@ class CounterScreen extends StatelessWidget {
                   ),
             ),
             const SizedBox(height: 40),
-
+            ListenableBuilder(
+              listenable: data,
+              builder: (context, child) {
+                return Text(
+                  '${data.value}',
+                  style: const TextStyle(
+                    fontSize: 48,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF2196F3),
+                  ),
+                );
+              },
+            ),
             const SizedBox(height: 40),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -134,7 +148,36 @@ class CounterScreen extends StatelessWidget {
                 ),
               ],
             ),
-
+            const SizedBox(height: 40),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CounterButton(
+                  text: '-',
+                  color: const Color(0xFFFF5722),
+                  onTap: () {
+                    data.value--; // setState with ValueNotifier
+                  },
+                ),
+                const SizedBox(width: 30),
+                CounterButton(
+                  text: '0',
+                  color: const Color(0xFF9E9E9E),
+                  onTap: () {
+                    data.value = 0; // setState with ValueNotifier
+                  },
+                  fontSize: 20,
+                ),
+                const SizedBox(width: 30),
+                CounterButton(
+                  text: '+',
+                  color: const Color(0xFF4CAF50),
+                  onTap: () {
+                    data.value++; // setState with ValueNotifier
+                  },
+                ),
+              ],
+            ),
             const SizedBox(height: 40),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
