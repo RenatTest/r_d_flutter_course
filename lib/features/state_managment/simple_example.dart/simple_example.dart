@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
+import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
 
 class CounterScreen extends StatefulWidget {
   const CounterScreen({super.key});
@@ -10,28 +11,15 @@ class CounterScreen extends StatefulWidget {
 }
 
 class _CounterScreenState extends State<CounterScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
-
-  void _resetCounter() {
-    setState(() {
-      _counter = 0;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    // final provider = context
+    //     .dependOnInheritedWidgetOfExactType<MyInheritedWidget>()!
+    //     .provider;
+
+    final provider = MyInheritedWidget.of(
+      context,
+    ); // спрощена форма запису, якщо є метод of в counter_provider
     return ColoredBox(
       color: const Color(0xFFF5F5F5),
       child: Center(
@@ -63,13 +51,18 @@ class _CounterScreenState extends State<CounterScreen> {
                   ),
                 ],
               ),
-              child: Text(
-                '$_counter',
-                style: const TextStyle(
-                  fontSize: 48,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF2196F3),
-                ),
+              child: ListenableBuilder(
+                listenable: provider,
+                builder: (context, child) {
+                  return Text(
+                    '${provider.counter}',
+                    style: const TextStyle(
+                      fontSize: 48,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF2196F3),
+                    ),
+                  );
+                },
               ),
             ),
 
@@ -81,20 +74,20 @@ class _CounterScreenState extends State<CounterScreen> {
                 CounterButton(
                   text: '-',
                   color: const Color(0xFFFF5722),
-                  onTap: _decrementCounter,
+                  onTap: provider.decrement,
                 ),
                 const SizedBox(width: 30),
                 CounterButton(
                   text: '0',
                   color: const Color(0xFF9E9E9E),
-                  onTap: _resetCounter,
+                  onTap: provider.reset,
                   fontSize: 20,
                 ),
                 const SizedBox(width: 30),
                 CounterButton(
                   text: '+',
                   color: const Color(0xFF4CAF50),
-                  onTap: _incrementCounter,
+                  onTap: provider.increment,
                 ),
               ],
             ),
