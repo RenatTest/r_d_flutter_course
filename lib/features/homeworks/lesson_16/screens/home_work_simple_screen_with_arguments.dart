@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:r_d_flutter_course/features/homeworks/lesson_16/screens/home_work_main_screen.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeWorkSimpleScreenWithArguments extends StatelessWidget {
-  const HomeWorkSimpleScreenWithArguments({super.key});
+  const HomeWorkSimpleScreenWithArguments({
+    required this.name,
+    required this.age,
+    required this.proffesion,
+    required this.salary,
+    super.key,
+  });
+
+  final String name;
+  final String age;
+  final String proffesion;
+  final String salary;
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments! as Arguments;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home work simple screen with arguments'),
@@ -16,12 +25,12 @@ class HomeWorkSimpleScreenWithArguments extends StatelessWidget {
         child: Column(
           spacing: 10,
           children: [
-            Text('Name: ${args.name}'),
-            Text('Age: ${args.age}'),
-            Text('Profession: ${args.profession}'),
-            Text('Salary: ${args.salary} \$'),
+            Text('Name: $name'),
+            Text('Age: $age'),
+            Text('Profession: $proffesion'),
+            Text('Salary: $salary \$'),
             InkWell(
-              onTap: () => Navigator.of(context).pop(),
+              onTap: () => context.pop(),
               child: Container(
                 height: 50,
                 width: 150,

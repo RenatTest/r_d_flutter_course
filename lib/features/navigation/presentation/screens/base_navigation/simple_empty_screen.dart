@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SimpleEmptyScreen extends StatelessWidget {
   const SimpleEmptyScreen({super.key});
@@ -6,12 +7,10 @@ class SimpleEmptyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('First Screen'),
-      ),
+      appBar: AppBar(title: const Text('First Screen')),
       body: Center(
         child: InkWell(
-          onTap: () => Navigator.of(context).pop(),
+          onTap: () => context.pop(),
           child: Container(
             height: 50,
             width: 150,
@@ -20,12 +19,7 @@ class SimpleEmptyScreen extends StatelessWidget {
               color: Colors.green,
             ),
             child: const Center(
-              child: Text(
-                'Go back',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
+              child: Text('Go back', style: TextStyle(color: Colors.white)),
             ),
           ),
         ),
