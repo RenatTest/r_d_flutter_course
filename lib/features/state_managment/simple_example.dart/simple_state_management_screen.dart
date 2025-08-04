@@ -41,6 +41,9 @@ class CounterScreen extends StatelessWidget {
 
     // final provider = context.read<CounterProvider>(); // 2 варіант запису
 
+    // final provider = context
+    //     .watch<CounterProvider>(); // 3 варіант запису без ListenableBuilder
+
     return ColoredBox(
       color: const Color(0xFFF5F5F5),
       child: Center(
@@ -94,7 +97,8 @@ class CounterScreen extends StatelessWidget {
                   Consumer<CounterProvider>(
                     builder: (context, counterProvider, child) {
                       return Text(
-                        '${counterProvider.counter}',
+                        // '${counterProvider.counter}',
+                        '${counterProvider.value}',
                         style: const TextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.bold,

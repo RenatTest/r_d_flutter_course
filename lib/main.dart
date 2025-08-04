@@ -13,7 +13,7 @@ class FlutterWidgetsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => CounterProvider(),
+      create: (context) => CounterProvider(22),
       child: MaterialApp.router(routerConfig: router),
     );
   }

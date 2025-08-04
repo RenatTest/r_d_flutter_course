@@ -14,6 +14,9 @@ class HomeScreen extends StatelessWidget {
 
     // final provider = context.read<CounterProvider>(); // 2 варіант запису
 
+    final provider = context
+        .watch<CounterProvider>(); // 3 варіант запису без ListenableBuilder
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Lab'),
@@ -21,7 +24,6 @@ class HomeScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16),
-
             // child: ListenableBuilder(
             //   listenable: provider,
             //   builder: (context, child) {
@@ -34,9 +36,16 @@ class HomeScreen extends StatelessWidget {
             //   },
             // ),
             child: Text(
-              '${context.watch<CounterProvider>().counter}',
+              // '${provider.counter}',
+              '${provider.value}',
               style: const TextStyle(fontSize: 20),
             ),
+            // Text(
+            //   '${context.watch<CounterProvider>().counter}',
+            //   style: const TextStyle(
+            //     fontSize: 20,
+            //   ),
+            // ),
           ),
         ],
       ),
