@@ -9,13 +9,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final provider =
-    //     Provider.of<CounterProvider>(context); // listen with ListenableBuilder
-
-    // final provider = context.read<CounterProvider>(); // 2 варіант запису
-
-    final provider = context
-        .watch<CounterProvider>(); // 3 варіант запису без ListenableBuilder
+    final provider = context.watch<CounterProvider>();
 
     return Scaffold(
       appBar: AppBar(
@@ -24,28 +18,10 @@ class HomeScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16),
-            // child: ListenableBuilder(
-            //   listenable: provider,
-            //   builder: (context, child) {
-            //     return Text(
-            //       '${provider.counter}',
-            //       style: const TextStyle(
-            //         fontSize: 20,
-            //       ),
-            //     );
-            //   },
-            // ),
             child: Text(
-              // '${provider.counter}',
               '${provider.value}',
               style: const TextStyle(fontSize: 20),
             ),
-            // Text(
-            //   '${context.watch<CounterProvider>().counter}',
-            //   style: const TextStyle(
-            //     fontSize: 20,
-            //   ),
-            // ),
           ),
         ],
       ),

@@ -22,28 +22,8 @@ class SimpleStateManagementScreen extends StatelessWidget {
 class CounterScreen extends StatelessWidget {
   const CounterScreen({super.key});
 
-  // void _incrementCounter() {
-  //   context.read<CounterProvider>().increment();
-  // }
-
-  // void _decrementCounter() {
-  //   context.read<CounterProvider>().decrement();
-  // }
-
-  // void _resetCounter() {
-  //   context.read<CounterProvider>().reset();
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // final provider =
-    //     Provider.of<CounterProvider>(context); // listen with ListenableBuilder
-
-    // final provider = context.read<CounterProvider>(); // 2 варіант запису
-
-    // final provider = context
-    //     .watch<CounterProvider>(); // 3 варіант запису без ListenableBuilder
-
     final data = ValueNotifier<int>(0);
 
     return ColoredBox(
@@ -74,41 +54,18 @@ class CounterScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              child:
-                  // ListenableBuilder(
-                  //   listenable: provider,
-                  //   builder: (context, child) {
-                  //     return Text(
-                  //       '${provider.counter}',
-                  //       style: const TextStyle(
-                  //         fontSize: 48,
-                  //         fontWeight: FontWeight.bold,
-                  //         color: Color(0xFF2196F3),
-                  //       ),
-                  //     );
-                  //   },
-                  // ),
-                  //     Text(
-                  //   '${provider.counter}',
-                  //   style: const TextStyle(
-                  //     fontSize: 48,
-                  //     fontWeight: FontWeight.bold,
-                  //     color: Color(0xFF2196F3),
-                  //   ),
-                  // ),
-                  Consumer<CounterProvider>(
-                    builder: (context, counterProvider, child) {
-                      return Text(
-                        // '${counterProvider.counter}',
-                        '${counterProvider.value}',
-                        style: const TextStyle(
-                          fontSize: 48,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF2196F3),
-                        ),
-                      );
-                    },
-                  ),
+              child: Consumer<CounterProvider>(
+                builder: (context, counterProvider, child) {
+                  return Text(
+                    '${counterProvider.value}',
+                    style: const TextStyle(
+                      fontSize: 48,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF2196F3),
+                    ),
+                  );
+                },
+              ),
             ),
             const SizedBox(height: 40),
             ListenableBuilder(
@@ -156,7 +113,7 @@ class CounterScreen extends StatelessWidget {
                   text: '-',
                   color: const Color(0xFFFF5722),
                   onTap: () {
-                    data.value--; // setState with ValueNotifier
+                    data.value--;
                   },
                 ),
                 const SizedBox(width: 30),
@@ -164,7 +121,7 @@ class CounterScreen extends StatelessWidget {
                   text: '0',
                   color: const Color(0xFF9E9E9E),
                   onTap: () {
-                    data.value = 0; // setState with ValueNotifier
+                    data.value = 0;
                   },
                   fontSize: 20,
                 ),
@@ -173,7 +130,7 @@ class CounterScreen extends StatelessWidget {
                   text: '+',
                   color: const Color(0xFF4CAF50),
                   onTap: () {
-                    data.value++; // setState with ValueNotifier
+                    data.value++;
                   },
                 ),
               ],
