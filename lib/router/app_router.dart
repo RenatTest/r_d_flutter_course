@@ -18,7 +18,7 @@ import 'package:r_d_flutter_course/features/navigation/presentation/screens/base
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_returning_data.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/named_navigation/named_routes_navigation.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/navigation_main_screen.dart';
-import 'package:r_d_flutter_course/features/state_managment/simple_state_management_screen.dart';
+import 'package:r_d_flutter_course/features/state_managment/simple_example.dart/simple_state_management_screen.dart';
 import 'package:r_d_flutter_course/features/state_managment/state_management_main_screen.dart';
 import 'package:r_d_flutter_course/features/widgets/presentation/screens/widgets_first_part_screen.dart';
 import 'package:r_d_flutter_course/features/widgets/presentation/screens/widgets_main_screen.dart';

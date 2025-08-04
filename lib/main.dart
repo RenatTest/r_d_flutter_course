@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
 import 'package:r_d_flutter_course/router/app_router.dart';
 
@@ -11,8 +12,8 @@ class FlutterWidgetsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyInheritedWidget(
-      provider: CounterProvider(22),
+    return ChangeNotifierProvider(
+      create: (context) => CounterProvider(),
       child: MaterialApp.router(routerConfig: router),
     );
   }

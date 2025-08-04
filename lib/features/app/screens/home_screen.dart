@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
 
@@ -8,13 +9,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final provider = context
-    //     .dependOnInheritedWidgetOfExactType<MyInheritedWidget>()!
-    //     .provider;
+    // final provider =
+    //     Provider.of<CounterProvider>(context); // listen with ListenableBuilder
 
-    final provider = MyInheritedWidget.of(
-      context,
-    ); // спрощена форма запису, якщо є метод of в counter_provider
+    // final provider = context.read<CounterProvider>(); // 2 варіант запису
 
     return Scaffold(
       appBar: AppBar(
@@ -23,14 +21,21 @@ class HomeScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16),
-            child: ListenableBuilder(
-              listenable: provider,
-              builder: (context, child) {
-                return Text(
-                  '${provider.counter}',
-                  style: const TextStyle(fontSize: 20),
-                );
-              },
+
+            // child: ListenableBuilder(
+            //   listenable: provider,
+            //   builder: (context, child) {
+            //     return Text(
+            //       '${provider.counter}',
+            //       style: const TextStyle(
+            //         fontSize: 20,
+            //       ),
+            //     );
+            //   },
+            // ),
+            child: Text(
+              '${context.watch<CounterProvider>().counter}',
+              style: const TextStyle(fontSize: 20),
             ),
           ),
         ],

@@ -1,32 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
 
-class CounterScreen extends StatefulWidget {
-  const CounterScreen({super.key});
+class SimpleStateManagementScreen extends StatelessWidget {
+  const SimpleStateManagementScreen({super.key});
 
-  @override
-  State<CounterScreen> createState() => _CounterScreenState();
-}
-
-class _CounterScreenState extends State<CounterScreen> {
   @override
   Widget build(BuildContext context) {
-    // final provider = context
-    //     .dependOnInheritedWidgetOfExactType<MyInheritedWidget>()!
-    //     .provider;
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Simple State Management'),
+        backgroundColor: Colors.green.shade100,
+      ),
+      body: const CounterScreen(),
+    );
+  }
+}
 
-    final provider = MyInheritedWidget.of(
-      context,
-    ); // спрощена форма запису, якщо є метод of в counter_provider
+class CounterScreen extends StatelessWidget {
+  const CounterScreen({super.key});
+
+  // void _incrementCounter() {
+  //   context.read<CounterProvider>().increment();
+  // }
+
+  // void _decrementCounter() {
+  //   context.read<CounterProvider>().decrement();
+  // }
+
+  // void _resetCounter() {
+  //   context.read<CounterProvider>().reset();
+  // }
+
+  @override
+  Widget build(BuildContext context) {
+    // final provider =
+    //     Provider.of<CounterProvider>(context); // listen with ListenableBuilder
+
+    // final provider = context.read<CounterProvider>(); // 2 варіант запису
+
     return ColoredBox(
       color: const Color(0xFFF5F5F5),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Заголовок
             const Text(
               'Simple Counter',
               style: TextStyle(
@@ -35,9 +55,7 @@ class _CounterScreenState extends State<CounterScreen> {
                 color: Color(0xFF333333),
               ),
             ),
-
             const SizedBox(height: 40),
-
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -51,49 +69,69 @@ class _CounterScreenState extends State<CounterScreen> {
                   ),
                 ],
               ),
-              child: ListenableBuilder(
-                listenable: provider,
-                builder: (context, child) {
-                  return Text(
-                    '${provider.counter}',
-                    style: const TextStyle(
-                      fontSize: 48,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF2196F3),
-                    ),
-                  );
-                },
-              ),
+              child:
+                  // ListenableBuilder(
+                  //   listenable: provider,
+                  //   builder: (context, child) {
+                  //     return Text(
+                  //       '${provider.counter}',
+                  //       style: const TextStyle(
+                  //         fontSize: 48,
+                  //         fontWeight: FontWeight.bold,
+                  //         color: Color(0xFF2196F3),
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
+                  //     Text(
+                  //   '${provider.counter}',
+                  //   style: const TextStyle(
+                  //     fontSize: 48,
+                  //     fontWeight: FontWeight.bold,
+                  //     color: Color(0xFF2196F3),
+                  //   ),
+                  // ),
+                  Consumer<CounterProvider>(
+                    builder: (context, counterProvider, child) {
+                      return Text(
+                        '${counterProvider.counter}',
+                        style: const TextStyle(
+                          fontSize: 48,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF2196F3),
+                        ),
+                      );
+                    },
+                  ),
             ),
-
             const SizedBox(height: 40),
 
+            const SizedBox(height: 40),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CounterButton(
                   text: '-',
                   color: const Color(0xFFFF5722),
-                  onTap: provider.decrement,
+                  onTap: () => context.read<CounterProvider>().decrement(),
                 ),
                 const SizedBox(width: 30),
                 CounterButton(
                   text: '0',
                   color: const Color(0xFF9E9E9E),
-                  onTap: provider.reset,
+                  onTap: () => context.read<CounterProvider>().reset(),
                   fontSize: 20,
                 ),
                 const SizedBox(width: 30),
                 CounterButton(
                   text: '+',
                   color: const Color(0xFF4CAF50),
-                  onTap: provider.increment,
+                  onTap: () => context.read<CounterProvider>().increment(),
                 ),
               ],
             ),
 
             const SizedBox(height: 40),
-
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,
