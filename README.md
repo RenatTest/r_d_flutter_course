@@ -50,3 +50,10 @@
 
 - Change default navigation to go_router
 - Added go_router navigation with arguments
+
+6. LESSON 18 STATE MANAGEMENT
+
+- Manage state with InheritedWidget
+- Manage state with Provider package
+- Using ValueNotifier and MultiProvider
+- setState with ValueNotifier in StatelessWidget

@@ -59,4 +59,8 @@ abstract class ScreenNames {
   static const homeworkSimpleScreen = 'homework-simple-screen';
   static const homeworkSimpleScreenWithArguments =
       'homework-simple-screen-with-arguments';
+
+  // State Management
+  static const simpleStateManagement = 'simple-state-management';
+  static const stateManagement = 'state-management';
 }
