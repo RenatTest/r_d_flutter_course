@@ -22,6 +22,8 @@ class StateManagementMainScreen extends StatelessWidget {
               title: 'Simple State Management',
               onTap: () => context.goNamed(ScreenNames.simpleStateManagement),
             ),
+            FeatureCard(title: 'HomeworkCubit', onTap: () {}),
+            FeatureCard(title: 'HomeworkBloc', onTap: () {}),
           ],
         ),
       ),
