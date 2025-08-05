@@ -1,26 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81ubit/cubit/counter_cubit.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81ubit/cubit/counter_state.dart';
 
-class HomeworkCubitScreen extends StatefulWidget {
+class HomeworkCubitScreen extends StatelessWidget {
   const HomeworkCubitScreen({super.key});
-
-  @override
-  State<HomeworkCubitScreen> createState() => _HomeworkCubitScreenState();
-}
-
-class _HomeworkCubitScreenState extends State<HomeworkCubitScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +15,13 @@ class _HomeworkCubitScreenState extends State<HomeworkCubitScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            BlocBuilder<CounterCubit, CounterCubitState>(
+              builder: (context, state) {
+                return Text(
+                  '${state.counter}',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                );
+              },
             ),
           ],
         ),
@@ -43,14 +31,14 @@ class _HomeworkCubitScreenState extends State<HomeworkCubitScreen> {
         children: [
           FloatingActionButton(
             heroTag: null,
-            onPressed: _decrementCounter,
+            onPressed: context.read<CounterCubit>().decrement,
             tooltip: 'Decrement',
             child: const Icon(Icons.remove),
           ),
           const SizedBox(width: 16),
           FloatingActionButton(
             heroTag: null,
-            onPressed: _incrementCounter,
+            onPressed: context.read<CounterCubit>().increment,
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
