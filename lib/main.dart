@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81ubit/cubit/counter_cubit.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/bloc/counter_bloc.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_cubit.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/auth_provider.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
 import 'package:r_d_flutter_course/firebase_options.dart';
@@ -24,6 +25,7 @@ class FlutterWidgetsApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => CounterCubit()),
         BlocProvider(create: (context) => CounterBloc()),
+        BlocProvider(create: (context) => AuthCubit()),
       ],
       child: MultiProvider(
         providers: [

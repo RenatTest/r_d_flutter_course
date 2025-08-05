@@ -1,36 +1,30 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_state.dart';
 
-class AuthProvider extends ChangeNotifier {
-  String? _userName = 'not defined';
-  String? _userEmail = 'not defined';
-
-  String? get userName => _userName;
-  String? get userEmail => _userEmail;
+class AuthCubit extends Cubit<AuthCubitState> {
+  AuthCubit()
+    : super(const AuthCubitState(name: 'not defined', email: 'not defined'));
 
   Future<bool> logInWithGoogle() async {
     final user = await GoogleSignIn().signIn();
     if (user == null) return false;
+
     final userAuth = await user.authentication;
     final credential = GoogleAuthProvider.credential(
       idToken: userAuth.idToken,
       accessToken: userAuth.accessToken,
     );
 
-    _userName = user.displayName;
-    _userEmail = user.email;
-    notifyListeners();
-
     await FirebaseAuth.instance.signInWithCredential(credential);
+    emit(state.copyWith(name: user.displayName, email: user.email));
     return FirebaseAuth.instance.currentUser != null;
   }
 
   Future<void> logOutWithGoogle() async {
     await GoogleSignIn().signOut();
     await FirebaseAuth.instance.signOut();
-    _userName = 'not defined';
-    _userEmail = 'not defined';
-    notifyListeners();
+    emit(state.copyWith(name: 'not defined', email: 'not defined'));
   }
 }

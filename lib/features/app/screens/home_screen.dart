@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81ubit/cubit/counter_cubit.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/bloc/counter_bloc.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_cubit.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -53,7 +54,7 @@ class HomeScreen extends StatelessWidget {
         return Dialog(
           child: SizedBox(
             width: 220,
-            height: 220,
+            height: 250,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -116,6 +117,33 @@ class HomeScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 22,
                         color: HexColor('#3c85c7'),
+                      ),
+                    ),
+                  ],
+                ),
+
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Auth Cubit:',
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: HexColor('#e85f29'),
+                      ),
+                    ),
+                    Text(
+                      ' ${context.watch<AuthCubit>().state.name}',
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: HexColor('#e85f29'),
+                      ),
+                    ),
+                    Text(
+                      ' ${context.watch<AuthCubit>().state.email}',
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: HexColor('#e85f29'),
                       ),
                     ),
                   ],
