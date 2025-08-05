@@ -12,6 +12,8 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_17/home_work_17_scr
 import 'package:r_d_flutter_course/features/homeworks/lesson_17/home_work_17_screen_main.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_17/home_work_17_screen_profile.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_17/home_work_17_screen_settings.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81ubit/homework_cubit_screen.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/homework_bloc_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/base_navigation_section_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_empty_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_data.dart';
@@ -391,6 +393,16 @@ final router = GoRouter(
               path: 'simple-state-management',
               name: ScreenNames.simpleStateManagement,
               builder: (context, state) => const SimpleStateManagementScreen(),
+            ),
+            GoRoute(
+              path: 'homework-19-cubit',
+              name: ScreenNames.homework19Cubit,
+              builder: (context, state) => const HomeworkCubitScreen(),
+            ),
+            GoRoute(
+              path: 'homework-19-bloc',
+              name: ScreenNames.homework19Bloc,
+              builder: (context, state) => const HomeworkBlocScreen(),
             ),
           ],
         ),
