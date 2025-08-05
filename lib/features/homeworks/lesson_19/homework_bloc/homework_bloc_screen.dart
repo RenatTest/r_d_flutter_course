@@ -1,26 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/bloc/counter_bloc.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/bloc/counter_event.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/bloc/counter_state.dart';
 
-class HomeworkBlocScreen extends StatefulWidget {
+class HomeworkBlocScreen extends StatelessWidget {
   const HomeworkBlocScreen({super.key});
-
-  @override
-  State<HomeworkBlocScreen> createState() => _HomeworkBlocScreenState();
-}
-
-class _HomeworkBlocScreenState extends State<HomeworkBlocScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +16,13 @@ class _HomeworkBlocScreenState extends State<HomeworkBlocScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            BlocBuilder<CounterBloc, CounterBlocState>(
+              builder: (context, state) {
+                return Text(
+                  '${state.counter}',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                );
+              },
             ),
           ],
         ),
@@ -43,14 +32,16 @@ class _HomeworkBlocScreenState extends State<HomeworkBlocScreen> {
         children: [
           FloatingActionButton(
             heroTag: null,
-            onPressed: _decrementCounter,
+            onPressed: () =>
+                context.read<CounterBloc>().add(CounterBlocDecrementEvent()),
             tooltip: 'Decrement',
             child: const Icon(Icons.remove),
           ),
           const SizedBox(width: 16),
           FloatingActionButton(
             heroTag: null,
-            onPressed: _incrementCounter,
+            onPressed: () =>
+                context.read<CounterBloc>().add(CounterBlocIncrementEvent()),
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),

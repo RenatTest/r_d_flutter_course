@@ -4,6 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81ubit/cubit/counter_cubit.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/bloc/counter_bloc.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -95,6 +96,26 @@ class HomeScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 22,
                         color: HexColor('#45d2fd'),
+                      ),
+                    ),
+                  ],
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Counter Bloc:',
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: HexColor('#3c85c7'),
+                      ),
+                    ),
+                    Text(
+                      ' ${context.watch<CounterBloc>().state.counter}',
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: HexColor('#3c85c7'),
                       ),
                     ),
                   ],
