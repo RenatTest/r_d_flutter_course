@@ -1,16 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
+import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<CounterProvider>();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Lab'),
         backgroundColor: Colors.blue.shade100,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: Text(
+              '${provider.value}',
+              style: const TextStyle(fontSize: 20),
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -24,6 +37,10 @@ class HomeScreen extends StatelessWidget {
             FeatureCard(
               title: 'Navigation',
               onTap: () => context.goNamed(ScreenNames.navigation),
+            ),
+            FeatureCard(
+              title: 'State Management',
+              onTap: () => context.goNamed(ScreenNames.stateManagement),
             ),
           ],
         ),
