@@ -19,10 +19,11 @@ class ExperimentBlocScreen extends StatelessWidget {
           children: [
             const Text('New Value'),
             BlocListener<CounterBlocExperiment, CounterBlocStateExperiment>(
+              listenWhen: (previous, current) {
+                return current.counter > 300;
+              },
               listener: (context, state) {
-                if (state.counter > 300) {
-                  context.goNamed(ScreenNames.home);
-                }
+                context.goNamed(ScreenNames.home);
               },
               child:
                   BlocBuilder<
