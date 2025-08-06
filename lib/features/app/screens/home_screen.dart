@@ -133,14 +133,14 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      ' ${context.watch<AuthCubit>().state.name}',
+                      ' ${context.watch<AuthCubit>().state.user.name}',
                       style: TextStyle(
                         fontSize: 22,
                         color: HexColor('#e85f29'),
                       ),
                     ),
                     Text(
-                      ' ${context.watch<AuthCubit>().state.email}',
+                      ' ${context.watch<AuthCubit>().state.user.email}',
                       style: TextStyle(
                         fontSize: 22,
                         color: HexColor('#e85f29'),

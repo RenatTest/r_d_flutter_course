@@ -20,7 +20,7 @@ class HomeworkCubitAuthScreen extends StatelessWidget {
                   spacing: 10,
                   children: [
                     Text(
-                      state.name,
+                      state.user.name,
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -28,7 +28,7 @@ class HomeworkCubitAuthScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      state.email,
+                      state.user.email,
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -41,12 +41,12 @@ class HomeworkCubitAuthScreen extends StatelessWidget {
             ),
 
             ElevatedButton(
-              onPressed: context.read<AuthCubit>().logInWithGoogle,
-              child: Text('Sign in with Google'),
+              onPressed: context.read<AuthCubit>().logIn,
+              child: Text('SignIn'),
             ),
             ElevatedButton(
-              onPressed: context.read<AuthCubit>().logOutWithGoogle,
-              child: Text('Log out with Google'),
+              onPressed: context.read<AuthCubit>().logOut,
+              child: Text('LogOut'),
             ),
           ],
         ),

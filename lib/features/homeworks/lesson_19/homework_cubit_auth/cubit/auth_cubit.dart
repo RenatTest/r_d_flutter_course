@@ -1,30 +1,25 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_repository/auth_repository.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_state.dart';
 
 class AuthCubit extends Cubit<AuthCubitState> {
-  AuthCubit()
-    : super(const AuthCubitState(name: 'not defined', email: 'not defined'));
+  AuthCubit(this._authRepository) : super(const AuthCubitState());
+  final AuthRepository _authRepository;
 
-  Future<bool> logInWithGoogle() async {
-    final user = await GoogleSignIn().signIn();
-    if (user == null) return false;
-
-    final userAuth = await user.authentication;
-    final credential = GoogleAuthProvider.credential(
-      idToken: userAuth.idToken,
-      accessToken: userAuth.accessToken,
-    );
-
-    await FirebaseAuth.instance.signInWithCredential(credential);
-    emit(state.copyWith(name: user.displayName, email: user.email));
-    return FirebaseAuth.instance.currentUser != null;
+  Future<bool> logIn() async {
+    final loginSuccess = await _authRepository.logIn();
+    if (loginSuccess) {
+      final user = AppUser(
+        name: _authRepository.userName ?? 'not defined',
+        email: _authRepository.userEmail ?? 'not defined',
+      );
+      emit(state.copyWith(user: user));
+    }
+    return loginSuccess;
   }
 
-  Future<void> logOutWithGoogle() async {
-    await GoogleSignIn().signOut();
-    await FirebaseAuth.instance.signOut();
-    emit(state.copyWith(name: 'not defined', email: 'not defined'));
+  Future<void> logOut() async {
+    await _authRepository.logOut();
+    emit(state.copyWith(user: AppUser.empty));
   }
 }
