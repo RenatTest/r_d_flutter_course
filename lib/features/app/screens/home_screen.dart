@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81ubit/cubit/counter_cubit.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81ubit/cubit/counter_state.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/bloc/counter_bloc.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/bloc/counter_state.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_cubit.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_state.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -92,16 +96,19 @@ class HomeScreen extends StatelessWidget {
                         color: HexColor('#45d2fd'),
                       ),
                     ),
-                    Text(
-                      ' ${context.watch<CounterCubit>().state.counter}',
-                      style: TextStyle(
-                        fontSize: 22,
-                        color: HexColor('#45d2fd'),
-                      ),
+                    BlocBuilder<CounterCubit, CounterCubitState>(
+                      builder: (context, state) {
+                        return Text(
+                          ' ${state.counter}',
+                          style: TextStyle(
+                            fontSize: 22,
+                            color: HexColor('#45d2fd'),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -112,12 +119,17 @@ class HomeScreen extends StatelessWidget {
                         color: HexColor('#3c85c7'),
                       ),
                     ),
-                    Text(
-                      ' ${context.watch<CounterBloc>().state.counter}',
-                      style: TextStyle(
-                        fontSize: 22,
-                        color: HexColor('#3c85c7'),
-                      ),
+
+                    BlocBuilder<CounterBloc, CounterBlocState>(
+                      builder: (context, state) {
+                        return Text(
+                          ' ${state.counter}',
+                          style: TextStyle(
+                            fontSize: 22,
+                            color: HexColor('#3c85c7'),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -132,19 +144,27 @@ class HomeScreen extends StatelessWidget {
                         color: HexColor('#e85f29'),
                       ),
                     ),
-                    Text(
-                      ' ${context.watch<AuthCubit>().state.user.name}',
-                      style: TextStyle(
-                        fontSize: 22,
-                        color: HexColor('#e85f29'),
-                      ),
-                    ),
-                    Text(
-                      ' ${context.watch<AuthCubit>().state.user.email}',
-                      style: TextStyle(
-                        fontSize: 22,
-                        color: HexColor('#e85f29'),
-                      ),
+                    BlocBuilder<AuthCubit, AuthCubitState>(
+                      builder: (context, state) {
+                        return Column(
+                          children: [
+                            Text(
+                              state.user.name,
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: HexColor('#e85f29'),
+                              ),
+                            ),
+                            Text(
+                              state.user.email,
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: HexColor('#e85f29'),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ],
                 ),
