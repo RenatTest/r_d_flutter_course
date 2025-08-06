@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
 import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/bloc/counter_bloc_experiment.dart';
 import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/bloc/counter_event_experiment.dart';
 import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/bloc/counter_state_experiment.dart';
@@ -16,13 +18,24 @@ class ExperimentBlocScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('New Value'),
-            BlocBuilder<CounterBlocExperiment, CounterBlocStateExperiment>(
-              builder: (context, state) {
-                return Text(
-                  '${state.counter}',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                );
+            BlocListener<CounterBlocExperiment, CounterBlocStateExperiment>(
+              listener: (context, state) {
+                if (state.counter > 300) {
+                  context.goNamed(ScreenNames.home);
+                }
               },
+              child:
+                  BlocBuilder<
+                    CounterBlocExperiment,
+                    CounterBlocStateExperiment
+                  >(
+                    builder: (context, state) {
+                      return Text(
+                        '${state.counter}',
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      );
+                    },
+                  ),
             ),
           ],
         ),
