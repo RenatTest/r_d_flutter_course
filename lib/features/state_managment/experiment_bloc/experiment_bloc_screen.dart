@@ -18,26 +18,40 @@ class ExperimentBlocScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('New Value'),
-            BlocListener<CounterBlocExperiment, CounterBlocStateExperiment>(
+            BlocConsumer<CounterBlocExperiment, CounterBlocStateExperiment>(
+              builder: (context, state) {
+                return Text(
+                  '${state.counter}',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                );
+              },
               listenWhen: (previous, current) {
                 return current.counter > 300;
               },
               listener: (context, state) {
                 context.goNamed(ScreenNames.home);
               },
-              child:
-                  BlocBuilder<
-                    CounterBlocExperiment,
-                    CounterBlocStateExperiment
-                  >(
-                    builder: (context, state) {
-                      return Text(
-                        '${state.counter}',
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      );
-                    },
-                  ),
             ),
+            // BlocListener<CounterBlocExperiment, CounterBlocStateExperiment>(
+            //   listenWhen: (previous, current) {
+            //     return current.counter > 300;
+            //   },
+            //   listener: (context, state) {
+            //     context.goNamed(ScreenNames.home);
+            //   },
+            //   child:
+            //       BlocBuilder<
+            //         CounterBlocExperiment,
+            //         CounterBlocStateExperiment
+            //       >(
+            //         builder: (context, state) {
+            //           return Text(
+            //             '${state.counter}',
+            //             style: Theme.of(context).textTheme.headlineMedium,
+            //           );
+            //         },
+            //       ),
+            // ),
           ],
         ),
       ),
