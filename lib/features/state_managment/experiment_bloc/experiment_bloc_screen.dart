@@ -33,7 +33,7 @@ class ExperimentBlocScreen extends StatelessWidget {
           FloatingActionButton(
             heroTag: null,
             onPressed: () => context.read<CounterBlocExperiment>().add(
-              CounterBlocDecrementEventExperiment(),
+              CounterBlocDecrementEventExperiment(value: 33),
             ),
             tooltip: 'Decrement',
             child: const Icon(Icons.remove),
@@ -42,7 +42,7 @@ class ExperimentBlocScreen extends StatelessWidget {
           FloatingActionButton(
             heroTag: null,
             onPressed: () => context.read<CounterBlocExperiment>().add(
-              CounterBlocIncrementEventExperiment(),
+              CounterBlocIncrementEventExperiment(value: 88),
             ),
             tooltip: 'Increment',
             child: const Icon(Icons.add),

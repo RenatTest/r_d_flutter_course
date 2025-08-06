@@ -7,11 +7,11 @@ class CounterBlocExperiment
   CounterBlocExperiment()
     : super(const CounterBlocStateExperiment(counter: 0)) {
     on<CounterBlocIncrementEventExperiment>((event, emit) {
-      emit(state.copyWith(counter: state.counter + 1));
+      emit(state.copyWith(counter: state.counter + event.value));
     });
 
     on<CounterBlocDecrementEventExperiment>((event, emit) {
-      emit(state.copyWith(counter: state.counter - 1));
+      emit(state.copyWith(counter: state.counter - event.value));
     });
   }
 }
