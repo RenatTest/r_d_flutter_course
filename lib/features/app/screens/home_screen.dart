@@ -10,6 +10,8 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/bl
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/bloc/counter_state.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_cubit.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_state.dart';
+import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/bloc/counter_bloc_experiment.dart';
+import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/bloc/counter_state_experiment.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -58,7 +60,7 @@ class HomeScreen extends StatelessWidget {
         return Dialog(
           child: SizedBox(
             width: 220,
-            height: 250,
+            height: 270,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -163,6 +165,33 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                           ],
+                        );
+                      },
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Counter Bloc Ex:',
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: HexColor('#FF0000'),
+                      ),
+                    ),
+
+                    BlocBuilder<
+                      CounterBlocExperiment,
+                      CounterBlocStateExperiment
+                    >(
+                      builder: (context, state) {
+                        return Text(
+                          ' ${state.counter}',
+                          style: TextStyle(
+                            fontSize: 22,
+                            color: HexColor('#FF0000'),
+                          ),
                         );
                       },
                     ),

@@ -34,6 +34,10 @@ class StateManagementMainScreen extends StatelessWidget {
               title: 'HomeworkAuthCubit',
               onTap: () => context.goNamed(ScreenNames.homework19AuthCubit),
             ),
+            FeatureCard(
+              title: 'ExperimentBlocScreen',
+              onTap: () => context.goNamed(ScreenNames.experimentBloc),
+            ),
           ],
         ),
       ),
