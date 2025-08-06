@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+// Abstract repo
 abstract class AuthRepository {
   Future<bool> logIn();
   Future<void> logOut();
@@ -8,6 +9,7 @@ abstract class AuthRepository {
   String? get userEmail;
 }
 
+// Google repo
 class FirebaseAuthRepository implements AuthRepository {
   FirebaseAuthRepository({
     FirebaseAuth? firebaseAuth,
