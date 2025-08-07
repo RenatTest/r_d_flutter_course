@@ -1,7 +1,9 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:r_d_flutter_course/features/app/internet_connection/internet_connection_cubit.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81ubit/cubit/counter_cubit.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/bloc/counter_bloc.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_cubit.dart';
@@ -29,6 +31,10 @@ class FlutterWidgetsApp extends StatelessWidget {
         BlocProvider(create: (context) => CounterBloc()),
         BlocProvider(create: (context) => AuthCubit(FirebaseAuthRepository())),
         BlocProvider(create: (context) => CounterBlocExperiment()),
+        BlocProvider(
+          create: (context) =>
+              InternetConnectionCubit(connectivity: Connectivity()),
+        ),
       ],
       child: MultiProvider(
         providers: [

@@ -1,5 +1,8 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:r_d_flutter_course/features/app/internet_connection/internet_connection_cubit.dart';
 import 'package:r_d_flutter_course/features/app/screens/home_screen.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_13/homework_13_screen.dart';
@@ -57,7 +60,45 @@ final router = GoRouter(
     GoRoute(
       path: '/',
       name: ScreenNames.home,
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state) =>
+          BlocListener<InternetConnectionCubit, ConnectivityResult>(
+            listener: (context, state) {
+              if (state == ConnectivityResult.none) {
+                showModalBottomSheet<void>(
+                  context: context,
+                  backgroundColor: Colors.transparent,
+                  builder: (context) => Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(20),
+                      ),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            'No internet',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          Text('Please check your internet connection!'),
+                          SizedBox(height: 100),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              }
+            },
+            child: const HomeScreen(),
+          ),
       routes: [
         // Widgets
         GoRoute(
