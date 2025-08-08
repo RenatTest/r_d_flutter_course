@@ -45,7 +45,7 @@ class HomeWork17ScreenProfile extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: () {
-            context.read<AuthProvider>().lofOutWithGoogle();
+            context.read<AuthProvider>().logOutWithGoogle();
           },
           child: Text('Log out with Google'),
         ),

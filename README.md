@@ -57,3 +57,8 @@
 - Manage state with Provider package
 - Using ValueNotifier and MultiProvider
 - setState with ValueNotifier in StatelessWidget
+
+7. LESSON 19 BLOC INTRO
+
+- Manage state with flutter_bloc package (Cubit)
+- Manage state with flutter_bloc package (BLoC)

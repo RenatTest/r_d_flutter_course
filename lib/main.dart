@@ -1,6 +1,14 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:r_d_flutter_course/features/app/internet_connection/internet_connection_cubit.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81ubit/cubit/counter_cubit.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/bloc/counter_bloc.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_cubit.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_repository/auth_repository.dart';
+import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/bloc/counter_bloc_experiment.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/auth_provider.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
 import 'package:r_d_flutter_course/firebase_options.dart';
@@ -17,12 +25,24 @@ class FlutterWidgetsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return MultiBlocProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => CounterProvider(22)),
-        ChangeNotifierProvider(create: (context) => AuthProvider()),
+        BlocProvider(create: (context) => CounterCubit()),
+        BlocProvider(create: (context) => CounterBloc()),
+        BlocProvider(create: (context) => AuthCubit(FirebaseAuthRepository())),
+        BlocProvider(create: (context) => CounterBlocExperiment()),
+        BlocProvider(
+          create: (context) =>
+              InternetConnectionCubit(connectivity: Connectivity()),
+        ),
       ],
-      child: MaterialApp.router(routerConfig: router),
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => CounterProvider(0)),
+          ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ],
+        child: MaterialApp.router(routerConfig: router),
+      ),
     );
   }
 }

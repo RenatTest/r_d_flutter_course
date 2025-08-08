@@ -1,5 +1,8 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:r_d_flutter_course/features/app/internet_connection/internet_connection_cubit.dart';
 import 'package:r_d_flutter_course/features/app/screens/home_screen.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_13/homework_13_screen.dart';
@@ -12,12 +15,16 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_17/home_work_17_scr
 import 'package:r_d_flutter_course/features/homeworks/lesson_17/home_work_17_screen_main.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_17/home_work_17_screen_profile.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_17/home_work_17_screen_settings.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81ubit/homework_cubit_screen.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/homework_bloc_screen.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/homework_cubit_auth.screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/base_navigation_section_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_empty_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_data.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_returning_data.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/named_navigation/named_routes_navigation.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/navigation_main_screen.dart';
+import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/experiment_bloc_screen.dart';
 import 'package:r_d_flutter_course/features/state_managment/simple_example.dart/simple_state_management_screen.dart';
 import 'package:r_d_flutter_course/features/state_managment/state_management_main_screen.dart';
 import 'package:r_d_flutter_course/features/widgets/presentation/screens/widgets_first_part_screen.dart';
@@ -53,7 +60,45 @@ final router = GoRouter(
     GoRoute(
       path: '/',
       name: ScreenNames.home,
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state) =>
+          BlocListener<InternetConnectionCubit, ConnectivityResult>(
+            listener: (context, state) {
+              if (state == ConnectivityResult.none) {
+                showModalBottomSheet<void>(
+                  context: context,
+                  backgroundColor: Colors.transparent,
+                  builder: (context) => Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(20),
+                      ),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            'No internet',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          Text('Please check your internet connection!'),
+                          SizedBox(height: 100),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              }
+            },
+            child: const HomeScreen(),
+          ),
       routes: [
         // Widgets
         GoRoute(
@@ -391,6 +436,26 @@ final router = GoRouter(
               path: 'simple-state-management',
               name: ScreenNames.simpleStateManagement,
               builder: (context, state) => const SimpleStateManagementScreen(),
+            ),
+            GoRoute(
+              path: 'homework-19-cubit',
+              name: ScreenNames.homework19Cubit,
+              builder: (context, state) => const HomeworkCubitScreen(),
+            ),
+            GoRoute(
+              path: 'homework-19-bloc',
+              name: ScreenNames.homework19Bloc,
+              builder: (context, state) => const HomeworkBlocScreen(),
+            ),
+            GoRoute(
+              path: 'homework-19-auth-cubit',
+              name: ScreenNames.homework19AuthCubit,
+              builder: (context, state) => const HomeworkCubitAuthScreen(),
+            ),
+            GoRoute(
+              path: 'experiment-bloc',
+              name: ScreenNames.experimentBloc,
+              builder: (context, state) => const ExperimentBlocScreen(),
             ),
           ],
         ),

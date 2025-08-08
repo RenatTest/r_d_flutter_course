@@ -11,7 +11,8 @@ class AuthProvider extends ChangeNotifier {
 
   Future<bool> logInWithGoogle() async {
     final user = await GoogleSignIn().signIn();
-    final userAuth = await user!.authentication;
+    if (user == null) return false;
+    final userAuth = await user.authentication;
     final credential = GoogleAuthProvider.credential(
       idToken: userAuth.idToken,
       accessToken: userAuth.accessToken,
@@ -25,8 +26,9 @@ class AuthProvider extends ChangeNotifier {
     return FirebaseAuth.instance.currentUser != null;
   }
 
-  Future<void> lofOutWithGoogle() async {
+  Future<void> logOutWithGoogle() async {
     await GoogleSignIn().signOut();
+    await FirebaseAuth.instance.signOut();
     _userName = 'not defined';
     _userEmail = 'not defined';
     notifyListeners();
