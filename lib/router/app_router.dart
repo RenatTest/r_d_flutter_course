@@ -18,6 +18,7 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_17/home_work_17_scr
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81ubit/homework_cubit_screen.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/homework_bloc_screen.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/homework_cubit_auth.screen.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/presentation/screens/rate_app_screen_bloc.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/presentation/screens/rate_app_screen_cubit.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/base_navigation_section_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_empty_screen.dart';
@@ -468,6 +469,11 @@ final router = GoRouter(
               path: 'homework-20-cubit',
               name: ScreenNames.homework20Cubit,
               builder: (context, state) => const RateAppScreenCubit(),
+            ),
+            GoRoute(
+              path: 'homework-20-bloc',
+              name: ScreenNames.homework20Bloc,
+              builder: (context, state) => const RateAppScreenBloc(),
             ),
           ],
         ),
