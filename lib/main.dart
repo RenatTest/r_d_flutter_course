@@ -10,6 +10,7 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_a
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_repository/auth_repository.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/bloc/rate_app_bloc.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/cubit/rate_app_cubit.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/provider/rate_app_provider.dart';
 import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/bloc/counter_bloc_experiment.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/auth_provider.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
@@ -44,6 +45,7 @@ class FlutterWidgetsApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (context) => CounterProvider(0)),
           ChangeNotifierProvider(create: (context) => AuthProvider()),
+          ChangeNotifierProvider(create: (context) => RateAppProvider(0)),
         ],
         child: MaterialApp.router(routerConfig: router),
       ),

@@ -50,6 +50,10 @@ class StateManagementMainScreen extends StatelessWidget {
               title: 'Homework (LAB-20) Bloc',
               onTap: () => context.goNamed(ScreenNames.homework20Bloc),
             ),
+            FeatureCard(
+              title: 'Homework (LAB-20) Provider',
+              onTap: () => context.goNamed(ScreenNames.homework20Provider),
+            ),
           ],
         ),
       ),
