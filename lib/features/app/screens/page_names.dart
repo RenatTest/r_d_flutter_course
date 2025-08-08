@@ -68,5 +68,5 @@ abstract class ScreenNames {
   static const homework19AuthCubit = 'homework-19-auth-cubit';
   static const experimentBloc = 'experiment-bloc';
   static const commonMistakes = 'common-mistakes';
-  static const homework20 = 'homework-20';
+  static const homework20Cubit = 'homework-20-cubit';
 }
