@@ -38,6 +38,14 @@ class StateManagementMainScreen extends StatelessWidget {
               title: 'ExperimentBlocScreen',
               onTap: () => context.goNamed(ScreenNames.experimentBloc),
             ),
+            FeatureCard(
+              title: 'Common Mistakes',
+              onTap: () => context.goNamed(ScreenNames.commonMistakes),
+            ),
+            FeatureCard(
+              title: 'Homework (LAB-20)',
+              onTap: () => context.goNamed(ScreenNames.homework20),
+            ),
           ],
         ),
       ),
