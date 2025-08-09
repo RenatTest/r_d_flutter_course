@@ -21,20 +21,20 @@ class ExperimentBlocScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('New Value'),
-            BlocConsumer<CounterBlocExperiment, CounterBlocStateExperiment>(
-              builder: (context, state) {
-                return Text(
-                  '${state.counter}',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                );
-              },
-              listenWhen: (previous, current) {
-                return current.counter > 300;
-              },
-              listener: (context, state) {
-                context.goNamed(ScreenNames.home);
-              },
-            ),
+            // BlocConsumer<CounterBlocExperiment, CounterBlocStateExperiment>(
+            //   builder: (context, state) {
+            //     return Text(
+            //       '${state.counter}',
+            //       style: Theme.of(context).textTheme.headlineMedium,
+            //     );
+            //   },
+            //   listenWhen: (previous, current) {
+            //     return current.counter > 300;
+            //   },
+            //   listener: (context, state) {
+            //     context.goNamed(ScreenNames.home);
+            //   },
+            // ),
             // BlocListener<CounterBlocExperiment, CounterBlocStateExperiment>(
             //   listenWhen: (previous, current) {
             //     return current.counter > 300;
@@ -55,6 +55,17 @@ class ExperimentBlocScreen extends StatelessWidget {
             //         },
             //       ),
             // ),
+            BlocBuilder<CounterBlocExperiment, CounterBlocStateExperiment>(
+              buildWhen: (previous, current) {
+                return current.counter > 300;
+              },
+              builder: (context, state) {
+                return Text(
+                  '${state.counter}',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                );
+              },
+            ),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: NavigationButton(
