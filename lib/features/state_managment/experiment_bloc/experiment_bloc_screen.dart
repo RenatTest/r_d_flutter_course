@@ -57,14 +57,27 @@ class ExperimentBlocScreen extends StatelessWidget {
             //         },
             //       ),
             // ),
-            BlocBuilder<CounterBlocExperiment, CounterBlocStateExperiment>(
-              buildWhen: (previous, current) {
-                return current.counter > 300;
-              },
-              bloc: CounterBlocExperiment(), // another bloc created
-              builder: (context, state) {
+            // BlocBuilder<CounterBlocExperiment, CounterBlocStateExperiment>(
+            //   buildWhen: (previous, current) {
+            //     return current.counter > 300;
+            //   },
+            //   bloc: CounterBlocExperiment(), // another bloc created
+            //   builder: (context, state) {
+            //     return Text(
+            //       '${state.counter}',
+            //       style: Theme.of(context).textTheme.headlineMedium,
+            //     );
+            //   },
+            // ),
+            BlocSelector<
+              CounterBlocExperiment,
+              CounterBlocStateExperiment,
+              int
+            >(
+              selector: (state) => state.counter,
+              builder: (context, counter) {
                 return Text(
-                  '${state.counter}',
+                  '$counter',
                   style: Theme.of(context).textTheme.headlineMedium,
                 );
               },
