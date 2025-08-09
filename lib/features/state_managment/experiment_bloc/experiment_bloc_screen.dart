@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_cubit.dart';
+import 'package:r_d_flutter_course/features/navigation/presentation/widgets/navigation_button.dart';
+import 'package:r_d_flutter_course/features/state_managment/common_mistakes_screen.dart';
 import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/bloc/counter_bloc_experiment.dart';
 import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/bloc/counter_event_experiment.dart';
 import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/bloc/counter_state_experiment.dart';
@@ -52,6 +55,23 @@ class ExperimentBlocScreen extends StatelessWidget {
             //         },
             //       ),
             // ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: NavigationButton(
+                title: 'send Bloc value to the new screen',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<Widget>(
+                      builder: (context) => BlocProvider.value(
+                        value: context.read<AuthCubit>(),
+                        child: CommonMistakesScreen(),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
