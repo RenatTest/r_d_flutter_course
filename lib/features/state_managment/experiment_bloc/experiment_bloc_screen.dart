@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81ubit/cubit/counter_cubit.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/bloc/counter_bloc.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_cubit.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/widgets/navigation_button.dart';
 import 'package:r_d_flutter_course/features/state_managment/common_mistakes_screen.dart';
@@ -59,6 +61,7 @@ class ExperimentBlocScreen extends StatelessWidget {
               buildWhen: (previous, current) {
                 return current.counter > 300;
               },
+              bloc: CounterBlocExperiment(), // another bloc created
               builder: (context, state) {
                 return Text(
                   '${state.counter}',
