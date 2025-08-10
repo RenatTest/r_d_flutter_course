@@ -57,7 +57,16 @@ class StateManagementMainScreen extends StatelessWidget {
             ),
             FeatureCard(
               title: 'Homework (LAB-20) Bloc',
-              onTap: () => context.goNamed(ScreenNames.homework20Bloc),
+              onTap: () async {
+                final stars = await context.pushNamed<int>(
+                  ScreenNames.homework20Bloc,
+                );
+                if (stars != null && context.mounted) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(_createSnackBar(context, stars));
+                }
+              },
             ),
             FeatureCard(
               title: 'Homework (LAB-20) Provider',

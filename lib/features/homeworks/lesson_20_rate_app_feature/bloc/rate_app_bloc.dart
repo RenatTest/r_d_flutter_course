@@ -8,7 +8,7 @@ class RateAppBloc extends Bloc<RateAppBlocEvent, RateAppBlocState> {
       emit(state.copyWith(stars: event.value));
     });
 
-    on<RateAppBlocEventResetRating>((event, emit) {
+    on<RateAppBlocEventResetRating>((_, emit) {
       emit(state.copyWith(stars: 0));
     });
   }

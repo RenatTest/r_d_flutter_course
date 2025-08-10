@@ -16,26 +16,6 @@ class RateAppScreenBloc extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Flutter lab bloc'),
         backgroundColor: Colors.amber.shade100,
-        leading: BlocBuilder<RateAppBloc, RateAppBlocState>(
-          builder: (context, state) {
-            return BackButton(
-              onPressed: () {
-                if (state.stars == 0) {
-                  context.pop();
-                } else {
-                  context.read<RateAppBloc>().add(
-                    RateAppBlocEventResetRating(),
-                  );
-                  Future.delayed(const Duration(milliseconds: 500), () {
-                    if (context.mounted) {
-                      context.pop();
-                    }
-                  });
-                }
-              },
-            );
-          },
-        ),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -141,23 +121,38 @@ class RateAppScreenBloc extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: ElevatedButton(
-                  onPressed: () => _showDialog(context),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                    shadowColor: Colors.transparent,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: const Text(
-                    'Відправити оцінку',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
+                child: BlocBuilder<RateAppBloc, RateAppBlocState>(
+                  builder: (context, state) {
+                    return ElevatedButton(
+                      onPressed: () {
+                        if (state.stars == 0) {
+                          ScaffoldMessenger.of(
+                            context,
+                          ).showSnackBar(_createSnackBar());
+                        } else {
+                          final goRouter = GoRouter.of(context);
+                          Future.delayed(Duration(milliseconds: 500), () {
+                            goRouter.pop(state.stars);
+                          });
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: const Text(
+                        'Відправити оцінку',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
               const SizedBox(height: 16),
@@ -216,50 +211,35 @@ class RateAppScreenBloc extends StatelessWidget {
   }
 }
 
-void _showDialog(BuildContext context) {
-  showDialog<void>(
-    context: context,
-    builder: (context) {
-      return Dialog(
-        child: SizedBox(
-          width: 200,
-          height: 200,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: BlocBuilder<RateAppBloc, RateAppBlocState>(
-              builder: (context, state) {
-                return Column(
-                  spacing: 10,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      state.stars == 0
-                          ? 'Оцінка не відправлена'
-                          : 'Оцінка відправлена',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: state.stars == 0 ? Colors.red : Colors.green,
-                      ),
-                    ),
-                    Text(
-                      state.stars == 0
-                          ? 'Оцініть будь-ласка програму перед відправкою'
-                          : 'Ви оцінили нашу програму на ${state.stars}',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: state.stars == 0 ? Colors.red : Colors.green,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
-                );
-              },
-            ),
+SnackBar _createSnackBar() {
+  return SnackBar(
+    content: Row(
+      children: [
+        Icon(Icons.star, color: Colors.white),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Оцінка не відправлена',
+                style: const TextStyle(fontSize: 16),
+              ),
+              Text(
+                'Оцініть будь-ласка програму перед відправкою',
+                style: const TextStyle(fontSize: 16),
+              ),
+            ],
           ),
         ),
-      );
-    },
+      ],
+    ),
+    behavior: SnackBarBehavior.floating,
+    duration: const Duration(seconds: 3),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(6)),
+    ),
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+    dismissDirection: DismissDirection.none,
   );
 }

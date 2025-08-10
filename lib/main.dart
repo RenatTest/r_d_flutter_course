@@ -8,7 +8,6 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81u
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/bloc/counter_bloc.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_cubit.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/cubit/auth_repository/auth_repository.dart';
-import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/bloc/rate_app_bloc.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/provider/rate_app_provider.dart';
 import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/bloc/counter_bloc_experiment.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/auth_provider.dart';
@@ -37,7 +36,6 @@ class FlutterWidgetsApp extends StatelessWidget {
           create: (context) =>
               InternetConnectionCubit(connectivity: Connectivity()),
         ),
-        BlocProvider(create: (context) => RateAppBloc()),
       ],
       child: MultiProvider(
         providers: [
