@@ -3,13 +3,29 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/bloc/rate_app_bloc_state.dart';
 
 class RateAppBloc extends Bloc<RateAppBlocEvent, RateAppBlocState> {
-  RateAppBloc() : super(const RateAppBlocState(stars: 0)) {
+  RateAppBloc()
+    : super(
+        const RateAppBlocState(stars: 0, status: RateAppBlocStatus.initial),
+      ) {
     on<RateAppBlocEventAddRating>((event, emit) {
-      emit(state.copyWith(stars: event.value));
+      emit(
+        state.copyWith(stars: event.value, status: RateAppBlocStatus.initial),
+      );
     });
 
     on<RateAppBlocEventResetRating>((_, emit) {
-      emit(state.copyWith(stars: 0));
+      emit(state.copyWith(stars: 0, status: RateAppBlocStatus.initial));
+    });
+
+    on<RateAppBlocEventChangeStatus>((event, emit) {
+      emit(state.copyWith(status: event.status));
+    });
+
+    on<RateAppBlocEventSendRating>((event, emit) async {
+      emit(state.copyWith(status: RateAppBlocStatus.loading));
+      // ignore: inference_failure_on_instance_creation
+      await Future.delayed(const Duration(milliseconds: 500));
+      emit(state.copyWith(status: RateAppBlocStatus.success));
     });
   }
 }

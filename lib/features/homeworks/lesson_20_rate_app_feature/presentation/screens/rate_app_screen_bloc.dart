@@ -122,37 +122,72 @@ class RateAppScreenBloc extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: BlocBuilder<RateAppBloc, RateAppBlocState>(
+                child: BlocConsumer<RateAppBloc, RateAppBlocState>(
                   builder: (context, state) {
-                    return ElevatedButton(
-                      onPressed: () {
-                        if (state.stars == 0) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            RateAppSnackBarNoRating().createSnackBar(),
-                          );
-                        } else {
-                          final goRouter = GoRouter.of(context);
-                          Future.delayed(Duration(milliseconds: 500), () {
-                            goRouter.pop(state.stars);
-                          });
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shadowColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                    if (state.status == RateAppBlocStatus.initial) {
+                      return ElevatedButton(
+                        onPressed: () {
+                          if (state.stars == 0) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              RateAppSnackBarNoRating().createSnackBar(),
+                            );
+                          } else {
+                            context.read<RateAppBloc>().add(
+                              RateAppBlocEventSendRating(),
+                            );
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          shadowColor: Colors.transparent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                         ),
-                      ),
-                      child: const Text(
-                        'Відправити оцінку',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                        child: const Text(
+                          'Відправити оцінку',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                    );
+                      );
+                    }
+
+                    if (state.status == RateAppBlocStatus.loading) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+
+                    if (state.status == RateAppBlocStatus.success) {
+                      return ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          shadowColor: Colors.transparent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        child: const Text(
+                          'Оцінка відправлена',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      );
+                    }
+                    return Container();
+                  },
+                  listener: (context, state) {
+                    if (state.status == RateAppBlocStatus.success) {
+                      final goRouter = GoRouter.of(context);
+                      Future.delayed(Duration(seconds: 1), () {
+                        goRouter.pop(state.stars);
+                      });
+                    }
                   },
                 ),
               ),
