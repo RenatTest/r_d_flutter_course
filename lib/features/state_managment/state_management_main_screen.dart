@@ -44,7 +44,16 @@ class StateManagementMainScreen extends StatelessWidget {
             ),
             FeatureCard(
               title: 'Homework (LAB-20) Cubit',
-              onTap: () => context.goNamed(ScreenNames.homework20Cubit),
+              onTap: () async {
+                final stars = await context.pushNamed<int>(
+                  ScreenNames.homework20Cubit,
+                );
+                if (stars != null && context.mounted) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(_createSnackBar(context, stars));
+                }
+              },
             ),
             FeatureCard(
               title: 'Homework (LAB-20) Bloc',
@@ -59,4 +68,34 @@ class StateManagementMainScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+SnackBar _createSnackBar(BuildContext context, int stars) {
+  return SnackBar(
+    content: Row(
+      children: [
+        Icon(Icons.star, color: Colors.amber.shade600),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Оцінка відправлена', style: const TextStyle(fontSize: 16)),
+              Text(
+                'Ви оцінили нашу програму на $stars',
+                style: const TextStyle(fontSize: 16),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+    behavior: SnackBarBehavior.floating,
+    duration: const Duration(seconds: 3),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(6)),
+    ),
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+    dismissDirection: DismissDirection.none,
+  );
 }

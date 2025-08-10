@@ -3,7 +3,7 @@ class RateAppCubitState {
 
   final int stars;
 
-  RateAppCubitState copyWith({int? stars}) {
+  RateAppCubitState copyWith({int? stars, bool? sent}) {
     return RateAppCubitState(stars: stars ?? this.stars);
   }
 }
