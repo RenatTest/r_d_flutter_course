@@ -2,6 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:r_d_flutter_course/features/app/internet_connection/internet_connection_cubit.dart';
 import 'package:r_d_flutter_course/features/app/screens/home_screen.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
@@ -23,6 +24,7 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/presentation/screens/rate_app_screen_bloc.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/presentation/screens/rate_app_screen_cubit.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/presentation/screens/rate_app_screen_provider.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/provider/rate_app_provider.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/base_navigation_section_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_empty_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_data.dart';
@@ -487,7 +489,10 @@ final router = GoRouter(
             GoRoute(
               path: 'homework-20-provider',
               name: ScreenNames.homework20Provider,
-              builder: (context, state) => const RateAppScreenProvider(),
+              builder: (context, state) => ChangeNotifierProvider(
+                create: (context) => RateAppProvider(0),
+                child: const RateAppScreenProvider(),
+              ),
             ),
           ],
         ),

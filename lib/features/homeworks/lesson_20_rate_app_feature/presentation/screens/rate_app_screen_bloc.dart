@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/bloc/rate_app_bloc.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/bloc/rate_app_bloc_event.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/bloc/rate_app_bloc_state.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/presentation/screens/rate_app_snack_bar_no_rating.dart';
 
 class RateAppScreenBloc extends StatelessWidget {
   const RateAppScreenBloc({super.key});
@@ -126,9 +127,9 @@ class RateAppScreenBloc extends StatelessWidget {
                     return ElevatedButton(
                       onPressed: () {
                         if (state.stars == 0) {
-                          ScaffoldMessenger.of(
-                            context,
-                          ).showSnackBar(_createSnackBar());
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            RateAppSnackBarNoRating().createSnackBar(),
+                          );
                         } else {
                           final goRouter = GoRouter.of(context);
                           Future.delayed(Duration(milliseconds: 500), () {
@@ -209,37 +210,4 @@ class RateAppScreenBloc extends StatelessWidget {
       ),
     );
   }
-}
-
-SnackBar _createSnackBar() {
-  return SnackBar(
-    content: Row(
-      children: [
-        Icon(Icons.star, color: Colors.white),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Оцінка не відправлена',
-                style: const TextStyle(fontSize: 16),
-              ),
-              Text(
-                'Оцініть будь-ласка програму перед відправкою',
-                style: const TextStyle(fontSize: 16),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-    behavior: SnackBarBehavior.floating,
-    duration: const Duration(seconds: 3),
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(6)),
-    ),
-    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-    dismissDirection: DismissDirection.none,
-  );
 }

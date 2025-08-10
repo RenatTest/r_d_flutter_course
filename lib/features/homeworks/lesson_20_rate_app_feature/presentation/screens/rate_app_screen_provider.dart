@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/presentation/screens/rate_app_snack_bar_no_rating.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/provider/rate_app_provider.dart';
 
 class RateAppScreenProvider extends StatelessWidget {
@@ -13,24 +14,6 @@ class RateAppScreenProvider extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Flutter lab provider'),
         backgroundColor: Colors.amber.shade100,
-        leading: Consumer<RateAppProvider>(
-          builder: (context, starsProvider, child) {
-            return BackButton(
-              onPressed: () {
-                if (starsProvider.value == 0) {
-                  context.pop();
-                } else {
-                  context.read<RateAppProvider>().resetRating();
-                  Future.delayed(const Duration(milliseconds: 500), () {
-                    if (context.mounted) {
-                      context.pop();
-                    }
-                  });
-                }
-              },
-            );
-          },
-        ),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -133,23 +116,38 @@ class RateAppScreenProvider extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: ElevatedButton(
-                  onPressed: () => _showDialog(context),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                    shadowColor: Colors.transparent,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: const Text(
-                    'Відправити оцінку',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
+                child: Consumer<RateAppProvider>(
+                  builder: (context, starsProvider, child) {
+                    return ElevatedButton(
+                      onPressed: () {
+                        if (starsProvider.value == 0) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            RateAppSnackBarNoRating().createSnackBar(),
+                          );
+                        } else {
+                          final goRouter = GoRouter.of(context);
+                          Future.delayed(Duration(milliseconds: 500), () {
+                            goRouter.pop(starsProvider.value);
+                          });
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: const Text(
+                        'Відправити оцінку',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
               const SizedBox(height: 16),
@@ -204,56 +202,4 @@ class RateAppScreenProvider extends StatelessWidget {
       ),
     );
   }
-}
-
-void _showDialog(BuildContext context) {
-  showDialog<void>(
-    context: context,
-    builder: (context) {
-      return Dialog(
-        child: SizedBox(
-          width: 200,
-          height: 200,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Consumer<RateAppProvider>(
-              builder: (context, starsProvider, child) {
-                return Column(
-                  spacing: 10,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      starsProvider.value == 0
-                          ? 'Оцінка не відправлена'
-                          : 'Оцінка відправлена',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: starsProvider.value == 0
-                            ? Colors.red
-                            : Colors.green,
-                      ),
-                    ),
-                    Text(
-                      starsProvider.value == 0
-                          ? 'Оцініть будь-ласка програму перед відправкою'
-                          : 'Ви оцінили нашу програму на ${starsProvider.value}',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: starsProvider.value == 0
-                            ? Colors.red
-                            : Colors.green,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
-        ),
-      );
-    },
-  );
 }
