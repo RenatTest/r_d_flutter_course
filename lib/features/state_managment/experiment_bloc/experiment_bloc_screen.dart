@@ -27,7 +27,8 @@ class ExperimentBlocScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text('New Value'),
-              // BlocConsumer<CounterBlocExperiment, CounterBlocStateExperiment>(
+              // BlocConsumer<CounterBlocExperiment,
+              // CounterBlocStateExperiment>(
               //   builder: (context, state) {
               //     return Text(
               //       '${state.counter}',
@@ -41,7 +42,8 @@ class ExperimentBlocScreen extends StatelessWidget {
               //     context.goNamed(ScreenNames.home);
               //   },
               // ),
-              // BlocListener<CounterBlocExperiment, CounterBlocStateExperiment>(
+              // BlocListener<CounterBlocExperiment,
+              // CounterBlocStateExperiment>(
               //   listenWhen: (previous, current) {
               //     return current.counter > 300;
               //   },
