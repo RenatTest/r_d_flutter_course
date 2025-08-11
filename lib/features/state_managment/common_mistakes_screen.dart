@@ -52,12 +52,20 @@ class CommonMistakesScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 16),
                     ),
 
-                    //Переробити на go_router
+                    // 2. Переходимо на нову сторінку і в ній
+                    // немає доступу до state SimpleCubitExample
+                    // Рішення:
+                    // Зробити SimpleCubitExample глобальним або використати BlocProvider.value
+                    // Але це не працює з go_router
                     ElevatedButton(
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute<void>(
-                          builder: (context) => const SimpleExamplePage(),
+                          // builder: (context) => const SimpleExamplePage(),
+                          builder: (_) => BlocProvider.value(
+                            value: context.read<SimpleCubitExample>(),
+                            child: const SimpleExamplePage(),
+                          ),
                         ),
                       ),
                       child: const Text('Перейти на тестову сторінку'),
@@ -116,6 +124,7 @@ class SimpleExamplePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('Current State number '),
+            // 2. Тут помилка, бо немає доступу до SimpleCubitExample
             Text('${context.read<SimpleCubitExample>().state}'),
           ],
         ),
