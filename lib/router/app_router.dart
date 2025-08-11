@@ -2,6 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:r_d_flutter_course/features/app/internet_connection/internet_connection_cubit.dart';
 import 'package:r_d_flutter_course/features/app/screens/home_screen.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
@@ -18,7 +19,12 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_17/home_work_17_scr
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81ubit/homework_cubit_screen.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_bloc/homework_bloc_screen.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_auth/homework_cubit_auth.screen.dart';
-import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/presentation/screens/rate_app_screen.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/bloc/rate_app_bloc.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/cubit/rate_app_cubit.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/presentation/screens/rate_app_screen_bloc.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/presentation/screens/rate_app_screen_cubit.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/presentation/screens/rate_app_screen_provider.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/provider/rate_app_provider.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/base_navigation_section_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_empty_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_data.dart';
@@ -465,9 +471,28 @@ final router = GoRouter(
               builder: (context, state) => const CommonMistakesScreen(),
             ),
             GoRoute(
-              path: 'homework-20',
-              name: ScreenNames.homework20,
-              builder: (context, state) => const RateAppScreen(),
+              path: 'homework-20-cubit',
+              name: ScreenNames.homework20Cubit,
+              builder: (context, state) => BlocProvider(
+                create: (context) => RateAppCubit(),
+                child: const RateAppScreenCubit(),
+              ),
+            ),
+            GoRoute(
+              path: 'homework-20-bloc',
+              name: ScreenNames.homework20Bloc,
+              builder: (context, state) => BlocProvider(
+                create: (context) => RateAppBloc(),
+                child: const RateAppScreenBloc(),
+              ),
+            ),
+            GoRoute(
+              path: 'homework-20-provider',
+              name: ScreenNames.homework20Provider,
+              builder: (context, state) => ChangeNotifierProvider(
+                create: (context) => RateAppProvider(0),
+                child: const RateAppScreenProvider(),
+              ),
             ),
           ],
         ),
