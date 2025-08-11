@@ -64,3 +64,8 @@
 - Manage state with flutter_bloc package (BLoC)
 
 8. LESSON 20 BLOC Widgets
+
+- BlocListener
+- BlocConsumer
+- BlocSelector
+- BlocProvider.value
