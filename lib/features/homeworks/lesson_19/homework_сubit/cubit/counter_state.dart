@@ -29,3 +29,8 @@ void main() {
 
   print(state1 == state2); // false
 }
+
+// https://dartpad.dev/?id=3e6552e8e47b51a21740fa8200fa89d0
+
+// Щоб emit новий стан з використанням List -
+// потрібно створити новий List на базі поточного
