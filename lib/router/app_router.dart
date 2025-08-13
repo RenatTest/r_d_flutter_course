@@ -85,7 +85,7 @@ SnackBar _createSnackBar(BuildContext context) {
         ),
       ],
     ),
-    behavior: SnackBarBehavior.floating,
+    behavior: SnackBarBehavior.fixed,
     duration: const Duration(hours: 1),
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(6)),
