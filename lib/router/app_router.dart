@@ -63,6 +63,38 @@ import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part3/e
 import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part3/example_4.dart';
 import 'package:r_d_flutter_course/features/widgets/presentation/widgets/part3/example_5.dart';
 
+SnackBar _createSnackBar(BuildContext context) {
+  return SnackBar(
+    content: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('Немає інтернету', style: const TextStyle(fontSize: 16)),
+            IconButton(
+              onPressed: () =>
+                  ScaffoldMessenger.of(context).hideCurrentSnackBar(),
+              icon: Icon(Icons.close, color: Colors.white),
+            ),
+          ],
+        ),
+        Text(
+          "Будь-ласка перевірте ваше інтернет з'єднання",
+          style: const TextStyle(fontSize: 16),
+        ),
+      ],
+    ),
+    behavior: SnackBarBehavior.floating,
+    duration: const Duration(hours: 1),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(6)),
+    ),
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+    dismissDirection: DismissDirection.none,
+  );
+}
+
 final router = GoRouter(
   routes: [
     GoRoute(
@@ -72,37 +104,9 @@ final router = GoRouter(
           BlocListener<InternetConnectionCubit, ConnectivityResult>(
             listener: (context, state) {
               if (state == ConnectivityResult.none) {
-                showModalBottomSheet<void>(
-                  context: context,
-                  backgroundColor: Colors.transparent,
-                  builder: (context) => Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(20),
-                      ),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Text(
-                            'No internet',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 16),
-                          Text('Please check your internet connection!'),
-                          SizedBox(height: 100),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(_createSnackBar(context));
               }
             },
             child: const HomeScreen(),
