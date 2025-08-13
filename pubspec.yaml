@@ -45,6 +45,7 @@ dependencies:
   connectivity_plus: ^6.1.4
   equatable: ^2.0.7
   rxdart: ^0.28.0
+  internet_connection_checker_plus: ^2.7.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

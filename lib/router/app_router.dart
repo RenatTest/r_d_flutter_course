@@ -101,12 +101,19 @@ final router = GoRouter(
       path: '/',
       name: ScreenNames.home,
       builder: (context, state) =>
-          BlocListener<InternetConnectionCubit, ConnectivityResult>(
+          BlocListener<InternetConnectionCubit, InternetState>(
+            listenWhen: (previous, current) =>
+                previous.hasInternet != current.hasInternet ||
+                previous.connectionType != current.connectionType,
             listener: (context, state) {
-              if (state == ConnectivityResult.none) {
+              if (state.connectionType == ConnectivityResult.none &&
+                  !state.hasInternet) {
                 ScaffoldMessenger.of(
                   context,
                 ).showSnackBar(_createSnackBar(context));
+              }
+              if (state.hasInternet) {
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
               }
             },
             child: const HomeScreen(),
