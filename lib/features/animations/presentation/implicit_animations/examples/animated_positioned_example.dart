@@ -9,8 +9,8 @@ class AnimatedPositionedExample extends StatefulWidget {
 }
 
 class _AnimatedPositionedExampleState extends State<AnimatedPositionedExample> {
-  double _left = 300.0;
-  double _top = 300.0;
+  double _left = 200.0;
+  double _top = 200.0;
 
   @override
   Widget build(BuildContext context) {
@@ -96,11 +96,7 @@ class _AnimatedPositionedExampleState extends State<AnimatedPositionedExample> {
                 ],
               ),
               child: const Center(
-                child: Icon(
-                  Icons.gps_fixed,
-                  color: Colors.white,
-                  size: 30,
-                ),
+                child: Icon(Icons.gps_fixed, color: Colors.white, size: 30),
               ),
             ),
           ),

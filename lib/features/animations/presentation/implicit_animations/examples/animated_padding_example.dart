@@ -140,7 +140,7 @@ class _AnimatedPaddingExampleState extends State<AnimatedPaddingExample> {
                         ElevatedButton(
                           onPressed: () {
                             setState(() {
-                              _padding = 100.0;
+                              _padding = 60.0;
                             });
                           },
                           child: const Text('60'),

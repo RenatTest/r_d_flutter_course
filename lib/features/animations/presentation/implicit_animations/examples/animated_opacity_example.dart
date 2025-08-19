@@ -24,10 +24,7 @@ class _AnimatedOpacityExampleState extends State<AnimatedOpacityExample> {
           children: [
             const Text(
               'AnimatedOpacity Example',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             const Text(
@@ -53,7 +50,7 @@ class _AnimatedOpacityExampleState extends State<AnimatedOpacityExample> {
                     const SizedBox(height: 16),
                     Center(
                       child: AnimatedOpacity(
-                        duration: const Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: 500),
                         opacity: _opacity,
                         child: Container(
                           width: 150,

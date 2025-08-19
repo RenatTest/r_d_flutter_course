@@ -30,10 +30,7 @@ class _AnimatedContainerExampleState extends State<AnimatedContainerExample> {
           children: [
             const Text(
               'AnimatedContainer Example',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             const Text(
@@ -60,6 +57,10 @@ class _AnimatedContainerExampleState extends State<AnimatedContainerExample> {
                     const SizedBox(height: 16),
                     Center(
                       child: AnimatedContainer(
+                        onEnd: () {
+                          // цей колбек викликає якусь дію
+                          // по закінченню анімації
+                        },
                         duration: const Duration(milliseconds: 500),
                         curve: Curves.easeInOut,
                         width: _size,
@@ -102,8 +103,9 @@ class _AnimatedContainerExampleState extends State<AnimatedContainerExample> {
                           ElevatedButton(
                             onPressed: () {
                               setState(() {
-                                final generatedColor =
-                                    Random().nextInt(Colors.primaries.length);
+                                final generatedColor = Random().nextInt(
+                                  Colors.primaries.length,
+                                );
                                 _color = Colors.primaries[generatedColor];
                               });
                             },

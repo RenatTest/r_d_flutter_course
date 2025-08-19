@@ -24,10 +24,7 @@ class _AnimatedAlignExampleState extends State<AnimatedAlignExample> {
           children: [
             const Text(
               'AnimatedAlign Example',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             const Text(
@@ -59,7 +56,7 @@ class _AnimatedAlignExampleState extends State<AnimatedAlignExample> {
                         border: Border.all(color: Colors.grey.shade400),
                       ),
                       child: AnimatedAlign(
-                        duration: const Duration(milliseconds: 500),
+                        duration: const Duration(milliseconds: 600),
                         curve: Curves.easeInOut,
                         alignment: _alignment,
                         child: Container(

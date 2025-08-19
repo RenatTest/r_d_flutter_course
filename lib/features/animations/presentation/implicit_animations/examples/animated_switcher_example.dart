@@ -17,7 +17,7 @@ class AnimatedSwitcherExample extends StatefulWidget {
 
 class _AnimatedSwitcherExampleState extends State<AnimatedSwitcherExample> {
   bool _showFirst = true;
-  TransitionType _selectedTransition = TransitionType.scale;
+  TransitionType _selectedTransition = TransitionType.fade;
 
   @override
   Widget build(BuildContext context) {
@@ -69,32 +69,32 @@ class _AnimatedSwitcherExampleState extends State<AnimatedSwitcherExample> {
                           duration: const Duration(milliseconds: 500),
                           transitionBuilder:
                               (Widget child, Animation<double> animation) {
-                            return switch (_selectedTransition) {
-                              TransitionType.scale => ScaleTransition(
-                                  scale: animation,
-                                  child: child,
-                                ),
-                              TransitionType.fade => FadeTransition(
-                                  opacity: animation,
-                                  child: child,
-                                ),
-                              TransitionType.slide => SlideTransition(
-                                  position: animation.drive(
-                                    Tween<Offset>(
-                                      begin: const Offset(1.0, 1.0),
-                                      end: Offset.zero,
-                                    ).chain(
-                                      CurveTween(curve: Curves.easeOutBack),
-                                    ),
+                                return switch (_selectedTransition) {
+                                  TransitionType.scale => ScaleTransition(
+                                    scale: animation,
+                                    child: child,
                                   ),
-                                  child: child,
-                                ),
-                              TransitionType.rotation => RotationTransition(
-                                  turns: animation,
-                                  child: child,
-                                ),
-                            };
-                          },
+                                  TransitionType.fade => FadeTransition(
+                                    opacity: animation,
+                                    child: child,
+                                  ),
+                                  TransitionType.slide => SlideTransition(
+                                    position: animation.drive(
+                                      Tween<Offset>(
+                                        begin: const Offset(1.0, 1.0),
+                                        end: Offset.zero,
+                                      ).chain(
+                                        CurveTween(curve: Curves.easeOutBack),
+                                      ),
+                                    ),
+                                    child: child,
+                                  ),
+                                  TransitionType.rotation => RotationTransition(
+                                    turns: animation,
+                                    child: child,
+                                  ),
+                                };
+                              },
                           child: _showFirst
                               ? Container(
                                   key: const ValueKey('first'),

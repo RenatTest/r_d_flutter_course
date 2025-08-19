@@ -20,20 +20,19 @@ class _TweenAnimationBuilderExampleState
       ),
       body: Center(
         child: TweenAnimationBuilder(
-          tween: Tween<double>(begin: 10, end: _targetSize),
-          duration: const Duration(seconds: 1),
+          tween: Tween<double>(begin: 0, end: _targetSize),
+          duration: const Duration(seconds: 2),
           onEnd: () {
             setState(() {
-              _targetSize = _targetSize == 100.0 ? 10.0 : 100.0;
+              _targetSize = _targetSize == 100.0 ? 50.0 : 100.0;
             });
           },
-          builder: (context, value, child) => Text(
-            'RD',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: value,
-            ),
-          ),
+          builder: (context, value, child) =>
+              Icon(Icons.favorite, color: Colors.red, size: value),
+          // Text(
+          //   'RD',
+          //   style: TextStyle(color: Colors.black, fontSize: value),
+          // ),
         ),
       ),
     );
