@@ -71,4 +71,19 @@ abstract class ScreenNames {
   static const homework20Cubit = 'homework-20-cubit';
   static const homework20Bloc = 'homework-20-bloc';
   static const homework20Provider = 'homework-20-provider';
+
+  // Animations
+  static const animations = 'animations';
+  static const implicitAnimations = 'implicit-animations';
+  static const explicitAnimations = 'explicit-animations';
+  static const animatedBoxPlayground = 'animated-box-playground';
+
+  // Implicit Animation Examples
+  static const animatedContainerExample = 'animated-container-example';
+  static const animatedOpacityExample = 'animated-opacity-example';
+  static const animatedAlignExample = 'animated-align-example';
+  static const animatedPaddingExample = 'animated-padding-example';
+  static const animatedPositionedExample = 'animated-positioned-example';
+  static const animatedSwitcherExample = 'animated-switcher-example';
+  static const tweenAnimationBuilderExample = 'tween-animation-builder-example';
 }

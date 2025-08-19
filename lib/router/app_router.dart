@@ -3,6 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/explicit_animations_screen.dart';
+import 'package:r_d_flutter_course/features/animations/presentation/implicit_animations/animated_box_playground.dart';
+import 'package:r_d_flutter_course/features/animations/presentation/implicit_animations/examples/animated_align_example.dart';
+import 'package:r_d_flutter_course/features/animations/presentation/implicit_animations/examples/animated_container_example.dart';
+import 'package:r_d_flutter_course/features/animations/presentation/implicit_animations/examples/animated_opacity_example.dart';
+import 'package:r_d_flutter_course/features/animations/presentation/implicit_animations/examples/animated_padding_example.dart';
+import 'package:r_d_flutter_course/features/animations/presentation/implicit_animations/examples/animated_positioned_example.dart';
+import 'package:r_d_flutter_course/features/animations/presentation/implicit_animations/examples/animated_switcher_example.dart';
+import 'package:r_d_flutter_course/features/animations/presentation/implicit_animations/examples/tween_animation_builder_example.dart';
+import 'package:r_d_flutter_course/features/animations/presentation/implicit_animations/implicit_animations_screen.dart';
+import 'package:r_d_flutter_course/features/animations/presentation/screens/animations_main_screen.dart';
 import 'package:r_d_flutter_course/features/app/internet_connection/internet_connection_cubit.dart';
 import 'package:r_d_flutter_course/features/app/screens/home_screen.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
@@ -504,6 +515,68 @@ final router = GoRouter(
                 create: (context) => RateAppProvider(0),
                 child: const RateAppScreenProvider(),
               ),
+            ),
+          ],
+        ),
+        // Animations routes
+        GoRoute(
+          path: 'animations',
+          name: ScreenNames.animations,
+          builder: (context, state) => const AnimationsMainScreen(),
+          routes: [
+            GoRoute(
+              path: 'implicit-animations',
+              name: ScreenNames.implicitAnimations,
+              builder: (context, state) => const ImplicitAnimationsScreen(),
+              routes: [
+                GoRoute(
+                  path: 'animated-container-example',
+                  name: ScreenNames.animatedContainerExample,
+                  builder: (context, state) => const AnimatedContainerExample(),
+                ),
+                GoRoute(
+                  path: 'animated-opacity-example',
+                  name: ScreenNames.animatedOpacityExample,
+                  builder: (context, state) => const AnimatedOpacityExample(),
+                ),
+                GoRoute(
+                  path: 'animated-align-example',
+                  name: ScreenNames.animatedAlignExample,
+                  builder: (context, state) => const AnimatedAlignExample(),
+                ),
+                GoRoute(
+                  path: 'animated-padding-example',
+                  name: ScreenNames.animatedPaddingExample,
+                  builder: (context, state) => const AnimatedPaddingExample(),
+                ),
+                GoRoute(
+                  path: 'animated-positioned-example',
+                  name: ScreenNames.animatedPositionedExample,
+                  builder: (context, state) =>
+                      const AnimatedPositionedExample(),
+                ),
+                GoRoute(
+                  path: 'animated-switcher-example',
+                  name: ScreenNames.animatedSwitcherExample,
+                  builder: (context, state) => const AnimatedSwitcherExample(),
+                ),
+                GoRoute(
+                  path: 'tween-animation-builder-example',
+                  name: ScreenNames.tweenAnimationBuilderExample,
+                  builder: (context, state) =>
+                      const TweenAnimationBuilderExample(),
+                ),
+                GoRoute(
+                  path: 'animated-box-playground',
+                  name: ScreenNames.animatedBoxPlayground,
+                  builder: (context, state) => const AnimatedBoxPlayground(),
+                ),
+              ],
+            ),
+            GoRoute(
+              path: 'explicit-animations',
+              name: ScreenNames.explicitAnimations,
+              builder: (context, state) => const ExplicitAnimationsScreen(),
             ),
           ],
         ),
