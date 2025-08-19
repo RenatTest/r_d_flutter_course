@@ -1,6 +1,6 @@
 # ROBOT_DREAMS SCHOOL
 
-## PART 1 FLUTTER
+## PART 2 FLUTTER
 
 1. LESSON 13 FLUTTER WIDGETS PART 1
 
@@ -69,3 +69,13 @@
 - BlocConsumer
 - BlocSelector
 - BlocProvider.value
+
+9. LESSON 21 IMPLICIT ANIMATIONS
+
+- AnimatedContainer
+- AnimatedOpacity
+- AnimatedAlign
+- AnimatedPadding
+- AnimatedPositioned
+- AnimatedSwitcher
+- TweenAnimationBuilder
