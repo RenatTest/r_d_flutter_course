@@ -23,7 +23,9 @@ class AnimationCubitScreen extends StatelessWidget {
               ),
               duration: const Duration(milliseconds: 500),
               onEnd: () {
-                context.read<AnimationCubit>().toggleSize();
+                state.size == 50
+                    ? context.read<AnimationCubit>().toggleSize(100)
+                    : context.read<AnimationCubit>().toggleSize(50);
               },
               builder: (context, value, child) =>
                   Icon(Icons.favorite, color: Colors.red, size: value),

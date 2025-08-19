@@ -4,9 +4,7 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_21/cubit/animation_
 class AnimationCubit extends Cubit<AnimationCubitState> {
   AnimationCubit() : super(const AnimationCubitState(size: 0.0));
 
-  void toggleSize() {
-    emit(
-      state.size == 50 ? state.copyWith(size: 100) : state.copyWith(size: 50),
-    );
+  void toggleSize(double newSize) {
+    emit(state.copyWith(size: newSize));
   }
 }
