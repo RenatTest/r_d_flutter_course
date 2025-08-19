@@ -36,6 +36,8 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/presentation/screens/rate_app_screen_cubit.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/presentation/screens/rate_app_screen_provider.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/provider/rate_app_provider.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_21/animation_cubit_screen.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_21/cubit/animation_cubit.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/base_navigation_section_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_empty_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_data.dart';
@@ -570,6 +572,14 @@ final router = GoRouter(
                   path: 'animated-box-playground',
                   name: ScreenNames.animatedBoxPlayground,
                   builder: (context, state) => const AnimatedBoxPlayground(),
+                ),
+                GoRoute(
+                  path: 'homework-21-animation-cubit',
+                  name: ScreenNames.homework21AnimationCubit,
+                  builder: (context, state) => BlocProvider(
+                    create: (context) => AnimationCubit(),
+                    child: const AnimationCubitScreen(),
+                  ),
                 ),
               ],
             ),

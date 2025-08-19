@@ -76,6 +76,17 @@ class ImplicitAnimationsScreen extends StatelessWidget {
               title: 'Playground',
               onTap: () => context.goNamed(ScreenNames.animatedBoxPlayground),
             ),
+            const SizedBox(height: 24),
+            const Text(
+              'Animation Cubit',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 12),
+            FeatureCard(
+              title: 'Animation Cubit',
+              onTap: () =>
+                  context.goNamed(ScreenNames.homework21AnimationCubit),
+            ),
           ],
         ),
       ),
