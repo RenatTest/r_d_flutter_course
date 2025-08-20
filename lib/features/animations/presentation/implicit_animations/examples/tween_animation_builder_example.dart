@@ -10,7 +10,7 @@ class TweenAnimationBuilderExample extends StatefulWidget {
 
 class _TweenAnimationBuilderExampleState
     extends State<TweenAnimationBuilderExample> {
-  double _targetSize = 100.0;
+  final double _value = 200.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,19 +20,21 @@ class _TweenAnimationBuilderExampleState
       ),
       body: Center(
         child: TweenAnimationBuilder(
-          tween: Tween<double>(begin: 0, end: _targetSize),
+          tween: Tween<double>(begin: 0, end: _value),
           duration: const Duration(seconds: 2),
-          onEnd: () {
-            setState(() {
-              _targetSize = _targetSize == 100.0 ? 50.0 : 100.0;
-            });
-          },
-          builder: (context, value, child) =>
-              Icon(Icons.favorite, color: Colors.red, size: value),
-          // Text(
-          //   'RD',
-          //   style: TextStyle(color: Colors.black, fontSize: value),
-          // ),
+          builder: (context, value, child) => Container(
+            color: Colors.deepOrange,
+            height: value,
+            width: value,
+            child: child,
+          ),
+          child: Center(
+            child: Text(
+              'Container Text',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white, fontSize: 22),
+            ),
+          ),
         ),
       ),
     );
