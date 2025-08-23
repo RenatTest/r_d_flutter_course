@@ -16,7 +16,14 @@ class ItemRowContainer extends StatefulWidget {
   State<ItemRowContainer> createState() => _ItemRowContainerState();
 }
 
-class _ItemRowContainerState extends State<ItemRowContainer> {
+class _ItemRowContainerState extends State<ItemRowContainer>
+    with TickerProviderStateMixin {
+  late final AnimationController _likeController;
+  late final AnimationController _dislikeController;
+
+  late final Animation<double> _likeRotation;
+  late final Animation<double> _dislikeRotation;
+
   bool isLikePushed = false;
   bool isDislikePushed = false;
   String feedBack = 'Не вибрано';
@@ -48,6 +55,37 @@ class _ItemRowContainerState extends State<ItemRowContainer> {
   }
 
   @override
+  void initState() {
+    _likeController = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    );
+
+    _dislikeController = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    );
+
+    _likeRotation = TweenSequence([
+      TweenSequenceItem(tween: Tween<double>(begin: 0.0, end: 0.5), weight: 1),
+      TweenSequenceItem(tween: Tween<double>(begin: 0.5, end: 1.0), weight: 1),
+    ]).animate(_likeController);
+
+    _dislikeRotation = TweenSequence([
+      TweenSequenceItem(tween: Tween<double>(begin: 1.0, end: 0.5), weight: 1),
+      TweenSequenceItem(tween: Tween<double>(begin: 0.5, end: 0.0), weight: 1),
+    ]).animate(_dislikeController);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _likeController.dispose();
+    _dislikeController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       height: 56,
@@ -67,24 +105,36 @@ class _ItemRowContainerState extends State<ItemRowContainer> {
           ),
           Expanded(child: SizedBox(height: 40)),
           GestureDetector(
-            onTap: _addDislike,
-            child: Image.asset(
-              isDislikePushed
-                  ? 'assets/images/dislike-active.png'
-                  : 'assets/images/dislike-not-active.png',
-              width: 40,
-              height: 40,
+            onTap: () {
+              _addDislike();
+              _dislikeController.forward(from: 0);
+            },
+            child: RotationTransition(
+              turns: _dislikeRotation,
+              child: Image.asset(
+                isDislikePushed
+                    ? 'assets/images/dislike-active.png'
+                    : 'assets/images/dislike-not-active.png',
+                width: 40,
+                height: 40,
+              ),
             ),
           ),
           SizedBox(width: 12),
           GestureDetector(
-            onTap: _addLike,
-            child: Image.asset(
-              isLikePushed
-                  ? 'assets/images/like-active.png'
-                  : 'assets/images/like-not-active.png',
-              width: 40,
-              height: 40,
+            onTap: () {
+              _addLike();
+              _likeController.forward(from: 0);
+            },
+            child: RotationTransition(
+              turns: _likeRotation,
+              child: Image.asset(
+                isLikePushed
+                    ? 'assets/images/like-active.png'
+                    : 'assets/images/like-not-active.png',
+                width: 40,
+                height: 40,
+              ),
             ),
           ),
         ],
