@@ -17,25 +17,76 @@ class _Homework22ScreenState extends State<Homework22Screen>
   @override
   void initState() {
     super.initState();
-    _controller =
-        AnimationController(
-          duration: const Duration(milliseconds: 700),
-          vsync: this,
-        )..addListener(() {
-          if (_controller.status == AnimationStatus.completed) {
-            _move2();
-          }
-        });
+    _controller = AnimationController(
+      duration: const Duration(seconds: 3),
+      vsync: this,
+    );
 
-    _alignmentAnimation = AlignmentTween(
-      begin: Alignment.bottomCenter,
-      end: Alignment.topCenter,
-    ).animate(_controller);
+    _alignmentAnimation = TweenSequence([
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: Alignment.bottomCenter,
+          end: const Alignment(0, -0.95),
+        ).chain(CurveTween(curve: Curves.easeOut)),
+        weight: 3.5,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: const Alignment(0, -0.95),
+          end: const Alignment(0, -0.95),
+        ).chain(CurveTween(curve: Curves.easeInOut)),
+        weight: 1.75,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: const Alignment(0, -0.95),
+          end: Alignment.bottomCenter,
+        ).chain(CurveTween(curve: Curves.easeIn)),
+        weight: 3.5,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: Alignment.bottomCenter,
+          end: const Alignment(0, 0.6),
+        ).chain(CurveTween(curve: Curves.easeOut)),
+        weight: 2,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: const Alignment(0, 0.6),
+          end: Alignment.bottomCenter,
+        ).chain(CurveTween(curve: Curves.easeIn)),
+        weight: 2.2,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: Alignment.bottomCenter,
+          end: const Alignment(0, 0.85),
+        ).chain(CurveTween(curve: Curves.easeOut)),
+        weight: 1.5,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: const Alignment(0, 0.85),
+          end: Alignment.bottomCenter,
+        ).chain(CurveTween(curve: Curves.easeIn)),
+        weight: 1.53,
+      ),
+    ]).animate(_controller);
 
-    _rotationAnimation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(_controller);
+    _rotationAnimation = TweenSequence([
+      TweenSequenceItem(tween: Tween<double>(begin: 0.0, end: 0.6), weight: 2),
+      TweenSequenceItem(tween: Tween<double>(begin: 0.6, end: 1.0), weight: 2),
+      TweenSequenceItem(
+        tween: Tween<double>(begin: 1.25, end: 1.45),
+        weight: 2,
+      ),
+      TweenSequenceItem(
+        tween: Tween<double>(begin: 1.45, end: 1.65),
+        weight: 1,
+      ),
+      TweenSequenceItem(tween: Tween<double>(begin: 1.65, end: 1.8), weight: 1),
+    ]).animate(_controller);
   }
 
   @override
@@ -45,11 +96,7 @@ class _Homework22ScreenState extends State<Homework22Screen>
   }
 
   void _move() {
-    _controller.forward();
-  }
-
-  void _move2() {
-    _controller.reverse();
+    _controller.forward(from: 0);
   }
 
   @override
