@@ -47,6 +47,10 @@ class HomeScreen extends StatelessWidget {
               title: 'State Management',
               onTap: () => context.goNamed(ScreenNames.stateManagement),
             ),
+            FeatureCard(
+              title: 'Animations',
+              onTap: () => context.goNamed(ScreenNames.animations),
+            ),
           ],
         ),
       ),
