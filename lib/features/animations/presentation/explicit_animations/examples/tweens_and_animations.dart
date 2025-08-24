@@ -25,15 +25,25 @@ class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
     super.initState();
 
     _controller = AnimationController(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 5),
       vsync: this,
     );
 
-    _controller
-      ..addListener(() {
-        setState(() {});
-      })
-      ..forward();
+    // ignore: avoid_single_cascade_in_expression_statements
+    _controller..addListener(() {
+      setState(() {});
+    });
+
+    // ignore: cascade_invocations, unnecessary_lambdas
+    _controller.addStatusListener((status) {
+      print(status);
+      if (status == AnimationStatus.completed) {
+        _controller.reverse();
+      }
+    });
+
+    // ignore: cascade_invocations
+    _controller.forward();
   }
 
   @override
