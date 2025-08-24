@@ -26,14 +26,16 @@ class _AnimationControllerExampleState extends State<AnimationControllerExample>
     super.initState();
 
     _controller = AnimationController(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 2),
       vsync: this,
     );
 
     _controller
       ..addListener(() {
+        setState(() {});
         print(_counter++);
-        print(_controller.value);
+        // print(_controller.value);
+        print('$_counter++ ${_controller.value}');
       })
       ..forward();
   }
@@ -47,11 +49,15 @@ class _AnimationControllerExampleState extends State<AnimationControllerExample>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Animation Controller'),
-      ),
+      appBar: AppBar(title: const Text('Animation Controller')),
       body: Center(
-        child: Text(_controller.value.toStringAsFixed(2)),
+        child: Container(
+          alignment: Alignment.center,
+          color: Colors.deepOrange,
+          height: _controller.value * 100,
+          width: _controller.value * 100,
+          child: Text(_controller.value.toStringAsFixed(2)),
+        ),
       ),
     );
   }
