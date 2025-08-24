@@ -17,32 +17,23 @@ class TweenAndAnimationExample extends StatefulWidget {
 class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
-  final _tween = Tween<double>(begin: 0, end: 100);
-  final _tweenColor = ColorTween(begin: Colors.blue, end: Colors.redAccent);
+  late final Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
 
     _controller = AnimationController(
-      duration: const Duration(seconds: 5),
+      duration: const Duration(seconds: 3),
       vsync: this,
     );
 
-    // ignore: avoid_single_cascade_in_expression_statements
-    _controller..addListener(() {
-      setState(() {});
-    });
+    _animation = Tween<double>(begin: 0, end: 222).animate(_controller)
+      ..addListener(() {
+        setState(() {});
+      })
+      ..addStatusListener((status) {});
 
-    // ignore: cascade_invocations, unnecessary_lambdas
-    _controller.addStatusListener((status) {
-      print(status);
-      if (status == AnimationStatus.completed) {
-        _controller.reverse();
-      }
-    });
-
-    // ignore: cascade_invocations
     _controller.forward();
   }
 
@@ -57,16 +48,10 @@ class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
     return Scaffold(
       appBar: AppBar(title: const Text('Tween + Animation')),
       body: Center(
-        child: Container(
-          color: _tweenColor.transform(_controller.value),
-          width: _tween.transform(_controller.value),
-          height: _tween.transform(_controller.value),
-          alignment: Alignment.center,
-          child: Text(
-            'Container text',
-            style: const TextStyle(fontSize: 20),
-            textAlign: TextAlign.center,
-          ),
+        child: Text(
+          _animation.value.toStringAsFixed(2),
+          style: const TextStyle(fontSize: 20),
+          textAlign: TextAlign.center,
         ),
       ),
     );
