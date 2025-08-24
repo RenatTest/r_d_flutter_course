@@ -9,7 +9,7 @@ class Homework22Screen extends StatefulWidget {
 }
 
 class _Homework22ScreenState extends State<Homework22Screen>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late final Animation<Alignment> _alignmentAnimation;
   late final Animation<double> _rotationAnimation;
