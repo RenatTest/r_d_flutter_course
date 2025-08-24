@@ -18,6 +18,7 @@ class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   final _tween = Tween<double>(begin: 0, end: 100);
+  final _tweenColor = ColorTween(begin: Colors.blue, end: Colors.redAccent);
 
   @override
   void initState() {
@@ -46,9 +47,16 @@ class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
     return Scaffold(
       appBar: AppBar(title: const Text('Tween + Animation')),
       body: Center(
-        child: Text(
-          _tween.transform(_controller.value).toStringAsFixed(2),
-          style: const TextStyle(fontSize: 32),
+        child: Container(
+          color: _tweenColor.transform(_controller.value),
+          width: _tween.transform(_controller.value),
+          height: _tween.transform(_controller.value),
+          alignment: Alignment.center,
+          child: Text(
+            'Container text',
+            style: const TextStyle(fontSize: 20),
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );
