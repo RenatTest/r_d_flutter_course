@@ -15,8 +15,9 @@ class AnimatedBuilderExample extends StatefulWidget {
 }
 
 class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late final AnimationController _controller;
+  late final AnimationController _controllerText;
   late final Animation<double> _sizeAnimation;
   late final Animation<Color?> _colorAnimation;
   late final Animation<double> _textSizeAnimation;
@@ -32,15 +33,24 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
   }
 
   void initAnimation() {
-    _controller =
-        AnimationController(duration: const Duration(seconds: 1), vsync: this);
+    _controller = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    );
+    _controllerText = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    );
 
-    _sizeAnimation =
-        Tween<double>(begin: 75.0, end: 125.0).animate(_controller);
+    _sizeAnimation = Tween<double>(
+      begin: 75.0,
+      end: 125.0,
+    ).animate(_controller);
 
-    _alignmentAnimation =
-        AlignmentTween(begin: Alignment.centerLeft, end: Alignment.centerRight)
-            .animate(_controller);
+    _alignmentAnimation = AlignmentTween(
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+    ).animate(_controller);
 
     // _alignmentAnimation =
     //     AlignmentTween(begin: Alignment.centerLeft,
@@ -58,22 +68,31 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
       end: BorderRadius.circular(63.0),
     ).animate(_controller);
 
-    _textSizeAnimation =
-        Tween<double>(begin: 20.0, end: 40.0).animate(_controller);
+    _textSizeAnimation = Tween<double>(
+      begin: 20.0,
+      end: 40.0,
+    ).animate(_controllerText);
 
-    _colorAnimation =
-        ColorTween(begin: Colors.black, end: Colors.red).animate(_controller);
+    _colorAnimation = ColorTween(
+      begin: Colors.black,
+      end: Colors.red,
+    ).animate(_controller);
 
-    _rotationAnimation =
-        Tween<double>(begin: 0.0, end: 2.0).animate(_controller);
+    _rotationAnimation = Tween<double>(
+      begin: 0.0,
+      end: 2.0,
+    ).animate(_controller);
 
-    _textStyleAnimation = ColorTween(begin: Colors.orange, end: Colors.white)
-        .animate(_controller);
+    _textStyleAnimation = ColorTween(
+      begin: Colors.orange,
+      end: Colors.white,
+    ).animate(_controller);
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _controllerText.dispose();
     super.dispose();
   }
 
@@ -81,10 +100,12 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
     if (_controller.status
         case AnimationStatus.completed || AnimationStatus.forward) {
       _controller.reverse();
+      _controllerText.reverse();
       return;
     }
 
     _controller.forward();
+    _controllerText.forward();
   }
 
   @override
@@ -101,10 +122,7 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
           children: [
             const Text(
               'AnimatedBuilder Example',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             const Text(
@@ -154,12 +172,17 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
                                 ],
                               ),
                               child: Center(
-                                child: Text(
-                                  'RD',
-                                  style: TextStyle(
-                                    fontSize: _textSizeAnimation.value,
-                                    color: _textStyleAnimation.value,
-                                  ),
+                                child: AnimatedBuilder(
+                                  animation: _controllerText,
+                                  builder: (context, child) {
+                                    return Text(
+                                      'RD',
+                                      style: TextStyle(
+                                        fontSize: _textSizeAnimation.value,
+                                        color: _textStyleAnimation.value,
+                                      ),
+                                    );
+                                  },
                                 ),
                               ),
                             ),
@@ -216,8 +239,9 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
                             ),
                             AnimationValuePresenter(
                               label: 'Text Size',
-                              value:
-                                  _textSizeAnimation.value.toStringAsFixed(1),
+                              value: _textSizeAnimation.value.toStringAsFixed(
+                                1,
+                              ),
                             ),
                           ],
                         );
@@ -251,16 +275,10 @@ class AnimationValuePresenter extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            label,
-            style: const TextStyle(fontWeight: FontWeight.w500),
-          ),
+          Text(label, style: const TextStyle(fontWeight: FontWeight.w500)),
           Text(
             value,
-            style: const TextStyle(
-              fontFamily: 'monospace',
-              fontSize: 16,
-            ),
+            style: const TextStyle(fontFamily: 'monospace', fontSize: 16),
           ),
         ],
       ),
