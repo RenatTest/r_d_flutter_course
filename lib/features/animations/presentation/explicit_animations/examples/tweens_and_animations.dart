@@ -29,9 +29,7 @@ class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
     );
 
     _animation = Tween<double>(begin: 0, end: 222).animate(_controller)
-      ..addListener(() {
-        setState(() {});
-      })
+      ..addListener(() {})
       ..addStatusListener((status) {});
 
     _controller.forward();
@@ -48,10 +46,16 @@ class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
     return Scaffold(
       appBar: AppBar(title: const Text('Tween + Animation')),
       body: Center(
-        child: Text(
-          _animation.value.toStringAsFixed(2),
-          style: const TextStyle(fontSize: 20),
-          textAlign: TextAlign.center,
+        child: AnimatedBuilder(
+          // ListenableBuilder
+          animation: _animation,
+          builder: (context, child) {
+            return Text(
+              _animation.value.toStringAsFixed(2),
+              style: const TextStyle(fontSize: 20),
+              textAlign: TextAlign.center,
+            );
+          },
         ),
       ),
     );
