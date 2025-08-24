@@ -17,9 +17,7 @@ class TweenAndAnimationExample extends StatefulWidget {
 class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
-  late final Animation<double> _animation;
-
-  //final int _counter = 0;
+  final _tween = Tween<double>(begin: 0, end: 100);
 
   @override
   void initState() {
@@ -30,18 +28,11 @@ class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
       vsync: this,
     );
 
-    _animation = Tween<double>(begin: 100, end: 200).animate(_controller)
+    _controller
       ..addListener(() {
-        // print('tick: $_counter');
-        // print('animation.value: ${_animation.value}');
-        // _counter++;
-        //setState(() {});
+        setState(() {});
       })
-      ..addStatusListener((status) {
-        //print('status: $status');
-      });
-
-    _controller.forward();
+      ..forward();
   }
 
   @override
@@ -53,12 +44,10 @@ class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Tween + Animation'),
-      ),
+      appBar: AppBar(title: const Text('Tween + Animation')),
       body: Center(
         child: Text(
-          _animation.value.toStringAsFixed(2),
+          _tween.transform(_controller.value).toStringAsFixed(2),
           style: const TextStyle(fontSize: 32),
         ),
       ),
