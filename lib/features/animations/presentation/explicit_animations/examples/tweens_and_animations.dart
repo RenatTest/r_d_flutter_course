@@ -17,7 +17,7 @@ class TweenAndAnimationExample extends StatefulWidget {
 class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
-  late final Animation<double> _animation;
+  late final Animation<Alignment> _animation;
 
   @override
   void initState() {
@@ -29,10 +29,33 @@ class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
     );
 
     _animation = TweenSequence([
-      TweenSequenceItem(tween: Tween<double>(begin: 0, end: 111), weight: 0.3),
       TweenSequenceItem(
-        tween: Tween<double>(begin: 111, end: 222),
-        weight: 0.7,
+        tween: AlignmentTween(
+          begin: Alignment.topLeft,
+          end: Alignment.topRight,
+        ),
+        weight: 0.25,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: Alignment.topRight,
+          end: Alignment.bottomRight,
+        ),
+        weight: 0.25,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: Alignment.bottomRight,
+          end: Alignment.bottomLeft,
+        ),
+        weight: 0.25,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: Alignment.bottomLeft,
+          end: Alignment.topLeft,
+        ),
+        weight: 0.25,
       ),
     ]).animate(_controller);
 
@@ -54,15 +77,23 @@ class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
           // ListenableBuilder
           animation: _animation,
           builder: (context, child) {
-            return Container(
-              color: Colors.deepOrangeAccent,
-              height: _animation.value,
-              width: _animation.value,
-              child: Center(
-                child: Text(
-                  _animation.value.toStringAsFixed(2),
-                  style: const TextStyle(fontSize: 20),
-                  textAlign: TextAlign.center,
+            return Align(
+              alignment: _animation.value,
+              child: GestureDetector(
+                onTap: () {
+                  _controller.forward(from: 0);
+                },
+                child: Container(
+                  color: Colors.deepOrangeAccent,
+                  height: 88,
+                  width: 88,
+                  child: Center(
+                    child: Text(
+                      _animation.value.toString(),
+                      style: const TextStyle(fontSize: 15),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                 ),
               ),
             );
