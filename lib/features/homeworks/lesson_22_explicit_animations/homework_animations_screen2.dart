@@ -13,8 +13,8 @@ class Homework22Screen2 extends StatefulWidget {
 class _Homework22Screen2State extends State<Homework22Screen2>
     with SingleTickerProviderStateMixin {
   late AnimationController _ballController;
-  Alignment _ballAlignment = Alignment.center;
-  Move _currentDirection = Move.none;
+  late Alignment _ballAlignment = Alignment.center;
+  late Move _currentDirection = Move.none;
   static const step = 0.01;
 
   @override
@@ -64,28 +64,6 @@ class _Homework22Screen2State extends State<Homework22Screen2>
     _ballController.stop();
   }
 
-  Widget _buildControlButton(String text, Move direction) {
-    return GestureDetector(
-      onTapDown: (_) => _startMoving(direction),
-      onTapUp: (_) => _stopMoving(),
-      onTapCancel: _stopMoving,
-      child: Container(
-        height: 60,
-        width: 60,
-        decoration: BoxDecoration(
-          color: Colors.redAccent,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Center(
-          child: Text(
-            text,
-            style: const TextStyle(color: Colors.white, fontSize: 24),
-          ),
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,19 +99,77 @@ class _Homework22Screen2State extends State<Homework22Screen2>
               spacing: 10,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _buildControlButton('↑', Move.up),
+                Button(
+                  text: '↑',
+                  direction: Move.up,
+                  startMoving: _startMoving,
+                  stopMoving: _stopMoving,
+                ),
                 Row(
                   spacing: 10,
                   children: [
-                    _buildControlButton('←', Move.left),
-                    _buildControlButton('↓', Move.down),
-                    _buildControlButton('→', Move.right),
+                    Button(
+                      text: '←',
+                      direction: Move.left,
+                      startMoving: _startMoving,
+                      stopMoving: _stopMoving,
+                    ),
+                    Button(
+                      text: '↓',
+                      direction: Move.down,
+                      startMoving: _startMoving,
+                      stopMoving: _stopMoving,
+                    ),
+                    Button(
+                      text: '→',
+                      direction: Move.right,
+                      startMoving: _startMoving,
+                      stopMoving: _stopMoving,
+                    ),
                   ],
                 ),
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class Button extends StatelessWidget {
+  const Button({
+    required this.text,
+    required this.direction,
+    required this.startMoving,
+    required this.stopMoving,
+    super.key,
+  });
+
+  final String text;
+  final Move direction;
+  final void Function(Move) startMoving;
+  final VoidCallback stopMoving;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTapDown: (_) => startMoving(direction),
+      onTapUp: (_) => stopMoving(),
+      onTapCancel: stopMoving,
+      child: Container(
+        height: 60,
+        width: 60,
+        decoration: BoxDecoration(
+          color: Colors.redAccent,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Center(
+          child: Text(
+            text,
+            style: const TextStyle(color: Colors.white, fontSize: 24),
+          ),
+        ),
       ),
     );
   }
