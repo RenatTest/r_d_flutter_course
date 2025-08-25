@@ -89,3 +89,7 @@
 - TickerProviderStateMixin
 - AnimatedBuilder
 - AnimatedWidget
+- AnimatedController listener
+- AnimatedController statusListener
+- Tween chain() method
+- TweenSequence + TweenSequenceItems
