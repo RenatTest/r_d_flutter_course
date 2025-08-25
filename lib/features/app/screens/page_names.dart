@@ -73,6 +73,7 @@ abstract class ScreenNames {
   static const homework20Provider = 'homework-20-provider';
   static const homework21AnimationCubit = 'homework-21-animation-cubit';
   static const homeworkAnimations = 'homework-animations';
+  static const homeworkAnimations2 = 'homework-animations2';
 
   // Animations
   static const animations = 'animations';
