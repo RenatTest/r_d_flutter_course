@@ -28,10 +28,13 @@ class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
       vsync: this,
     );
 
-    _animation = Tween<double>(
-      begin: 0,
-      end: 222,
-    ).chain(CurveTween(curve: Curves.bounceOut)).animate(_controller);
+    _animation = TweenSequence([
+      TweenSequenceItem(tween: Tween<double>(begin: 0, end: 111), weight: 0.3),
+      TweenSequenceItem(
+        tween: Tween<double>(begin: 111, end: 222),
+        weight: 0.7,
+      ),
+    ]).animate(_controller);
 
     _controller.forward();
   }
