@@ -43,6 +43,11 @@ class _Homework22Screen2State extends State<Homework22Screen2>
         case Move.none:
           break;
       }
+
+      _ballAlignment = Alignment(
+        _ballAlignment.x.clamp(-1.0, 1.0),
+        _ballAlignment.y.clamp(-1.0, 1.0),
+      );
     });
 
     super.initState();
