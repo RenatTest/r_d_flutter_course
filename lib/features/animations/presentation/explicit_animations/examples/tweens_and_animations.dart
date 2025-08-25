@@ -28,9 +28,10 @@ class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
       vsync: this,
     );
 
-    _animation = Tween<double>(begin: 0, end: 222).animate(_controller)
-      ..addListener(() {})
-      ..addStatusListener((status) {});
+    _animation = Tween<double>(
+      begin: 0,
+      end: 222,
+    ).chain(CurveTween(curve: Curves.bounceOut)).animate(_controller);
 
     _controller.forward();
   }
@@ -50,10 +51,17 @@ class _TweenAndAnimationExampleState extends State<TweenAndAnimationExample>
           // ListenableBuilder
           animation: _animation,
           builder: (context, child) {
-            return Text(
-              _animation.value.toStringAsFixed(2),
-              style: const TextStyle(fontSize: 20),
-              textAlign: TextAlign.center,
+            return Container(
+              color: Colors.deepOrangeAccent,
+              height: _animation.value,
+              width: _animation.value,
+              child: Center(
+                child: Text(
+                  _animation.value.toStringAsFixed(2),
+                  style: const TextStyle(fontSize: 20),
+                  textAlign: TextAlign.center,
+                ),
+              ),
             );
           },
         ),
