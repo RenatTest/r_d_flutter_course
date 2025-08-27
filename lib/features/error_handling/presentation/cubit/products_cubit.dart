@@ -13,7 +13,9 @@ class ProductsCubit extends Cubit<ProductsState> {
       final products = await _repository.getProducts();
 
       emit(state.copyWith(status: ProductsStatus.loaded, products: products));
-    } on NeedMoreProductsException catch (exception) {
+    } on NeedMoreProductsException catch (exception, stackTrace) {
+      // ignore: avoid_print
+      print('stackTrace $stackTrace');
       emit(
         state.copyWith(
           status: ProductsStatus.error,
