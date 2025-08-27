@@ -93,4 +93,9 @@ abstract class ScreenNames {
   static const animatedPositionedExample = 'animated-positioned-example';
   static const animatedSwitcherExample = 'animated-switcher-example';
   static const tweenAnimationBuilderExample = 'tween-animation-builder-example';
+
+  // Error Handling
+  static const errorHandling = 'error-handling';
+  static const productsPageExample = 'products-page-example';
+  static const homework23ErrorHandling = 'homework-23-error-handling';
 }
