@@ -30,6 +30,7 @@ class _UserProfileHomeworkScreenState extends State<UserProfileHomeworkScreen> {
 
             //Error State
             // TODO(student): Need implement error state
+            UserProfileError() => Container(),
           };
         },
       ),
