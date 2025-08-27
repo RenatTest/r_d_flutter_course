@@ -78,14 +78,17 @@ class _Homework22ScreenState extends State<Homework22Screen>
       TweenSequenceItem(tween: Tween<double>(begin: 0.0, end: 0.6), weight: 2),
       TweenSequenceItem(tween: Tween<double>(begin: 0.6, end: 1.0), weight: 2),
       TweenSequenceItem(
-        tween: Tween<double>(begin: 1.25, end: 1.45),
+        tween: Tween<double>(begin: 1.25, end: 1.25),
         weight: 2,
       ),
       TweenSequenceItem(
-        tween: Tween<double>(begin: 1.45, end: 1.65),
+        tween: Tween<double>(begin: 1.25, end: 1.25),
         weight: 1,
       ),
-      TweenSequenceItem(tween: Tween<double>(begin: 1.65, end: 1.8), weight: 1),
+      TweenSequenceItem(
+        tween: Tween<double>(begin: 1.25, end: 1.25),
+        weight: 1,
+      ),
     ]).animate(_controller);
   }
 
