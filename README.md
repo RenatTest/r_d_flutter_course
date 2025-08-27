@@ -93,3 +93,5 @@
 - AnimatedController statusListener
 - Tween chain() method
 - TweenSequence + TweenSequenceItems
+
+11. LESSON 22 ERROR HANDLING
