@@ -23,10 +23,19 @@ class ProductsApiImpl implements ProductsApi {
           .map((item) => ProductDTO.fromJson(item as Map<String, dynamic>))
           .toList();
     } else {
-      throw Exception(
-        'Failed to fetch products from API, '
-        'status code: ${response.statusCode}',
-      );
+      throw NeedMoreProductsException(3);
+      // throw Exception(
+      //   'Failed to fetch products from API, '
+      //   'status code: ${response.statusCode}',
+      // );
     }
   }
+}
+
+class NeedMoreProductsException implements Exception {
+  NeedMoreProductsException(this.count);
+
+  final int count;
+  @override
+  String toString() => '404 not found';
 }

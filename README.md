@@ -97,6 +97,7 @@
 11. LESSON 22 ERROR HANDLING
 
 - Error handling in try-catch
+- Add custom exception
 - Global error handling
   - FlutterError.onError (framework)
   - PlatformDispatcher.instance.onError (other errors)
