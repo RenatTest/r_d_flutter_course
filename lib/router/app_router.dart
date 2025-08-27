@@ -43,6 +43,7 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature
 import 'package:r_d_flutter_course/features/homeworks/lesson_21/animation_cubit_screen.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_21/cubit/animation_cubit.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_22_explicit_animations/homework_animations_screen.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_22_explicit_animations/homework_animations_screen2.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/base_navigation_section_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_empty_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_data.dart';
@@ -620,6 +621,11 @@ final router = GoRouter(
               path: 'homework-animations',
               name: ScreenNames.homeworkAnimations,
               builder: (context, state) => const Homework22Screen(),
+            ),
+            GoRoute(
+              path: 'homework-animations2',
+              name: ScreenNames.homeworkAnimations2,
+              builder: (context, state) => const Homework22Screen2(),
             ),
           ],
         ),
