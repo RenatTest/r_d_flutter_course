@@ -41,6 +41,16 @@ class AnimationsMainScreen extends StatelessWidget {
                   'and custom animations',
               onTap: () => context.goNamed(ScreenNames.explicitAnimations),
             ),
+            NavigationCard(
+              title: 'Homework Animations',
+              description: 'Homework_22',
+              onTap: () => context.goNamed(ScreenNames.homeworkAnimations),
+            ),
+            NavigationCard(
+              title: 'Homework Animations 2',
+              description: 'Homework_222',
+              onTap: () => context.goNamed(ScreenNames.homeworkAnimations2),
+            ),
           ],
         ),
       ),

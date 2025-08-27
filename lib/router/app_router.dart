@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/animated_buider.dart';
+import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/animation_controller.dart';
+import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/build_in_transitions.dart';
+import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/tweens_and_animations.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/explicit_animations_screen.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/implicit_animations/animated_box_playground.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/implicit_animations/examples/animated_align_example.dart';
@@ -38,6 +42,8 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature
 import 'package:r_d_flutter_course/features/homeworks/lesson_20_rate_app_feature/provider/rate_app_provider.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_21/animation_cubit_screen.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_21/cubit/animation_cubit.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_22_explicit_animations/homework_animations_screen.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_22_explicit_animations/homework_animations_screen2.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/base_navigation_section_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_empty_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_data.dart';
@@ -587,6 +593,39 @@ final router = GoRouter(
               path: 'explicit-animations',
               name: ScreenNames.explicitAnimations,
               builder: (context, state) => const ExplicitAnimationsScreen(),
+              routes: [
+                GoRoute(
+                  path: 'animation-controller-example',
+                  name: ScreenNames.animationControllerExample,
+                  builder: (context, state) =>
+                      const AnimationControllerExample(),
+                ),
+                GoRoute(
+                  path: 'tween-and-animation-example',
+                  name: ScreenNames.tweenAndAnimationExample,
+                  builder: (context, state) => const TweenAndAnimationExample(),
+                ),
+                GoRoute(
+                  path: 'animated-builder-example',
+                  name: ScreenNames.animatedBuilderExample,
+                  builder: (context, state) => const AnimatedBuilderExample(),
+                ),
+                GoRoute(
+                  path: 'fade-transition-example',
+                  name: ScreenNames.fadeTransitionExample,
+                  builder: (context, state) => const BuildInTransitionExample(),
+                ),
+              ],
+            ),
+            GoRoute(
+              path: 'homework-animations',
+              name: ScreenNames.homeworkAnimations,
+              builder: (context, state) => const Homework22Screen(),
+            ),
+            GoRoute(
+              path: 'homework-animations2',
+              name: ScreenNames.homeworkAnimations2,
+              builder: (context, state) => const Homework22Screen2(),
             ),
           ],
         ),

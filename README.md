@@ -79,3 +79,17 @@
 - AnimatedPositioned
 - AnimatedSwitcher
 - TweenAnimationBuilder
+
+10. LESSON 22 EXLICIT ANIMATIONS
+
+- Animation controller
+- Animation
+- Tween
+- SingleTickerProviderStateMixin
+- TickerProviderStateMixin
+- AnimatedBuilder
+- AnimatedWidget
+- AnimatedController listener
+- AnimatedController statusListener
+- Tween chain() method
+- TweenSequence + TweenSequenceItems
