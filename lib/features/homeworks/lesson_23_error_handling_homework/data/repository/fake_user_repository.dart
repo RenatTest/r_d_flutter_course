@@ -4,11 +4,24 @@ class FakeUserRepository {
   bool _hasFailed = false;
 
   Future<UserEntity> getUserProfile() async {
-    await Future<void>.delayed(const Duration(seconds: 1));
-    if (!_hasFailed) {
-      _hasFailed = true;
-      throw Exception('Server is temporarily unavailable');
+    try {
+      await Future<void>.delayed(const Duration(seconds: 1));
+      if (!_hasFailed) {
+        _hasFailed = true;
+        throw Exception('Server is temporarily unavailable');
+      }
+      return UserEntity(id: '1', name: 'Test User');
+    } catch (e) {
+      throw CustomServerError(errorMessage: e.toString());
     }
-    return UserEntity(id: '1', name: 'Test User');
   }
+}
+
+class CustomServerError implements Exception {
+  CustomServerError({required this.errorMessage});
+
+  final String errorMessage;
+
+  @override
+  String toString() => 'CustomServerError: $errorMessage';
 }
