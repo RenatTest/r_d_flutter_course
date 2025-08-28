@@ -11,7 +11,7 @@ class ProductsApiImpl implements ProductsApi {
   @override
   Future<List<ProductDTO>> getProducts() async {
     final response = await http.get(
-      Uri.parse('https://onlytarg.github.io/mock_api/products888.json'),
+      Uri.parse('https://onlytarg.github.io/mock_api/products.json'),
     );
 
     if (response.statusCode == 200) {
