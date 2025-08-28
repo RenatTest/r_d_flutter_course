@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:r_d_flutter_course/core/network/products_api/products_api.dart';
 import 'package:r_d_flutter_course/features/error_handling/data/repository/products_repository.dart';
 import 'package:r_d_flutter_course/features/error_handling/presentation/cubit/products_state.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class ProductsCubit extends Cubit<ProductsState> {
   ProductsCubit(this._repository) : super(const ProductsState.initial());
@@ -24,7 +25,10 @@ class ProductsCubit extends Cubit<ProductsState> {
       //       errorMessage: 'Need more products ${exception.count}',
       //     ),
       //   );
-    } catch (e) {
+    } catch (e, stackTrace) {
+      // ignore: avoid_print
+      print('Sentry error');
+      await Sentry.captureException(e, stackTrace: stackTrace);
       emit(
         state.copyWith(
           status: ProductsStatus.error,

@@ -18,6 +18,7 @@ import 'package:r_d_flutter_course/features/state_managment/providers/auth_provi
 import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
 import 'package:r_d_flutter_course/firebase_options.dart';
 import 'package:r_d_flutter_course/router/app_router.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 void main() async {
   // FlutterError.onError = (errorDetails) {
@@ -32,7 +33,14 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const FlutterWidgetsApp());
+
+  await SentryFlutter.init((options) {
+    options
+      ..dsn =
+          'https://a0f9b76ad5dd37811287e2399efcd71f@o4509921650409472.ingest.us.sentry.io/4509921651261440'
+      ..sendDefaultPii = true;
+  }, appRunner: () => runApp(SentryWidget(child: const FlutterWidgetsApp())));
+  // runApp(const FlutterWidgetsApp());
 }
 
 class FlutterWidgetsApp extends StatelessWidget {
