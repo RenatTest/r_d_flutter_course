@@ -1,3 +1,7 @@
+// ignore_for_file: avoid_print
+
+import 'dart:async';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +20,17 @@ import 'package:r_d_flutter_course/firebase_options.dart';
 import 'package:r_d_flutter_course/router/app_router.dart';
 
 void main() async {
+  runZonedGuarded(
+    () {
+      runApp(const FlutterWidgetsApp());
+    },
+    (error, stackTrace) {
+      print('runZonedGuarded error: $error');
+      print('runZonedGuarded stackTrace: $stackTrace');
+    },
+  );
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const FlutterWidgetsApp());
 }
 
 class FlutterWidgetsApp extends StatelessWidget {
