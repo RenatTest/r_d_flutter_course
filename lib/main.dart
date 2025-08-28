@@ -1,3 +1,7 @@
+// ignore_for_file: avoid_print
+
+import 'dart:ui';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +20,14 @@ import 'package:r_d_flutter_course/firebase_options.dart';
 import 'package:r_d_flutter_course/router/app_router.dart';
 
 void main() async {
-  FlutterError.onError = (errorDetails) {
-    // ignore: avoid_print
-    print('FlutterError errorDetails: $errorDetails');
+  // FlutterError.onError = (errorDetails) {
+  //   print('FlutterError errorDetails: $errorDetails');
+  // };
+
+  PlatformDispatcher.instance.onError = (error, stackTrace) {
+    print('PlatformDispatcher error: $error');
+    print('PlatformDispatcher stackTrace: $stackTrace');
+    return true;
   };
 
   WidgetsFlutterBinding.ensureInitialized();
