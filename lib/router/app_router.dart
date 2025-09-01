@@ -670,27 +670,21 @@ final router = GoRouter(
                 child: const UserProfileHomeworkScreen(),
               ),
             ),
+          ],
+        ),
+        GoRoute(
+          path: 'architecture',
+          name: ScreenNames.architecture,
+          builder: (context, state) => const ArchitectureMainScreen(),
+          routes: [
             GoRoute(
-              path: 'architecture',
-              name: ScreenNames.architecture,
-              builder: (context, state) => const ArchitectureMainScreen(),
-              routes: [
-                GoRoute(
-                  path: 'news',
-                  name: ScreenNames.news,
-                  builder: (context, state) => BlocProvider(
-                    create: (context) => NewsCubit(
-                      getIt.get<NewsRepository>(),
-                      // NewsRepositoryImpl(
-                      //   NewsDataSourceImpl(
-                      //     NewsApiImpl(),
-                      //   ),
-                      // ),
-                    )..getNews(),
-                    child: const NewsPage(),
-                  ),
-                ),
-              ],
+              path: 'news',
+              name: ScreenNames.news,
+              builder: (context, state) => BlocProvider(
+                create: (context) =>
+                    NewsCubit(getIt.get<NewsRepository>())..getNews(),
+                child: const NewsPage(),
+              ),
             ),
           ],
         ),
