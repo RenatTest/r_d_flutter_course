@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:r_d_flutter_course/di/di.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/animated_buider.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/animation_controller.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/build_in_transitions.dart';
@@ -647,7 +648,9 @@ final router = GoRouter(
               name: ScreenNames.productsPageExample,
               builder: (context, state) => BlocProvider(
                 create: (context) => ProductsCubit(
-                  context.read<ProductsRepositoryImpl>(), // 2 variant
+                  getIt.get<ProductsRepository>(), // 3 variant
+                  // context.read<ProductsRepositoryImpl>(), // 2 variant
+
                   // ProductsRepositoryImpl( // 1 variant
                   //   ProductsDataSourceImpl(
                   //     // ProductsApiImpl()
