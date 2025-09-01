@@ -39,3 +39,10 @@ class NeedMoreProductsException implements Exception {
   @override
   String toString() => '404 not found';
 }
+
+class Mock implements ProductsApi {
+  @override
+  Future<List<ProductDTO>> getProducts() async {
+    return <ProductDTO>[];
+  }
+}

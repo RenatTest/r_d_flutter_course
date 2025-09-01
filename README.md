@@ -94,7 +94,7 @@
 - Tween chain() method
 - TweenSequence + TweenSequenceItems
 
-11. LESSON 22 ERROR HANDLING
+11. LESSON 23 ERROR HANDLING
 
 - Error handling in try-catch
 - Add custom exception
@@ -105,3 +105,30 @@
 - Crashlytics
   - Sentry https://sentry.io/signup/
   - Firebase https://firebase.google.com/docs/crashlytics/get-started?platform=flutter
+
+12. LESSON 24 FLUTTER APPLICATION ARCHITECTURE
+
+- Project structure
+  - feature based structure
+  - type based structure
+- 2 Layers
+  - Presentation layer
+    - bloc
+    - UI
+  - Data layer
+    - repositories
+    - data_source
+- 3 Layers
+  - Presentation layer
+    - bloc
+    - UI
+  - Domain layer
+    - services
+    - repositories
+  - Data layer
+    - data_source
+- RepositoryProvider
+- DI (Dependencies injection)
+  - GetIt
+  - Singleton
+  - Inherited Widget

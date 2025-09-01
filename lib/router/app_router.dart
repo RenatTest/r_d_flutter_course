@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:r_d_flutter_course/core/network/products_api/products_api.dart';
+import 'package:r_d_flutter_course/di/di.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/animated_buider.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/animation_controller.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/build_in_transitions.dart';
@@ -22,6 +23,10 @@ import 'package:r_d_flutter_course/features/animations/presentation/screens/anim
 import 'package:r_d_flutter_course/features/app/internet_connection/internet_connection_cubit.dart';
 import 'package:r_d_flutter_course/features/app/screens/home_screen.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
+import 'package:r_d_flutter_course/features/architecture/data/repository/news_repository.dart';
+import 'package:r_d_flutter_course/features/architecture/presentation/cubit/news_cubit.dart';
+import 'package:r_d_flutter_course/features/architecture/presentation/ui/screens/architecture_main_screen.dart';
+import 'package:r_d_flutter_course/features/architecture/presentation/ui/screens/news_page.dart';
 import 'package:r_d_flutter_course/features/error_handling/data/data_source/products_data_source.dart';
 import 'package:r_d_flutter_course/features/error_handling/data/repository/products_repository.dart';
 import 'package:r_d_flutter_course/features/error_handling/presentation/cubit/products_cubit.dart';
@@ -649,9 +654,18 @@ final router = GoRouter(
               name: ScreenNames.productsPageExample,
               builder: (context, state) => BlocProvider(
                 create: (context) => ProductsCubit(
-                  ProductsRepositoryImpl(
-                    ProductsDataSourceImpl(ProductsApiImpl()),
-                  ),
+                  // DevScopes.of(context).productsRepository, // 5 variant
+
+                  // getItS.productsRepository, // 4 variant
+                  getIt.get<ProductsRepository>(), // 3 variant
+                  // context.read<ProductsRepositoryImpl>(), // 2 variant
+
+                  // ProductsRepositoryImpl( // 1 variant
+                  //   ProductsDataSourceImpl(
+                  //     // ProductsApiImpl()
+                  //     Mock(),
+                  //   ),
+                  // ),
                 )..getProducts(),
                 child: const ProductsPageExample(),
               ),
@@ -663,6 +677,22 @@ final router = GoRouter(
                 create: (context) =>
                     UserProfileCubit(FakeUserRepository())..loadUserProfile(),
                 child: const UserProfileHomeworkScreen(),
+              ),
+            ),
+          ],
+        ),
+        GoRoute(
+          path: 'architecture',
+          name: ScreenNames.architecture,
+          builder: (context, state) => const ArchitectureMainScreen(),
+          routes: [
+            GoRoute(
+              path: 'news',
+              name: ScreenNames.news,
+              builder: (context, state) => BlocProvider(
+                create: (context) =>
+                    NewsCubit(getIt.get<NewsRepository>())..getNews(),
+                child: const NewsPage(),
               ),
             ),
           ],
