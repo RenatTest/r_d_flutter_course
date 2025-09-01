@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:r_d_flutter_course/core/network/products_api/products_api.dart';
 import 'package:r_d_flutter_course/features/error_handling/data/data_source/products_data_source.dart';
@@ -32,4 +33,32 @@ class Di {
   final ProductsRepository productsRepository = ProductsRepositoryImpl(
     ProductsDataSourceImpl(ProductsApiImpl()),
   );
+}
+
+// using Inherited Widget 5 variant
+class Dependencies {
+  Dependencies();
+
+  final ProductsRepository productsRepository = ProductsRepositoryImpl(
+    ProductsDataSourceImpl(ProductsApiImpl()),
+  );
+}
+
+class DevScopes extends InheritedWidget {
+  const DevScopes({
+    required super.child,
+    required this.dependencies,
+    super.key,
+  });
+
+  final Dependencies dependencies;
+
+  static Dependencies of(BuildContext context) {
+    return context.getInheritedWidgetOfExactType<DevScopes>()!.dependencies;
+  }
+
+  @override
+  bool updateShouldNotify(DevScopes oldWidget) {
+    return false;
+  }
 }

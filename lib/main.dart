@@ -56,25 +56,30 @@ class FlutterWidgetsApp extends StatelessWidget {
     //       ProductsApiImpl(),
     //     ),
     //   ),
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => CounterCubit()),
-        BlocProvider(create: (context) => CounterBloc()),
-        BlocProvider(create: (context) => AuthCubit(FirebaseAuthRepository())),
-        BlocProvider(create: (context) => CounterBlocExperiment()),
-        BlocProvider(
-          create: (context) => InternetConnectionCubit(
-            connectivity: Connectivity(),
-            internetConnection: InternetConnection(),
-          ),
-        ),
-      ],
-      child: MultiProvider(
+    return DevScopes(
+      dependencies: Dependencies(), // 5 variant inherited
+      child: MultiBlocProvider(
         providers: [
-          ChangeNotifierProvider(create: (context) => CounterProvider(0)),
-          ChangeNotifierProvider(create: (context) => AuthProvider()),
+          BlocProvider(create: (context) => CounterCubit()),
+          BlocProvider(create: (context) => CounterBloc()),
+          BlocProvider(
+            create: (context) => AuthCubit(FirebaseAuthRepository()),
+          ),
+          BlocProvider(create: (context) => CounterBlocExperiment()),
+          BlocProvider(
+            create: (context) => InternetConnectionCubit(
+              connectivity: Connectivity(),
+              internetConnection: InternetConnection(),
+            ),
+          ),
         ],
-        child: MaterialApp.router(routerConfig: router),
+        child: MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (context) => CounterProvider(0)),
+            ChangeNotifierProvider(create: (context) => AuthProvider()),
+          ],
+          child: MaterialApp.router(routerConfig: router),
+        ),
       ),
     );
   }
