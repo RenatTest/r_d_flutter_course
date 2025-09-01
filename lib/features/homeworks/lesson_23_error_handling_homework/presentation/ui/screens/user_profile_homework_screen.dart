@@ -29,7 +29,9 @@ class _UserProfileHomeworkScreenState extends State<UserProfileHomeworkScreen> {
             UserProfileLoaded() => _LoadedProfileWidget(user: state.user),
 
             //Error State
-            // TODO(student): Need implement error state
+            UserProfileError() => _ErrorProfileWidget(
+              errorMessage: state.error,
+            ),
           };
         },
       ),
@@ -80,6 +82,52 @@ class _LoadedProfileWidget extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ErrorProfileWidget extends StatelessWidget {
+  const _ErrorProfileWidget({required this.errorMessage});
+
+  final String errorMessage;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          spacing: 10,
+          children: [
+            Text(
+              'Помилка при завантаженні:',
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.red,
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            Text(
+              errorMessage,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.red,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                context.read<UserProfileCubit>().loadUserProfile();
+              },
+              child: const Text('Спробувати знову'),
+            ),
+          ],
         ),
       ),
     );

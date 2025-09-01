@@ -8,10 +8,16 @@ class UserProfileCubit extends Cubit<UserProfileState> {
   final FakeUserRepository repository;
 
   Future<void> loadUserProfile() async {
-    emit(UserProfileLoading());
+    try {
+      emit(UserProfileLoading());
 
-    final user = await repository.getUserProfile();
+      final user = await repository.getUserProfile();
 
-    emit(UserProfileLoaded(user));
+      emit(UserProfileLoaded(user));
+    } on CustomServerError catch (e) {
+      emit(UserProfileError(e.toString()));
+    } catch (e) {
+      emit(UserProfileError(e.toString()));
+    }
   }
 }
