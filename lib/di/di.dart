@@ -20,3 +20,16 @@ void _registerProductsRepository() {
     () => ProductsRepositoryImpl(ProductsDataSourceImpl(ProductsApiImpl())),
   );
 }
+
+// create singleton 4 variant
+final getItS = Di.instance;
+
+class Di {
+  Di._();
+
+  static final Di instance = Di._();
+
+  final ProductsRepository productsRepository = ProductsRepositoryImpl(
+    ProductsDataSourceImpl(ProductsApiImpl()),
+  );
+}

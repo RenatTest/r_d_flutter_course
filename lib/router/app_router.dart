@@ -22,7 +22,6 @@ import 'package:r_d_flutter_course/features/animations/presentation/screens/anim
 import 'package:r_d_flutter_course/features/app/internet_connection/internet_connection_cubit.dart';
 import 'package:r_d_flutter_course/features/app/screens/home_screen.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
-import 'package:r_d_flutter_course/features/error_handling/data/repository/products_repository.dart';
 import 'package:r_d_flutter_course/features/error_handling/presentation/cubit/products_cubit.dart';
 import 'package:r_d_flutter_course/features/error_handling/presentation/ui/screens/error_handling_main_screen.dart';
 import 'package:r_d_flutter_course/features/error_handling/presentation/ui/screens/products_page_example.dart';
@@ -648,7 +647,9 @@ final router = GoRouter(
               name: ScreenNames.productsPageExample,
               builder: (context, state) => BlocProvider(
                 create: (context) => ProductsCubit(
-                  getIt.get<ProductsRepository>(), // 3 variant
+                  getItS.productsRepository, // 4 variant
+                  // getIt.get<ProductsRepository>(), // 3 variant
+
                   // context.read<ProductsRepositoryImpl>(), // 2 variant
 
                   // ProductsRepositoryImpl( // 1 variant
