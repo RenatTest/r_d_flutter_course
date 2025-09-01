@@ -650,7 +650,10 @@ final router = GoRouter(
               builder: (context, state) => BlocProvider(
                 create: (context) => ProductsCubit(
                   ProductsRepositoryImpl(
-                    ProductsDataSourceImpl(ProductsApiImpl()),
+                    ProductsDataSourceImpl(
+                      // ProductsApiImpl()
+                      Mock(),
+                    ),
                   ),
                 )..getProducts(),
                 child: const ProductsPageExample(),
