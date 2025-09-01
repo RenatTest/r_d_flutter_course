@@ -93,3 +93,15 @@
 - AnimatedController statusListener
 - Tween chain() method
 - TweenSequence + TweenSequenceItems
+
+11. LESSON 22 ERROR HANDLING
+
+- Error handling in try-catch
+- Add custom exception
+- Global error handling
+  - FlutterError.onError (framework)
+  - PlatformDispatcher.instance.onError (other errors)
+  - RunZoneGuarded (flutter < v3.3)
+- Crashlytics
+  - Sentry https://sentry.io/signup/
+  - Firebase https://firebase.google.com/docs/crashlytics/get-started?platform=flutter

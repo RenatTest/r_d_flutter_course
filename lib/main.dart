@@ -1,3 +1,7 @@
+// ignore_for_file: avoid_print
+
+import 'dart:ui';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +18,29 @@ import 'package:r_d_flutter_course/features/state_managment/providers/auth_provi
 import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
 import 'package:r_d_flutter_course/firebase_options.dart';
 import 'package:r_d_flutter_course/router/app_router.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 void main() async {
+  // FlutterError.onError = (errorDetails) {
+  //   print('FlutterError errorDetails: $errorDetails');
+  // };
+
+  PlatformDispatcher.instance.onError = (error, stackTrace) {
+    print('PlatformDispatcher error: $error');
+    print('PlatformDispatcher stackTrace: $stackTrace');
+    return true;
+  };
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const FlutterWidgetsApp());
+
+  await SentryFlutter.init((options) {
+    options
+      ..dsn =
+          'https://a0f9b76ad5dd37811287e2399efcd71f@o4509921650409472.ingest.us.sentry.io/4509921651261440'
+      ..sendDefaultPii = true;
+  }, appRunner: () => runApp(SentryWidget(child: const FlutterWidgetsApp())));
+  // runApp(const FlutterWidgetsApp());
 }
 
 class FlutterWidgetsApp extends StatelessWidget {

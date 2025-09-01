@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:r_d_flutter_course/core/network/products_api/products_api.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/animated_buider.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/animation_controller.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/build_in_transitions.dart';
@@ -21,6 +22,11 @@ import 'package:r_d_flutter_course/features/animations/presentation/screens/anim
 import 'package:r_d_flutter_course/features/app/internet_connection/internet_connection_cubit.dart';
 import 'package:r_d_flutter_course/features/app/screens/home_screen.dart';
 import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
+import 'package:r_d_flutter_course/features/error_handling/data/data_source/products_data_source.dart';
+import 'package:r_d_flutter_course/features/error_handling/data/repository/products_repository.dart';
+import 'package:r_d_flutter_course/features/error_handling/presentation/cubit/products_cubit.dart';
+import 'package:r_d_flutter_course/features/error_handling/presentation/ui/screens/error_handling_main_screen.dart';
+import 'package:r_d_flutter_course/features/error_handling/presentation/ui/screens/products_page_example.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_13/homework_13_screen.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_14/homework_14_screen.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_15/homework_15_screen.dart';
@@ -44,6 +50,9 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_21/animation_cubit_
 import 'package:r_d_flutter_course/features/homeworks/lesson_21/cubit/animation_cubit.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_22_explicit_animations/homework_animations_screen.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_22_explicit_animations/homework_animations_screen2.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_23_error_handling_homework/data/repository/fake_user_repository.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_23_error_handling_homework/presentation/cubit/user_profile_cubit.dart';
+import 'package:r_d_flutter_course/features/homeworks/lesson_23_error_handling_homework/presentation/ui/screens/user_profile_homework_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/base_navigation_section_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_empty_screen.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_data.dart';
@@ -626,6 +635,35 @@ final router = GoRouter(
               path: 'homework-animations2',
               name: ScreenNames.homeworkAnimations2,
               builder: (context, state) => const Homework22Screen2(),
+            ),
+          ],
+        ),
+        // Error Handling routes
+        GoRoute(
+          path: 'error-handling',
+          name: ScreenNames.errorHandling,
+          builder: (context, state) => const ErrorHandlingMainScreen(),
+          routes: [
+            GoRoute(
+              path: 'products-page-example',
+              name: ScreenNames.productsPageExample,
+              builder: (context, state) => BlocProvider(
+                create: (context) => ProductsCubit(
+                  ProductsRepositoryImpl(
+                    ProductsDataSourceImpl(ProductsApiImpl()),
+                  ),
+                )..getProducts(),
+                child: const ProductsPageExample(),
+              ),
+            ),
+            GoRoute(
+              path: 'homework-23-error-handling',
+              name: ScreenNames.homework23ErrorHandling,
+              builder: (context, state) => BlocProvider(
+                create: (context) =>
+                    UserProfileCubit(FakeUserRepository())..loadUserProfile(),
+                child: const UserProfileHomeworkScreen(),
+              ),
             ),
           ],
         ),
