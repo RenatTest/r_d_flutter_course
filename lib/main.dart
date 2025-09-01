@@ -23,7 +23,6 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 void main() async {
   initDI();
-
   // FlutterError.onError = (errorDetails) {
   //   print('FlutterError errorDetails: $errorDetails');
   // };
@@ -51,6 +50,15 @@ class FlutterWidgetsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // return RepositoryProvider( // 2 variant
+    //   create: (context) => ProductsRepositoryImpl(
+    //     ProductsDataSourceImpl(
+    //       ProductsApiImpl(),
+    //     ),
+    //   ),
+    // return DevScopes(
+    //   dependencies: Dependencies(), // 5 variant inherited
+    // child:
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => CounterCubit()),
@@ -72,5 +80,6 @@ class FlutterWidgetsApp extends StatelessWidget {
         child: MaterialApp.router(routerConfig: router),
       ),
     );
+    // );
   }
 }

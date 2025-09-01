@@ -654,9 +654,18 @@ final router = GoRouter(
               name: ScreenNames.productsPageExample,
               builder: (context, state) => BlocProvider(
                 create: (context) => ProductsCubit(
-                  ProductsRepositoryImpl(
-                    ProductsDataSourceImpl(ProductsApiImpl()),
-                  ),
+                  // DevScopes.of(context).productsRepository, // 5 variant
+
+                  // getItS.productsRepository, // 4 variant
+                  getIt.get<ProductsRepository>(), // 3 variant
+                  // context.read<ProductsRepositoryImpl>(), // 2 variant
+
+                  // ProductsRepositoryImpl( // 1 variant
+                  //   ProductsDataSourceImpl(
+                  //     // ProductsApiImpl()
+                  //     Mock(),
+                  //   ),
+                  // ),
                 )..getProducts(),
                 child: const ProductsPageExample(),
               ),
