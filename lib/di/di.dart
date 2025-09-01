@@ -10,12 +10,14 @@ void initDI() {
   _registerProductsRepository();
 }
 
+// 3 variant
 // void _registerProductsRepository() {
 //   getIt.registerSingleton<ProductsRepository>(
 //     ProductsRepositoryImpl(ProductsDataSourceImpl(ProductsApiImpl())),
 //   );
 // }
 
+// 3 variant
 void _registerProductsRepository() {
   getIt.registerLazySingleton<ProductsRepository>(
     () => ProductsRepositoryImpl(ProductsDataSourceImpl(ProductsApiImpl())),

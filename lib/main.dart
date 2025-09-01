@@ -56,31 +56,30 @@ class FlutterWidgetsApp extends StatelessWidget {
     //       ProductsApiImpl(),
     //     ),
     //   ),
-    return DevScopes(
-      dependencies: Dependencies(), // 5 variant inherited
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => CounterCubit()),
-          BlocProvider(create: (context) => CounterBloc()),
-          BlocProvider(
-            create: (context) => AuthCubit(FirebaseAuthRepository()),
+    // return DevScopes(
+    //   dependencies: Dependencies(), // 5 variant inherited
+    // child:
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => CounterCubit()),
+        BlocProvider(create: (context) => CounterBloc()),
+        BlocProvider(create: (context) => AuthCubit(FirebaseAuthRepository())),
+        BlocProvider(create: (context) => CounterBlocExperiment()),
+        BlocProvider(
+          create: (context) => InternetConnectionCubit(
+            connectivity: Connectivity(),
+            internetConnection: InternetConnection(),
           ),
-          BlocProvider(create: (context) => CounterBlocExperiment()),
-          BlocProvider(
-            create: (context) => InternetConnectionCubit(
-              connectivity: Connectivity(),
-              internetConnection: InternetConnection(),
-            ),
-          ),
-        ],
-        child: MultiProvider(
-          providers: [
-            ChangeNotifierProvider(create: (context) => CounterProvider(0)),
-            ChangeNotifierProvider(create: (context) => AuthProvider()),
-          ],
-          child: MaterialApp.router(routerConfig: router),
         ),
+      ],
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => CounterProvider(0)),
+          ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ],
+        child: MaterialApp.router(routerConfig: router),
       ),
     );
+    // );
   }
 }
