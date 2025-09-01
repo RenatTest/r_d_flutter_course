@@ -98,4 +98,8 @@ abstract class ScreenNames {
   static const errorHandling = 'error-handling';
   static const productsPageExample = 'products-page-example';
   static const homework23ErrorHandling = 'homework-23-error-handling';
+
+  // Architecture
+  static const architecture = 'architecture';
+  static const news = 'news';
 }
