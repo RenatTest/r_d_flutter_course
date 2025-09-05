@@ -32,8 +32,6 @@ class ChequePage extends StatelessWidget {
               // Loaded state
               ChequeStatus.loaded => Center(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   spacing: 10,
                   children: [
                     Text(
@@ -56,7 +54,7 @@ class ChequePage extends StatelessWidget {
                         itemCount: state.cheque?.items.length,
                         itemBuilder: (context, index) {
                           return Card(
-                            elevation: 4,
+                            elevation: 2,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
