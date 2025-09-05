@@ -132,3 +132,22 @@
   - GetIt
   - Singleton
   - Inherited Widget
+
+13. LESSON 25 REST API P1
+
+- API (Application programming interface)
+- REST API (Representational State Transfer)
+- request
+  - Create --> POST
+  - Read --> GET
+  - Update --> PUT
+  - Delete --> DELETE
+- response
+  - json
+- JSON (JavaScript Object Notation) components:
+- String
+- Number
+- Boolean
+- Null
+- Object
+- Array

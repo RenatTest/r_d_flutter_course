@@ -1,0 +1,39 @@
+{
+  "courseName": "Advanced Flutter Development",
+  "courseId": 202,
+  "difficultyLevel": "advanced",
+  "userRating": 4.8,
+  "students": 1321,
+  "receivingCertificate": true,
+  "freeAccess": false,
+  "start": "2026-10-01",
+  "categories": ["flutter", "state management", "bloc"],
+  "courseSections": [
+    {
+      "id": 1,
+      "title": "Вступ",
+      "description": "2 заняття, тривалість: 90 хв"
+    },
+    {
+      "id": 2,
+      "title": "State Management",
+      "description": "4 заняття, тривалість: 90 хв"
+    },
+    {
+      "id": 3,
+      "title": "Практика з BLoC",
+      "description": "5 занять, тривалість: 90 хв"
+    }
+  ],
+  "courseMentors": [
+    {
+      "name": "Олена Ковальчук",
+      "email": "elena.k@example.com"
+    },
+    {
+      "name": "Андрій Романенко",
+      "email": "andriy.r@example.com"
+    }
+  ],
+  "additional materials": null
+}
