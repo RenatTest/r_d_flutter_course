@@ -59,6 +59,10 @@ class HomeScreen extends StatelessWidget {
               title: 'Architecture',
               onTap: () => context.goNamed(ScreenNames.architecture),
             ),
+            FeatureCard(
+              title: 'Rest API',
+              onTap: () => context.goNamed(ScreenNames.restApi),
+            ),
           ],
         ),
       ),
