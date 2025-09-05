@@ -12,7 +12,6 @@ class ChequeApiImpl implements ChequeApi {
     await Future<void>.delayed(const Duration(seconds: 1));
     try {
       // ignore: inference_failure_on_instance_creation
-      await Future.delayed(const Duration(seconds: 2));
       final cheque = ChequeDto.fromJson(chequeJson);
       return cheque;
     } catch (e) {
