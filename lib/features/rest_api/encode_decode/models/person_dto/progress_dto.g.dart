@@ -7,10 +7,10 @@ part of 'progress_dto.dart';
 // **************************************************************************
 
 ProgressDto _$ProgressDtoFromJson(Map<String, dynamic> json) => ProgressDto(
-      currentLesson: (json['currentLesson'] as num?)?.toInt(),
-      totalScore: (json['totalScore'] as num?)?.toInt(),
-      rating: (json['rating'] as num?)?.toDouble(),
-    );
+  currentLesson: (json['currentLesson'] as num?)?.toInt(),
+  totalScore: (json['totalScore'] as num?)?.toInt(),
+  rating: (json['rating'] as num?)?.toDouble(),
+);
 
 Map<String, dynamic> _$ProgressDtoToJson(ProgressDto instance) =>
     <String, dynamic>{

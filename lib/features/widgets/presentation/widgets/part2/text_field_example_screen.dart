@@ -37,10 +37,7 @@ class _TextFieldExampleScreenState extends State<TextFieldExampleScreen> {
             // TextField Examples
             const Text(
               'TextField',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Container(
@@ -99,10 +96,7 @@ class _TextFieldExampleScreenState extends State<TextFieldExampleScreen> {
             // TextFormField Examples
             const Text(
               'TextFormField with Validation',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Container(

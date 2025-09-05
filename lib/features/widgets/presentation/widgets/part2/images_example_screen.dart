@@ -17,10 +17,7 @@ class ImageExampleScreen extends StatelessWidget {
             children: [
               const Text(
                 'Local Image Example',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
               Image.asset(
@@ -34,10 +31,7 @@ class ImageExampleScreen extends StatelessWidget {
               const SizedBox(height: 40),
               const Text(
                 'Network Image Example',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
               Image.network(
@@ -51,7 +45,7 @@ class ImageExampleScreen extends StatelessWidget {
                     child: CircularProgressIndicator(
                       value: loadingProgress.expectedTotalBytes != null
                           ? loadingProgress.cumulativeBytesLoaded /
-                              loadingProgress.expectedTotalBytes!
+                                loadingProgress.expectedTotalBytes!
                           : null,
                     ),
                   );
@@ -68,10 +62,7 @@ class ImageExampleScreen extends StatelessWidget {
               const SizedBox(height: 20),
               const Text(
                 'Random image from picsum.photos',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
+                style: TextStyle(fontSize: 16, color: Colors.grey),
               ),
             ],
           ),

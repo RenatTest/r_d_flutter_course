@@ -18,15 +18,10 @@ class ContainerExampleScreen extends StatelessWidget {
             color: Colors.blue,
             borderRadius: BorderRadius.all(Radius.circular(8.0)),
             border: Border.fromBorderSide(
-              BorderSide(
-                color: Colors.blue,
-                width: 2,
-              ),
+              BorderSide(color: Colors.blue, width: 2),
             ),
           ),
-          child: const Center(
-            child: Text('Container Example'),
-          ),
+          child: const Center(child: Text('Container Example')),
         ),
       ),
     );

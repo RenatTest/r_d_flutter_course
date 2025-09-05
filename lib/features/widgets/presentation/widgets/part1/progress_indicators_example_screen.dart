@@ -25,10 +25,7 @@ class _ProgressIndicatorsExampleScreenState
             // Linear Progress Indicator Examples
             const Text(
               'Linear Progress Indicator',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Container(
@@ -50,8 +47,9 @@ class _ProgressIndicatorsExampleScreenState
                   const SizedBox(height: 8),
                   LinearProgressIndicator(
                     backgroundColor: Colors.grey.shade200,
-                    valueColor:
-                        const AlwaysStoppedAnimation<Color>(Colors.green),
+                    valueColor: const AlwaysStoppedAnimation<Color>(
+                      Colors.green,
+                    ),
                   ),
                   const SizedBox(height: 24),
                 ],
@@ -62,10 +60,7 @@ class _ProgressIndicatorsExampleScreenState
             // Circular Progress Indicator Examples
             const Text(
               'Circular Progress Indicator',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
 
             const SizedBox(height: 8),
@@ -88,8 +83,9 @@ class _ProgressIndicatorsExampleScreenState
                   const SizedBox(height: 8),
                   CircularProgressIndicator(
                     backgroundColor: Colors.grey.shade200,
-                    valueColor:
-                        const AlwaysStoppedAnimation<Color>(Colors.purple),
+                    valueColor: const AlwaysStoppedAnimation<Color>(
+                      Colors.purple,
+                    ),
                   ),
                   const SizedBox(height: 24),
 
@@ -102,8 +98,9 @@ class _ProgressIndicatorsExampleScreenState
                     child: CircularProgressIndicator(
                       strokeWidth: 4,
                       backgroundColor: Colors.grey.shade200,
-                      valueColor:
-                          const AlwaysStoppedAnimation<Color>(Colors.teal),
+                      valueColor: const AlwaysStoppedAnimation<Color>(
+                        Colors.teal,
+                      ),
                     ),
                   ),
                 ],
