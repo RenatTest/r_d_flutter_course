@@ -8,6 +8,7 @@ class ChequeCubit extends Cubit<ChequeState> {
   final ChequeRepository _repository;
 
   Future<void> getCheque() async {
+    emit(state.copyWith(status: ChequeStatus.loading));
     try {
       final cheque = await _repository.getCheque();
 

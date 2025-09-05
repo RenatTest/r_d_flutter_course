@@ -64,6 +64,8 @@ import 'package:r_d_flutter_course/features/navigation/presentation/screens/name
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/navigation_main_screen.dart';
 import 'package:r_d_flutter_course/features/rest_api/presentation/decoding_example_screen.dart';
 import 'package:r_d_flutter_course/features/rest_api/presentation/rest_api_base_screen.dart';
+import 'package:r_d_flutter_course/features/rest_api_homework/data/repository/cheque_repository.dart';
+import 'package:r_d_flutter_course/features/rest_api_homework/presentation/cubit/cheque_cubit.dart';
 import 'package:r_d_flutter_course/features/rest_api_homework/presentation/ui/screens/cheque_main_screen.dart';
 import 'package:r_d_flutter_course/features/rest_api_homework/presentation/ui/screens/cheque_page.dart';
 import 'package:r_d_flutter_course/features/state_managment/common_mistakes_screen.dart';
@@ -721,7 +723,11 @@ final router = GoRouter(
             GoRoute(
               path: 'cheque',
               name: ScreenNames.cheque,
-              builder: (context, state) => const ChequePage(),
+              builder: (context, state) => BlocProvider(
+                create: (context) =>
+                    ChequeCubit(getIt.get<ChequeRepository>())..getCheque(),
+                child: const ChequePage(),
+              ),
             ),
           ],
         ),

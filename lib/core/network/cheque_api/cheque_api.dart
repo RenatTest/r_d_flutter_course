@@ -1,4 +1,5 @@
 // ignore: depend_on_referenced_packages
+import 'package:r_d_flutter_course/features/homeworks/lesson_23_error_handling_homework/data/repository/fake_user_repository.dart';
 import 'package:r_d_flutter_course/features/rest_api_homework/data/data_source/models/cheque_dto/cheque_dto.dart';
 
 abstract interface class ChequeApi {
@@ -8,14 +9,15 @@ abstract interface class ChequeApi {
 class ChequeApiImpl implements ChequeApi {
   @override
   Future<ChequeDto> getCheque() async {
-    // ignore: inference_failure_on_instance_creation
-    await Future.delayed(const Duration(seconds: 2));
-    final cheque = ChequeDto.fromJson(chequeJson);
-    print(cheque.chequeHeader?.chequeId);
-    print(cheque.chequeHeader?.sumReg);
-    print(cheque.chequeLines?.map((product) => product.lagerNameUa).toList());
-    print(cheque.chPrediction);
-    return cheque;
+    await Future<void>.delayed(const Duration(seconds: 1));
+    try {
+      // ignore: inference_failure_on_instance_creation
+      await Future.delayed(const Duration(seconds: 2));
+      final cheque = ChequeDto.fromJson(chequeJson);
+      return cheque;
+    } catch (e) {
+      throw CustomServerError(errorMessage: e.toString());
+    }
   }
 }
 
