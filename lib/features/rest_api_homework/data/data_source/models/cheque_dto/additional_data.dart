@@ -47,7 +47,7 @@ class AdditionalData {
       brandTitle: data['brandTitle'] as String?,
       weighted: data['weighted'] as bool?,
       departmentName: data['departmentName'] as String?,
-      barcodes: data['barcodes'] as List<String>?,
+      barcodes: data['barcodes'] as List<dynamic>?,
       weight: (data['weight'] as num?)?.toDouble(),
       scanExcise: data['scanExcise'] as bool?,
     );
@@ -65,7 +65,7 @@ class AdditionalData {
   String? brandTitle;
   bool? weighted;
   String? departmentName;
-  List<String>? barcodes;
+  List<dynamic>? barcodes;
   double? weight;
   bool? scanExcise;
 
