@@ -151,3 +151,12 @@
 - Null
 - Object
 - Array
+
+14. LESSON 26 REST API P2
+
+- Convert json to Map<String, dynamic> by hand
+- Auto convert with jsonSerializable
+- Create DTO class with online services
+  - https://dart-quicktype.netlify.app/
+- Create DTO class with VSCode extension
+  - https://marketplace.visualstudio.com/items?itemName=hirantha.json-to-dart
