@@ -11,7 +11,10 @@ class ChequeApiImpl implements ChequeApi {
     // ignore: inference_failure_on_instance_creation
     await Future.delayed(const Duration(seconds: 2));
     final cheque = ChequeDto.fromJson(chequeJson);
-    print(cheque.chequeMagicName);
+    print(cheque.chequeHeader?.chequeId);
+    print(cheque.chequeHeader?.sumReg);
+    print(cheque.chequeLines?.map((product) => product.lagerNameUa).toList());
+    print(cheque.chPrediction);
     return cheque;
   }
 }
