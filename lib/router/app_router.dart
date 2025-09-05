@@ -64,6 +64,8 @@ import 'package:r_d_flutter_course/features/navigation/presentation/screens/name
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/navigation_main_screen.dart';
 import 'package:r_d_flutter_course/features/rest_api/presentation/decoding_example_screen.dart';
 import 'package:r_d_flutter_course/features/rest_api/presentation/rest_api_base_screen.dart';
+import 'package:r_d_flutter_course/features/rest_api_homework/presentation/ui/screens/cheque_main_screen.dart';
+import 'package:r_d_flutter_course/features/rest_api_homework/presentation/ui/screens/cheque_page.dart';
 import 'package:r_d_flutter_course/features/state_managment/common_mistakes_screen.dart';
 import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/experiment_bloc_screen.dart';
 import 'package:r_d_flutter_course/features/state_managment/simple_example.dart/simple_state_management_screen.dart';
@@ -707,6 +709,19 @@ final router = GoRouter(
               path: 'decoding',
               name: ScreenNames.restApiDecodingExample,
               builder: (context, state) => const JsonDecodingExampleScreen(),
+            ),
+          ],
+        ),
+        // Rest API homework
+        GoRoute(
+          path: 'rest-api-homework',
+          name: ScreenNames.restApiHomework,
+          builder: (context, state) => const ChequeMainScreen(),
+          routes: [
+            GoRoute(
+              path: 'cheque',
+              name: ScreenNames.cheque,
+              builder: (context, state) => const ChequePage(),
             ),
           ],
         ),

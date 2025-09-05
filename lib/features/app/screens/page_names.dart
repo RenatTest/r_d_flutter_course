@@ -106,4 +106,6 @@ abstract class ScreenNames {
   // Rest API
   static const restApi = 'rest-api';
   static const restApiDecodingExample = 'rest-api-decoding-example';
+  static const restApiHomework = 'rest-api-homework';
+  static const cheque = 'cheque';
 }
