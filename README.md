@@ -154,6 +154,8 @@
 
 14. LESSON 26 REST API P2
 
+- Decoding - convert json to Dart object
+- Encoding - convert Dart object to json
 - Convert json to Map<String, dynamic> by hand
 - Auto convert with jsonSerializable
 - Create DTO class with online services
