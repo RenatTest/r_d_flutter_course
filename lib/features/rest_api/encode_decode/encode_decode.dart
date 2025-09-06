@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print - it's ok for this file, lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types  - need to show that json
 // is just string
 
 // Початкова структура
@@ -15,6 +13,8 @@
 
 // Encode - навіщо він потрібен? Приклад з кешуванням.
 
+// ignore_for_file: prefer_constructors_over_static_methods, omit_local_variable_types, lines_longer_than_80_chars, unreachable_from_main
+
 import 'dart:convert';
 
 // import 'package:r_d_flutter_course/features/rest_api/encode_decode/models/person_dto/person_dto.dart';
@@ -24,16 +24,7 @@ void main() {
   const String json = personJson;
   final mapJson = jsonDecode(json) as Map<String, dynamic>;
 
-  final person = PersonDtoH(
-    name: mapJson['name'] as String,
-    lastName: mapJson['lastName'] as String,
-    age: mapJson['age'] as int,
-    progress: ProgressDtoH(
-      currentLesson: mapJson['progress']['currentLesson'] as int,
-      totalScore: mapJson['progress']['totalScore'] as int,
-      rating: mapJson['progress']['rating'] as double,
-    ),
-  );
+  final person = PersonDtoH.fromJson(mapJson);
   print(person);
 
   // final person = PersonDto.fromJson(personMap);
@@ -62,9 +53,17 @@ class PersonDtoH {
   final int age;
   final ProgressDtoH progress;
 
+  static PersonDtoH fromJson(Map<String, dynamic> json) {
+    return PersonDtoH(
+      name: json['name'] as String,
+      lastName: json['lastName'] as String,
+      age: json['age'] as int,
+      progress: ProgressDtoH.fromJson(json['progress'] as Map<String, dynamic>),
+    );
+  }
+
   @override
   String toString() {
-    // ignore: lines_longer_than_80_chars
     return 'PersonDtoH(name: $name, lastName: $lastName, age: $age, progress: $progress)';
   }
 }
@@ -75,6 +74,14 @@ class ProgressDtoH {
   final int? currentLesson;
   final int? totalScore;
   final double? rating;
+
+  static ProgressDtoH fromJson(Map<String, dynamic> json) {
+    return ProgressDtoH(
+      currentLesson: json['currentLesson'] as int,
+      totalScore: json['totalScore'] as int,
+      rating: json['rating'] as double,
+    );
+  }
 
   @override
   String toString() {
