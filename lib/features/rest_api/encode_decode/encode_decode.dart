@@ -17,24 +17,44 @@
 
 import 'dart:convert';
 
-import 'package:r_d_flutter_course/features/rest_api/encode_decode/models/person_dto/person_dto.dart';
-import 'package:r_d_flutter_course/features/rest_api/encode_decode/models/person_entity/person_entity.dart';
+// import 'package:r_d_flutter_course/features/rest_api/encode_decode/models/person_dto/person_dto.dart';
+// import 'package:r_d_flutter_course/features/rest_api/encode_decode/models/person_entity/person_entity.dart';
 
 void main() {
   const String json = personJson;
-  final personMap = jsonDecode(json) as Map<String, dynamic>;
+  final mapJson = jsonDecode(json) as Map<String, dynamic>;
 
-  final person = PersonDto.fromJson(personMap);
+  final person = PersonDtoH(
+    name: mapJson['name'] as String,
+    lastName: mapJson['lastName'] as String,
+    age: mapJson['age'] as int,
+  );
+  print(person);
 
-  final personEntity = PersonEntity.fromDto(person);
+  // final person = PersonDto.fromJson(personMap);
 
-  final currentLesson = personEntity.totalScore;
-  final totalScore = personEntity.totalScore;
-  final rating = personEntity.totalScore;
+  // final personEntity = PersonEntity.fromDto(person);
 
-  print('currentLesson: $currentLesson');
-  print('totalScore: $totalScore');
-  print('rating: $rating');
+  // final currentLesson = personEntity.totalScore;
+  // final totalScore = personEntity.totalScore;
+  // final rating = personEntity.totalScore;
+
+  // print('currentLesson: $currentLesson');
+  // print('totalScore: $totalScore');
+  // print('rating: $rating');
+}
+
+class PersonDtoH {
+  PersonDtoH({required this.name, required this.lastName, required this.age});
+
+  final String name;
+  final String lastName;
+  final int age;
+
+  @override
+  String toString() {
+    return 'PersonDtoH(name: $name, lastName: $lastName, age: $age)';
+  }
 }
 
 const personJson = '''
