@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print - it's ok for this file
+// ignore_for_file: avoid_print - it's ok for this file, lines_longer_than_80_chars
 // ignore_for_file: omit_local_variable_types  - need to show that json
 // is just string
 
@@ -28,6 +28,11 @@ void main() {
     name: mapJson['name'] as String,
     lastName: mapJson['lastName'] as String,
     age: mapJson['age'] as int,
+    progress: ProgressDtoH(
+      currentLesson: mapJson['progress']['currentLesson'] as int,
+      totalScore: mapJson['progress']['totalScore'] as int,
+      rating: mapJson['progress']['rating'] as double,
+    ),
   );
   print(person);
 
@@ -45,15 +50,35 @@ void main() {
 }
 
 class PersonDtoH {
-  PersonDtoH({required this.name, required this.lastName, required this.age});
+  PersonDtoH({
+    required this.name,
+    required this.lastName,
+    required this.age,
+    required this.progress,
+  });
 
   final String name;
   final String lastName;
   final int age;
+  final ProgressDtoH progress;
 
   @override
   String toString() {
-    return 'PersonDtoH(name: $name, lastName: $lastName, age: $age)';
+    // ignore: lines_longer_than_80_chars
+    return 'PersonDtoH(name: $name, lastName: $lastName, age: $age, progress: $progress)';
+  }
+}
+
+class ProgressDtoH {
+  ProgressDtoH({this.currentLesson, this.totalScore, this.rating});
+
+  final int? currentLesson;
+  final int? totalScore;
+  final double? rating;
+
+  @override
+  String toString() {
+    return 'ProgressDtoH(currentLesson: $currentLesson, totalScore: $totalScore, rating: $rating,)';
   }
 }
 
