@@ -17,6 +17,9 @@
 
 import 'dart:convert';
 
+import 'package:json_annotation/json_annotation.dart';
+part 'encode_decode.g.dart';
+
 // import 'package:r_d_flutter_course/features/rest_api/encode_decode/models/person_dto/person_dto.dart';
 // import 'package:r_d_flutter_course/features/rest_api/encode_decode/models/person_entity/person_entity.dart';
 
@@ -40,6 +43,7 @@ void main() {
   // print('rating: $rating');
 }
 
+@JsonSerializable() // createToJson: false
 class PersonDtoH {
   PersonDtoH({
     required this.name,
@@ -48,19 +52,21 @@ class PersonDtoH {
     required this.progress,
   });
 
+  // static PersonDtoH fromJson(Map<String, dynamic> json) {
+  //   return PersonDtoH(
+  //     name: json['name'] as String,
+  //     lastName: json['lastName'] as String,
+  //     age: json['age'] as int,
+  //     progress: ProgressDtoH.fromJson(json['progress'] as Map<String, dynamic>),
+  //   );
+  // }
+  factory PersonDtoH.fromJson(Map<String, dynamic> json) =>
+      _$PersonDtoHFromJson(json);
+
   final String name;
   final String lastName;
   final int age;
   final ProgressDtoH progress;
-
-  static PersonDtoH fromJson(Map<String, dynamic> json) {
-    return PersonDtoH(
-      name: json['name'] as String,
-      lastName: json['lastName'] as String,
-      age: json['age'] as int,
-      progress: ProgressDtoH.fromJson(json['progress'] as Map<String, dynamic>),
-    );
-  }
 
   @override
   String toString() {
@@ -68,20 +74,24 @@ class PersonDtoH {
   }
 }
 
+@JsonSerializable()
 class ProgressDtoH {
   ProgressDtoH({this.currentLesson, this.totalScore, this.rating});
+
+  // static ProgressDtoH fromJson(Map<String, dynamic> json) {
+  //   return ProgressDtoH(
+  //     currentLesson: json['currentLesson'] as int,
+  //     totalScore: json['totalScore'] as int,
+  //     rating: json['rating'] as double,
+  //   );
+  // }
+
+  factory ProgressDtoH.fromJson(Map<String, dynamic> json) =>
+      _$ProgressDtoHFromJson(json);
 
   final int? currentLesson;
   final int? totalScore;
   final double? rating;
-
-  static ProgressDtoH fromJson(Map<String, dynamic> json) {
-    return ProgressDtoH(
-      currentLesson: json['currentLesson'] as int,
-      totalScore: json['totalScore'] as int,
-      rating: json['rating'] as double,
-    );
-  }
 
   @override
   String toString() {
