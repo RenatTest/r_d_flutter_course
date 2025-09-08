@@ -50,6 +50,7 @@ class PersonDtoH {
     required this.lastName,
     required this.age,
     required this.progress,
+    @JsonKey(name: 'email_v2') required this.email,
   });
 
   // static PersonDtoH fromJson(Map<String, dynamic> json) {
@@ -67,6 +68,7 @@ class PersonDtoH {
   final String lastName;
   final int age;
   final ProgressDtoH progress;
+  final String email;
 
   @override
   String toString() {
@@ -104,6 +106,7 @@ const personJson = '''
    "name":"Pavlo",
    "lastName":"Avdonin",
    "age":30,
+   "email_v2": "example@gmail.com",
    "progress":{
       "currentLesson":26,
       "totalScore":78,
