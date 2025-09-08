@@ -11,7 +11,7 @@ PersonDtoH _$PersonDtoHFromJson(Map<String, dynamic> json) => PersonDtoH(
   lastName: json['lastName'] as String,
   age: (json['age'] as num).toInt(),
   progress: ProgressDtoH.fromJson(json['progress'] as Map<String, dynamic>),
-  email: json['email_v2'] as String,
+  email: json['email'] as String? ?? 'fluttercourse@gmail.com',
 );
 
 Map<String, dynamic> _$PersonDtoHToJson(PersonDtoH instance) =>
@@ -20,7 +20,7 @@ Map<String, dynamic> _$PersonDtoHToJson(PersonDtoH instance) =>
       'lastName': instance.lastName,
       'age': instance.age,
       'progress': instance.progress,
-      'email_v2': instance.email,
+      'email': instance.email,
     };
 
 ProgressDtoH _$ProgressDtoHFromJson(Map<String, dynamic> json) => ProgressDtoH(
