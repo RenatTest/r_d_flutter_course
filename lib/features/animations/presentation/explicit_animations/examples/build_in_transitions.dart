@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BuildInTransitionExample extends StatefulWidget {
-  const BuildInTransitionExample({
-    super.key,
-  });
+  const BuildInTransitionExample({super.key});
 
   @override
   State<BuildInTransitionExample> createState() =>
@@ -59,10 +57,7 @@ class _BuildInTransitionExampleState extends State<BuildInTransitionExample>
               _TransitionCard(
                 title: 'RotationTransition',
                 transition: RotationTransition(
-                  turns: Tween<double>(
-                    begin: 0,
-                    end: 0.5,
-                  ).animate(_controller),
+                  turns: Tween<double>(begin: 0, end: 0.5).animate(_controller),
                   child: const FlutterLogo(size: 100),
                 ),
               ),
@@ -120,10 +115,7 @@ class _BuildInTransitionExampleState extends State<BuildInTransitionExample>
 }
 
 class _TransitionCard extends StatelessWidget {
-  const _TransitionCard({
-    required this.title,
-    required this.transition,
-  });
+  const _TransitionCard({required this.title, required this.transition});
 
   final String title;
   final Widget transition;
@@ -157,17 +149,11 @@ class _TransitionCard extends StatelessWidget {
             ),
             child: Text(
               title,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               textAlign: TextAlign.center,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: transition,
-          ),
+          Padding(padding: const EdgeInsets.all(16), child: transition),
         ],
       ),
     );

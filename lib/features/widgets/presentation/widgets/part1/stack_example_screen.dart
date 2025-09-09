@@ -18,10 +18,7 @@ class StackExampleScreen extends StatelessWidget {
             // Basic Stack Example
             const Text(
               'Basic Stack',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Container(
@@ -71,10 +68,7 @@ class StackExampleScreen extends StatelessWidget {
             // Stack with Alignment Example
             const Text(
               'Stack with Alignment',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Container(
@@ -122,10 +116,7 @@ class StackExampleScreen extends StatelessWidget {
             // Stack with Overflow Example
             const Text(
               'Stack with Overflow',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Container(

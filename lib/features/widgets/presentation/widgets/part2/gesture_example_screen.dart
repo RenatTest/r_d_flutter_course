@@ -47,10 +47,7 @@ class _GestureExampleScreenState extends State<GestureExampleScreen> {
             // GestureDetector Examples
             const Text(
               'GestureDetector',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Container(
@@ -62,10 +59,7 @@ class _GestureExampleScreenState extends State<GestureExampleScreen> {
               child: Column(
                 children: [
                   // Gesture Status Display
-                  Text(
-                    _gestureStatus,
-                    style: const TextStyle(fontSize: 16),
-                  ),
+                  Text(_gestureStatus, style: const TextStyle(fontSize: 16)),
                   const SizedBox(height: 16),
 
                   // Interactive Box with GestureDetector
@@ -109,10 +103,7 @@ class _GestureExampleScreenState extends State<GestureExampleScreen> {
             // InkWell Examples
             const Text(
               'InkWell',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Container(

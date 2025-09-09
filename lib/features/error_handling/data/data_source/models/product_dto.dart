@@ -6,9 +6,9 @@ class ProductDTO {
   });
 
   ProductDTO.fromJson(Map<String, dynamic> json)
-      : title = json['title'] as String,
-        price = json['price'] as String,
-        imageUrl = json['imageUrl'] as String;
+    : title = json['title'] as String,
+      price = json['price'] as String,
+      imageUrl = json['imageUrl'] as String;
 
   final String title;
   final String price;

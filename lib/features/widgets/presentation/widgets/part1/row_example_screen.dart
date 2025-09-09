@@ -22,10 +22,7 @@ class RowExampleScreen extends StatelessWidget {
                 color: Colors.red.shade200,
                 margin: const EdgeInsets.all(8.0),
                 child: const Center(
-                  child: Text(
-                    'Left',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: Text('Left', style: TextStyle(color: Colors.white)),
                 ),
               ),
               Container(
@@ -34,10 +31,7 @@ class RowExampleScreen extends StatelessWidget {
                 color: Colors.green.shade200,
                 margin: const EdgeInsets.all(8.0),
                 child: const Center(
-                  child: Text(
-                    'Center',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: Text('Center', style: TextStyle(color: Colors.white)),
                 ),
               ),
               Container(
@@ -46,10 +40,7 @@ class RowExampleScreen extends StatelessWidget {
                 color: Colors.blue.shade200,
                 margin: const EdgeInsets.all(8.0),
                 child: const Center(
-                  child: Text(
-                    'Right',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: Text('Right', style: TextStyle(color: Colors.white)),
                 ),
               ),
             ],

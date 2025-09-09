@@ -22,10 +22,7 @@ class ColumnExampleScreen extends StatelessWidget {
                 color: Colors.purple.shade200,
                 margin: const EdgeInsets.all(8.0),
                 child: const Center(
-                  child: Text(
-                    'Top',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: Text('Top', style: TextStyle(color: Colors.white)),
                 ),
               ),
               Container(
@@ -34,10 +31,7 @@ class ColumnExampleScreen extends StatelessWidget {
                 color: Colors.orange.shade200,
                 margin: const EdgeInsets.all(8.0),
                 child: const Center(
-                  child: Text(
-                    'Middle',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: Text('Middle', style: TextStyle(color: Colors.white)),
                 ),
               ),
               Container(
@@ -46,10 +40,7 @@ class ColumnExampleScreen extends StatelessWidget {
                 color: Colors.teal.shade200,
                 margin: const EdgeInsets.all(8.0),
                 child: const Center(
-                  child: Text(
-                    'Bottom',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: Text('Bottom', style: TextStyle(color: Colors.white)),
                 ),
               ),
             ],
