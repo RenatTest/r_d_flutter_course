@@ -28,6 +28,7 @@ void main() {
   final mapJson = jsonDecode(json) as Map<String, dynamic>;
 
   final person = PersonDtoH.fromJson(mapJson);
+  // ignore: avoid_print
   print(person);
 
   // final person = PersonDto.fromJson(personMap);
