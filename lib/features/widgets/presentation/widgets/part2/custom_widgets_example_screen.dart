@@ -33,10 +33,7 @@ class CustomWidgetsExampleScreen extends StatelessWidget {
                 children: [
                   Text(
                     'iPhone 15 Pro',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 8),
                   Text('Latest Apple smartphone'),

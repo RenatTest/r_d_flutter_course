@@ -102,4 +102,10 @@ abstract class ScreenNames {
   // Architecture
   static const architecture = 'architecture';
   static const news = 'news';
+
+  // Rest API
+  static const restApi = 'rest-api';
+  static const restApiDecodingExample = 'rest-api-decoding-example';
+  static const restApiHomework = 'rest-api-homework';
+  static const cheque = 'cheque';
 }

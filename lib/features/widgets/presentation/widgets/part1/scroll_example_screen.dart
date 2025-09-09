@@ -18,10 +18,7 @@ class ScrollExampleScreen extends StatelessWidget {
             // SingleChildScrollView Example
             const Text(
               'SingleChildScrollView',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Container(
@@ -56,10 +53,7 @@ class ScrollExampleScreen extends StatelessWidget {
             // ListView.builder Example
             const Text(
               'ListView.builder',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Container(
@@ -92,10 +86,7 @@ class ScrollExampleScreen extends StatelessWidget {
             // ListView.separated Example
             const Text(
               'ListView.separated',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Container(
@@ -107,10 +98,8 @@ class ScrollExampleScreen extends StatelessWidget {
               child: ListView.separated(
                 padding: const EdgeInsets.all(8.0),
                 itemCount: 20,
-                separatorBuilder: (context, index) => const Divider(
-                  color: Colors.grey,
-                  thickness: 1,
-                ),
+                separatorBuilder: (context, index) =>
+                    const Divider(color: Colors.grey, thickness: 1),
                 itemBuilder: (context, index) {
                   return Container(
                     padding: const EdgeInsets.all(16),
@@ -132,10 +121,7 @@ class ScrollExampleScreen extends StatelessWidget {
             // Horizontal ListView Example
             const Text(
               'Horizontal ListView',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Container(
@@ -172,10 +158,7 @@ class ScrollExampleScreen extends StatelessWidget {
             // GridView Example
             const Text(
               'GridView',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Container(
@@ -211,10 +194,7 @@ class ScrollExampleScreen extends StatelessWidget {
             // GridView.builder Example
             const Text(
               'GridView.builder',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Container(

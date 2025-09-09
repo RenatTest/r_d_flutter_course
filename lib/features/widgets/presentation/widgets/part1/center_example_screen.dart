@@ -15,9 +15,7 @@ class CenterExampleScreen extends StatelessWidget {
           height: 200,
           width: 200,
           color: Colors.orange.shade100,
-          child: const Center(
-            child: Text('Centered Text'),
-          ),
+          child: const Center(child: Text('Centered Text')),
         ),
       ),
     );

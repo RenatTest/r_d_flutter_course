@@ -15,10 +15,7 @@ class TextExampleScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Regular Text',
-              style: TextStyle(fontSize: 16),
-            ),
+            Text('Regular Text', style: TextStyle(fontSize: 16)),
             SizedBox(height: 16),
             Text(
               'Bold Text',

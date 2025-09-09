@@ -20,10 +20,7 @@ class PaddingExampleScreen extends StatelessWidget {
               color: Colors.red,
               child: const Text('Text'),
             ),
-            const Padding(
-              padding: EdgeInsets.all(8),
-              child: Text('Some text'),
-            ),
+            const Padding(padding: EdgeInsets.all(8), child: Text('Some text')),
             Container(
               height: 100,
               width: 100,

@@ -62,6 +62,12 @@ import 'package:r_d_flutter_course/features/navigation/presentation/screens/base
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/base_navigation/simple_screen_with_returning_data.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/named_navigation/named_routes_navigation.dart';
 import 'package:r_d_flutter_course/features/navigation/presentation/screens/navigation_main_screen.dart';
+import 'package:r_d_flutter_course/features/rest_api/presentation/decoding_example_screen.dart';
+import 'package:r_d_flutter_course/features/rest_api/presentation/rest_api_base_screen.dart';
+import 'package:r_d_flutter_course/features/rest_api_homework/data/repository/cheque_repository.dart';
+import 'package:r_d_flutter_course/features/rest_api_homework/presentation/cubit/cheque_cubit.dart';
+import 'package:r_d_flutter_course/features/rest_api_homework/presentation/ui/screens/cheque_main_screen.dart';
+import 'package:r_d_flutter_course/features/rest_api_homework/presentation/ui/screens/cheque_page.dart';
 import 'package:r_d_flutter_course/features/state_managment/common_mistakes_screen.dart';
 import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/experiment_bloc_screen.dart';
 import 'package:r_d_flutter_course/features/state_managment/simple_example.dart/simple_state_management_screen.dart';
@@ -691,6 +697,36 @@ final router = GoRouter(
                 create: (context) =>
                     NewsCubit(getIt.get<NewsRepository>())..getNews(),
                 child: const NewsPage(),
+              ),
+            ),
+          ],
+        ),
+        // Rest API routes
+        GoRoute(
+          path: 'rest-api',
+          name: ScreenNames.restApi,
+          builder: (context, state) => const RestApiBaseScreen(),
+          routes: [
+            GoRoute(
+              path: 'decoding',
+              name: ScreenNames.restApiDecodingExample,
+              builder: (context, state) => const JsonDecodingExampleScreen(),
+            ),
+          ],
+        ),
+        // Rest API homework
+        GoRoute(
+          path: 'rest-api-homework',
+          name: ScreenNames.restApiHomework,
+          builder: (context, state) => const ChequeMainScreen(),
+          routes: [
+            GoRoute(
+              path: 'cheque',
+              name: ScreenNames.cheque,
+              builder: (context, state) => BlocProvider(
+                create: (context) =>
+                    ChequeCubit(getIt.get<ChequeRepository>())..getCheque(),
+                child: const ChequePage(),
               ),
             ),
           ],
