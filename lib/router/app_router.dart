@@ -5,6 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:r_d_flutter_course/core/network/news_api_course/fake/news_api_fake.dart';
 import 'package:r_d_flutter_course/di/di.dart';
+import 'package:r_d_flutter_course/features/alerts_info/active_alerts_regions/presentation/ui/screens/active_alerts_regions_screen.dart';
+import 'package:r_d_flutter_course/features/alerts_info/alerts_info_screen.dart';
+import 'package:r_d_flutter_course/features/alerts_info/check_my_region/presentation/ui/screens/check_my_region_screen.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/animated_buider.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/animation_controller.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/build_in_transitions.dart';
@@ -759,6 +762,24 @@ final router = GoRouter(
               name: ScreenNames.webViewArticle,
               builder: (context, state) =>
                   WebViewArticleScreen(url: state.pathParameters['url'] ?? ''),
+            ),
+          ],
+        ),
+        // Alerts info
+        GoRoute(
+          path: 'alerts-info',
+          name: ScreenNames.alertsInfo,
+          builder: (context, state) => const AlertsInfoScreen(),
+          routes: [
+            GoRoute(
+              path: 'active-alerts-regions',
+              name: ScreenNames.activeAlertsRegions,
+              builder: (context, state) => const ActiveAlertsRegionsScreen(),
+            ),
+            GoRoute(
+              path: 'check-my-region',
+              name: ScreenNames.checkMyRegion,
+              builder: (context, state) => const CheckMyRegionScreen(),
             ),
           ],
         ),
