@@ -27,9 +27,7 @@ class _WebViewArticleScreenState extends State<WebViewArticleScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: WebViewWidget(
-        controller: _controller,
-      ),
+      body: WebViewWidget(controller: _controller),
     );
   }
 }

@@ -21,9 +21,7 @@ AdditionalData _$AdditionalDataFromJson(Map<String, dynamic> json) =>
       brandTitle: json['brandTitle'] as String?,
       weighted: json['weighted'] as bool?,
       departmentName: json['departmentName'] as String?,
-      barcodes: (json['barcodes'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+      barcodes: json['barcodes'] as List<dynamic>?,
       weight: (json['weight'] as num?)?.toDouble(),
       scanExcise: json['scanExcise'] as bool?,
     );

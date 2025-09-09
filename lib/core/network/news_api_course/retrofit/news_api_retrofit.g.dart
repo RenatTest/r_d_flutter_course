@@ -2,6 +2,8 @@
 
 part of 'news_api_retrofit.dart';
 
+// dart format off
+
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
@@ -82,3 +84,5 @@ class _NewsApiRetrofit implements NewsApiRetrofit {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// dart format on
