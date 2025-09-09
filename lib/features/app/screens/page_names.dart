@@ -108,4 +108,6 @@ abstract class ScreenNames {
   static const restApiDecodingExample = 'rest-api-decoding-example';
   static const restApiHomework = 'rest-api-homework';
   static const cheque = 'cheque';
+  static const topNews = 'top-news';
+  static const webViewArticle = 'web-view-article';
 }
