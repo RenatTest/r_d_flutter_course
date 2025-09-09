@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:r_d_flutter_course/core/network/alerts_info_api/active_alerts_regions_api.dart';
 import 'package:r_d_flutter_course/core/network/cheque_api/cheque_api.dart';
 import 'package:r_d_flutter_course/core/network/news_api/news_api.dart';
 import 'package:r_d_flutter_course/core/network/products_api/products_api.dart';
+import 'package:r_d_flutter_course/features/alerts_info/active_alerts_regions/data/data_source/active_alerts_regions_data_source.dart';
+import 'package:r_d_flutter_course/features/alerts_info/active_alerts_regions/data/repository/active_alerts_regions_repository.dart';
 import 'package:r_d_flutter_course/features/architecture/data/data_source/news_data_source.dart';
 import 'package:r_d_flutter_course/features/architecture/data/repository/news_repository.dart';
 import 'package:r_d_flutter_course/features/error_handling/data/data_source/products_data_source.dart';
@@ -16,6 +19,15 @@ void initDI() {
   _registerProductsRepository();
   _registerNewsRepository();
   _registerChequeRepository();
+  _registerActiveAlertsRegionsRepository();
+}
+
+void _registerActiveAlertsRegionsRepository() {
+  getIt.registerLazySingleton<ActiveAlertsRegionsRepository>(
+    () => ActiveAlertsRegionsRepositoryImpl(
+      ActiveAlertsRegionsDataSourceImpl(ActiveAlertsRegionsApiImpl()),
+    ),
+  );
 }
 
 void _registerChequeRepository() {

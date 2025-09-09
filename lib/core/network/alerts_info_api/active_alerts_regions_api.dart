@@ -6,8 +6,6 @@ abstract interface class ActiveAlertsRegionsApi {
 }
 
 class ActiveAlertsRegionsApiImpl implements ActiveAlertsRegionsApi {
-  ActiveAlertsRegionsApiImpl();
-
   final Dio dio = Dio(BaseOptions(baseUrl: 'https://api.alerts.in.ua'));
 
   static const String _token = '89f7fd8b8eb24e67113b985852c3e087239724a4ab2203';
@@ -24,7 +22,6 @@ class ActiveAlertsRegionsApiImpl implements ActiveAlertsRegionsApi {
     if (data == null) {
       throw Exception('Failed to load top news, ${response.statusCode}');
     }
-    print(data);
 
     return ActiveAlertsRegionsDto.fromJson(data);
   }
