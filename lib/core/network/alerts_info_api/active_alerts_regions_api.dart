@@ -9,7 +9,7 @@ abstract interface class ActiveAlertsRegionsApi {
 class ActiveAlertsRegionsApiImpl implements ActiveAlertsRegionsApi {
   final Dio dio = Dio(BaseOptions(baseUrl: 'https://api.alerts.in.ua'));
 
-  static const String _token = '89f7fd8b8eb24e67113b985852c3e087239724a4ab2203';
+  static const String _token = String.fromEnvironment('TOKEN');
 
   @override
   Future<ActiveAlertsRegionsDto> getActiveAlertsRegions() async {
