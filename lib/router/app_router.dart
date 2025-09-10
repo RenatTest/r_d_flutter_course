@@ -9,6 +9,8 @@ import 'package:r_d_flutter_course/features/alerts_info/active_alerts_regions/da
 import 'package:r_d_flutter_course/features/alerts_info/active_alerts_regions/presentation/cubit/active_alerts_regions_cubit.dart';
 import 'package:r_d_flutter_course/features/alerts_info/active_alerts_regions/presentation/ui/screens/active_alerts_regions_screen.dart';
 import 'package:r_d_flutter_course/features/alerts_info/alerts_info_screen.dart';
+import 'package:r_d_flutter_course/features/alerts_info/check_my_region/data/repository/check_my_region_repository.dart';
+import 'package:r_d_flutter_course/features/alerts_info/check_my_region/presentation/cubit/check_my_region_cubit.dart';
 import 'package:r_d_flutter_course/features/alerts_info/check_my_region/presentation/ui/screens/check_my_region_screen.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/animated_buider.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/animation_controller.dart';
@@ -786,7 +788,12 @@ final router = GoRouter(
             GoRoute(
               path: 'check-my-region',
               name: ScreenNames.checkMyRegion,
-              builder: (context, state) => const CheckMyRegionScreen(),
+              builder: (context, state) => BlocProvider(
+                create: (context) =>
+                    CheckMyRegionCubit(getIt.get<CheckMyRegionRepository>())
+                      ..getRegionsAlerts(),
+                child: const CheckMyRegionScreen(),
+              ),
             ),
           ],
         ),
