@@ -12,8 +12,8 @@ class CheckMyRegionState {
 
   CheckMyRegionState.initial()
     : status = CheckMyRegionStatus.loading,
-      selectedRegion = regions[0],
-      selectedIndex = 1,
+      selectedRegion = regions[9],
+      selectedIndex = 10,
       regionsAlerts = null,
       errorMessage = null;
 
