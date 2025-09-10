@@ -22,9 +22,7 @@ class CheckMyRegionApiImpl implements CheckMyRegionApi {
       final data = response.data;
 
       if (data == null) {
-        throw Exception(
-          'Failed to load active alerts regions, ${response.statusCode}',
-        );
+        throw Exception('Failed to get regions alerts, ${response.statusCode}');
       }
 
       return CheckMyRegionDto.fromString(data);
