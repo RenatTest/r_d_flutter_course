@@ -10,7 +10,9 @@ class CheckMyRegionScreen extends StatelessWidget {
         title: const Text('Check My Region'),
         backgroundColor: Colors.blue.shade100,
       ),
-      body: Center(child: Text('Check My Region is with alerts')),
+      body: Center(
+        child: GestureDetector(child: Text('Check My Region is with alerts')),
+      ),
     );
   }
 }
