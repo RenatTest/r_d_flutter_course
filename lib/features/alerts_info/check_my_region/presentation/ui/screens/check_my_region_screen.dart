@@ -1,48 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:r_d_flutter_course/core/constants/regions.dart';
 import 'package:r_d_flutter_course/features/alerts_info/check_my_region/presentation/cubit/check_my_region_cubit.dart';
 import 'package:r_d_flutter_course/features/alerts_info/check_my_region/presentation/cubit/check_my_region_state.dart';
 
-const regions = [
-  'Автономна Республіка Крим',
-  'Волинська область',
-  'Вінницька область',
-  'Дніпропетровська область',
-  'Донецька область',
-  'Житомирська область',
-  'Закарпатська область',
-  'Запорізька область',
-  'Івано-Франківська область',
-  'м. Київ',
-  'Київська область',
-  'Кіровоградська область',
-  'Луганська область',
-  'Львівська область',
-  'Миколаївська область',
-  'Одеська область',
-  'Полтавська область',
-  'Рівненська область',
-  'м. Севастополь',
-  'Сумська область',
-  'Тернопільська область',
-  'Харківська область',
-  'Херсонська область',
-  'Хмельницька область',
-  'Черкаська область',
-  'Чернівецька область',
-  'Чернігівська область',
-];
-
-class CheckMyRegionScreen extends StatefulWidget {
+class CheckMyRegionScreen extends StatelessWidget {
   const CheckMyRegionScreen({super.key});
-
-  @override
-  State<CheckMyRegionScreen> createState() => _CheckMyRegionScreenState();
-}
-
-class _CheckMyRegionScreenState extends State<CheckMyRegionScreen> {
-  String selectedRegion = regions.first;
-  int index = regions.indexOf('Автономна Республіка Крим');
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +18,8 @@ class _CheckMyRegionScreenState extends State<CheckMyRegionScreen> {
         child: BlocBuilder<CheckMyRegionCubit, CheckMyRegionState>(
           builder: (context, state) {
             final alertData =
-                state.regionsAlerts?.regionsAlerts.toString()[index + 1] ??
+                state.regionsAlerts?.regionsAlerts
+                    .toString()[state.selectedIndex ?? 0] ??
                 'Немає даних';
             String alertMessage;
             Color alertColor;
@@ -97,7 +61,9 @@ class _CheckMyRegionScreenState extends State<CheckMyRegionScreen> {
                     ),
                     DropdownButton<String>(
                       hint: const Text('Оберіть регіон'),
-                      value: selectedRegion,
+                      value: regions.contains(state.selectedRegion)
+                          ? state.selectedRegion
+                          : null,
                       items: regions.map((String region) {
                         return DropdownMenuItem<String>(
                           value: region,
@@ -106,10 +72,9 @@ class _CheckMyRegionScreenState extends State<CheckMyRegionScreen> {
                       }).toList(),
                       onChanged: (value) {
                         if (value != null) {
-                          setState(() {
-                            selectedRegion = value;
-                            index = regions.indexOf(selectedRegion);
-                          });
+                          context.read<CheckMyRegionCubit>().selectRegion(
+                            value,
+                          );
                         }
                       },
                     ),

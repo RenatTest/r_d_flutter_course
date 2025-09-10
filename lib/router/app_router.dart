@@ -791,7 +791,7 @@ final router = GoRouter(
               builder: (context, state) => BlocProvider(
                 create: (context) =>
                     CheckMyRegionCubit(getIt.get<CheckMyRegionRepository>())
-                      ..getRegionsAlerts(),
+                      ..getRegionsAlerts(0),
                 child: const CheckMyRegionScreen(),
               ),
             ),
