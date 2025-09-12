@@ -1,3 +1,4 @@
+import 'package:r_d_flutter_course/env/env.dart';
 import 'package:r_d_flutter_course/features/alerts_info/active_alerts_regions/data/data_source/active_alerts_regions_data_source.dart';
 import 'package:r_d_flutter_course/features/alerts_info/active_alerts_regions/data/repository/entities/active_alerts_regions_entity.dart';
 
@@ -13,7 +14,7 @@ class ActiveAlertsRegionsRepositoryImpl
 
   @override
   Future<ActiveAlertsRegionsEntity> getActiveAlertsRegions() async {
-    final response = await dataSource.getActiveAlertsRegions();
+    final response = await dataSource.getActiveAlertsRegions(token: Env.token);
 
     final result = ActiveAlertsRegionsEntity.fromDTO(response);
 

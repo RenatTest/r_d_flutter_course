@@ -1,6 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:r_d_flutter_course/core/network/alerts_info_api/active_alerts_regions_api.dart';
+import 'package:r_d_flutter_course/core/network/alerts_info_api/active_alert_regions_api/retrofit/active_alerts_regions_api_retrofit.dart';
 import 'package:r_d_flutter_course/core/network/alerts_info_api/check_my_region_api.dart';
 import 'package:r_d_flutter_course/core/network/cheque_api/cheque_api.dart';
 import 'package:r_d_flutter_course/core/network/news_api/news_api.dart';
@@ -37,7 +38,10 @@ void _registerCheckMyRegionRepository() {
 void _registerActiveAlertsRegionsRepository() {
   getIt.registerLazySingleton<ActiveAlertsRegionsRepository>(
     () => ActiveAlertsRegionsRepositoryImpl(
-      ActiveAlertsRegionsDataSourceImpl(ActiveAlertsRegionsApiImpl()),
+      // ActiveAlertsRegionsDataSourceImpl(ActiveAlertsRegionsApiImpl()),
+      ActiveAlertsRegionsDataSourceImpl(
+        ActiveAlertsRegionsApiImplRetrofit(Dio()),
+      ),
     ),
   );
 }
