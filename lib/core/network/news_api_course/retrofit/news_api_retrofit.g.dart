@@ -25,7 +25,7 @@ class _NewsApiRetrofit implements NewsApiRetrofit {
   Future<TopNewsDto> getTopNews({
     String? q = 'Ukraine',
     String? sortBy = 'popularity',
-    String? apiKey = const String.fromEnvironment('API_KEY'),
+    String? apiKey = Env.apiKey,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{

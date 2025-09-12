@@ -753,8 +753,8 @@ final router = GoRouter(
               repository: ArticleRepository(
                 dataSource: TopNewsDataSource(
                   newsApi: NewsApiFake(),
-                  //newsApi: NewsApiHttp(),
-                  //newsApi: NewsApiRetrofit(Dio()),
+                  // newsApi: NewsApiHttp(),
+                  // newsApi: NewsApiRetrofit(Dio()),
                 ),
               ),
             )..getTopNews(),
