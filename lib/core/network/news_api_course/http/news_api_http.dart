@@ -8,12 +8,14 @@ import 'package:r_d_flutter_course/features/top_news/data/data_source/models/top
 class NewsApiHttp implements NewsApiBase {
   NewsApiHttp();
 
-  static const String _baseUrl = 'https://newsapi.org/v2/everything';
+  static const String _baseUrl = 'https://newsapi.org';
 
   @override
   Future<TopNewsDto> getTopNews({String? apiKey}) async {
     final response = await http.get(
-      Uri.parse('$_baseUrl?q=Ukraine&sortBy=popularity&apiKey=$apiKey'),
+      Uri.parse(
+        '$_baseUrl/v2/everything?q=Ukraine&sortBy=popularity&apiKey=$apiKey',
+      ),
     );
 
     if (response.statusCode == 200) {
