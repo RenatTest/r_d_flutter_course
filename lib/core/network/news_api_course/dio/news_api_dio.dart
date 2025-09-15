@@ -1,11 +1,32 @@
+// ignore_for_file: strict_raw_type, avoid_print
+
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:r_d_flutter_course/core/network/news_api_course/news_api_base.dart';
 import 'package:r_d_flutter_course/features/top_news/data/data_source/models/top_news_dto.dart';
 
 class NewsApiDio implements NewsApiBase {
   NewsApiDio();
 
-  final Dio dio = Dio(BaseOptions(baseUrl: 'https://newsapi.org'));
+  final Dio dio = Dio(BaseOptions(baseUrl: 'https://newsapi.org'))
+    ..interceptors.add(PrettyDioLogger(enabled: kDebugMode))
+    ..interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
+          print('Request: ${options.uri}');
+          return handler.next(options);
+        },
+        onResponse: (Response response, ResponseInterceptorHandler handler) {
+          print('Response: ${response.data}');
+          return handler.next(response);
+        },
+        onError: (DioException error, ErrorInterceptorHandler handler) {
+          print('Error: ${error.response?.data}');
+          return handler.next(error);
+        },
+      ),
+    );
 
   @override
   Future<TopNewsDto> getTopNews({String? apiKey}) async {
