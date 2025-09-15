@@ -3,7 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:r_d_flutter_course/core/network/news_api_course/dio/news_api_dio.dart';
 import 'package:r_d_flutter_course/di/di.dart';
+import 'package:r_d_flutter_course/features/alerts_info/active_alerts_regions/data/repository/active_alerts_regions_repository.dart';
+import 'package:r_d_flutter_course/features/alerts_info/active_alerts_regions/presentation/cubit/active_alerts_regions_cubit.dart';
+import 'package:r_d_flutter_course/features/alerts_info/active_alerts_regions/presentation/ui/screens/active_alerts_regions_screen.dart';
+import 'package:r_d_flutter_course/features/alerts_info/alerts_info_screen.dart';
+import 'package:r_d_flutter_course/features/alerts_info/check_my_region/data/repository/check_my_region_repository.dart';
+import 'package:r_d_flutter_course/features/alerts_info/check_my_region/presentation/cubit/check_my_region_cubit.dart';
+import 'package:r_d_flutter_course/features/alerts_info/check_my_region/presentation/ui/screens/check_my_region_screen.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/animated_buider.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/animation_controller.dart';
 import 'package:r_d_flutter_course/features/animations/presentation/explicit_animations/examples/build_in_transitions.dart';
@@ -72,6 +80,11 @@ import 'package:r_d_flutter_course/features/state_managment/common_mistakes_scre
 import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/experiment_bloc_screen.dart';
 import 'package:r_d_flutter_course/features/state_managment/simple_example.dart/simple_state_management_screen.dart';
 import 'package:r_d_flutter_course/features/state_managment/state_management_main_screen.dart';
+import 'package:r_d_flutter_course/features/top_news/data/data_source/top_news_data_source.dart';
+import 'package:r_d_flutter_course/features/top_news/data/repository/news_repository.dart';
+import 'package:r_d_flutter_course/features/top_news/presentation/bloc/news_cubit.dart';
+import 'package:r_d_flutter_course/features/top_news/presentation/ui/top_news_screen.dart';
+import 'package:r_d_flutter_course/features/top_news/presentation/ui/web_view_article.dart';
 import 'package:r_d_flutter_course/features/widgets/presentation/screens/widgets_first_part_screen.dart';
 import 'package:r_d_flutter_course/features/widgets/presentation/screens/widgets_main_screen.dart';
 import 'package:r_d_flutter_course/features/widgets/presentation/screens/widgets_second_part_screen.dart';
@@ -727,6 +740,60 @@ final router = GoRouter(
                 create: (context) =>
                     ChequeCubit(getIt.get<ChequeRepository>())..getCheque(),
                 child: const ChequePage(),
+              ),
+            ),
+          ],
+        ),
+        // Top News routes
+        GoRoute(
+          path: 'top-news',
+          name: ScreenNames.topNews,
+          builder: (context, state) => BlocProvider(
+            create: (context) => NewsCubitCourse(
+              repository: ArticleRepository(
+                dataSource: TopNewsDataSource(
+                  // newsApi: NewsApiFake(),
+                  // newsApi: NewsApiHttp(),
+                  newsApi: NewsApiDio(),
+                  // newsApi: NewsApiRetrofit(Dio()),
+                ),
+              ),
+            )..getTopNews(),
+            child: const TopNewsScreen(),
+          ),
+          routes: [
+            GoRoute(
+              path: 'article/:url',
+              name: ScreenNames.webViewArticle,
+              builder: (context, state) =>
+                  WebViewArticleScreen(url: state.pathParameters['url'] ?? ''),
+            ),
+          ],
+        ),
+        // Alerts info
+        GoRoute(
+          path: 'alerts-info',
+          name: ScreenNames.alertsInfo,
+          builder: (context, state) => const AlertsInfoScreen(),
+          routes: [
+            GoRoute(
+              path: 'active-alerts-regions',
+              name: ScreenNames.activeAlertsRegions,
+              builder: (context, state) => BlocProvider(
+                create: (context) => ActiveAlertsRegionsCubit(
+                  getIt.get<ActiveAlertsRegionsRepository>(),
+                )..getActiveAlertsRegions(),
+                child: const ActiveAlertsRegionsScreen(),
+              ),
+            ),
+            GoRoute(
+              path: 'check-my-region',
+              name: ScreenNames.checkMyRegion,
+              builder: (context, state) => BlocProvider(
+                create: (context) =>
+                    CheckMyRegionCubit(getIt.get<CheckMyRegionRepository>())
+                      ..getRegionsAlerts(0),
+                child: const CheckMyRegionScreen(),
               ),
             ),
           ],

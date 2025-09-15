@@ -162,3 +162,11 @@
   - https://dart-quicktype.netlify.app/
 - Create DTO class with VSCode extension
   - https://marketplace.visualstudio.com/items?itemName=hirantha.json-to-dart
+
+15. LESSON 27 REST API EXAMPLE (popular rest api packages)
+
+- https://pub.dev/packages/http
+- https://pub.dev/packages/dio
+- https://pub.dev/packages/retrofit
+- https://pub.dev/packages/chopper
+- dio interceptors
