@@ -7,6 +7,6 @@ abstract class Env {
   @EnviedField(varName: 'TOKEN', obfuscate: true)
   static final String token = _Env.token;
 
-  @EnviedField(varName: 'APIKEY')
-  static const String apiKey = _Env.apiKey;
+  @EnviedField(varName: 'APIKEY', obfuscate: true)
+  static final String apiKey = _Env.apiKey;
 }
