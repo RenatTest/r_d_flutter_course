@@ -110,4 +110,9 @@ abstract class ScreenNames {
   static const cheque = 'cheque';
   static const topNews = 'top-news';
   static const webViewArticle = 'web-view-article';
+
+  // Alerts info
+  static const alertsInfo = 'alerts-info';
+  static const activeAlertsRegions = 'active-alerts-regions';
+  static const checkMyRegion = 'check-my-region';
 }

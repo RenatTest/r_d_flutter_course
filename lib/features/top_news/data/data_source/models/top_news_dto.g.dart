@@ -7,12 +7,12 @@ part of 'top_news_dto.dart';
 // **************************************************************************
 
 TopNewsDto _$TopNewsDtoFromJson(Map<String, dynamic> json) => TopNewsDto(
-      status: json['status'] as String?,
-      totalResults: (json['totalResults'] as num?)?.toInt(),
-      articles: (json['articles'] as List<dynamic>?)
-          ?.map((e) => ArticleDto.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+  status: json['status'] as String?,
+  totalResults: (json['totalResults'] as num?)?.toInt(),
+  articles: (json['articles'] as List<dynamic>?)
+      ?.map((e) => ArticleDto.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
 
 Map<String, dynamic> _$TopNewsDtoToJson(TopNewsDto instance) =>
     <String, dynamic>{

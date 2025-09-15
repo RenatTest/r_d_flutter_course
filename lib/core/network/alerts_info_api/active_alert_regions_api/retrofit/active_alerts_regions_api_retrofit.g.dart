@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'news_api_retrofit.dart';
+part of 'active_alerts_regions_api_retrofit.dart';
 
 // dart format off
 
@@ -10,9 +10,14 @@ part of 'news_api_retrofit.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
 
-class _NewsApiRetrofit implements NewsApiRetrofit {
-  _NewsApiRetrofit(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://newsapi.org';
+class _ActiveAlertsRegionsApiImplRetrofit
+    implements ActiveAlertsRegionsApiImplRetrofit {
+  _ActiveAlertsRegionsApiImplRetrofit(
+    this._dio, {
+    this.baseUrl,
+    this.errorLogger,
+  }) {
+    baseUrl ??= 'https://api.alerts.in.ua';
   }
 
   final Dio _dio;
@@ -22,34 +27,27 @@ class _NewsApiRetrofit implements NewsApiRetrofit {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<TopNewsDto> getTopNews({
-    String? q = 'Ukraine',
-    String? sortBy = 'popularity',
-    String? apiKey = const String.fromEnvironment('API_KEY'),
+  Future<ActiveAlertsRegionsDto> getActiveAlertsRegions({
+    required String token,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'q': q,
-      r'sortBy': sortBy,
-      r'apiKey': apiKey,
-    };
-    queryParameters.removeWhere((k, v) => v == null);
+    final queryParameters = <String, dynamic>{r'apiKey': token};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<TopNewsDto>(
+    final _options = _setStreamType<ActiveAlertsRegionsDto>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v2/everything',
+            '/v1/alerts/active.json',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late TopNewsDto _value;
+    late ActiveAlertsRegionsDto _value;
     try {
-      _value = TopNewsDto.fromJson(_result.data!);
+      _value = ActiveAlertsRegionsDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
