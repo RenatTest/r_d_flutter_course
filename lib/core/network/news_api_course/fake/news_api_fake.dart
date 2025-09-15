@@ -4,7 +4,7 @@ import 'package:r_d_flutter_course/features/top_news/data/data_source/models/top
 
 class NewsApiFake implements NewsApiBase {
   @override
-  Future<TopNewsDto> getTopNews() async {
+  Future<TopNewsDto> getTopNews({String? apiKey}) async {
     await Future<void>.delayed(const Duration(seconds: 1));
     return TopNewsDto(
       status: 'ok',

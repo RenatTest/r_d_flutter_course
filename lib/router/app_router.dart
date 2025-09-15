@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:r_d_flutter_course/core/network/news_api_course/fake/news_api_fake.dart';
+import 'package:r_d_flutter_course/core/network/news_api_course/dio/news_api_dio.dart';
 import 'package:r_d_flutter_course/di/di.dart';
 import 'package:r_d_flutter_course/features/alerts_info/active_alerts_regions/data/repository/active_alerts_regions_repository.dart';
 import 'package:r_d_flutter_course/features/alerts_info/active_alerts_regions/presentation/cubit/active_alerts_regions_cubit.dart';
@@ -752,8 +752,9 @@ final router = GoRouter(
             create: (context) => NewsCubitCourse(
               repository: ArticleRepository(
                 dataSource: TopNewsDataSource(
-                  newsApi: NewsApiFake(),
+                  // newsApi: NewsApiFake(),
                   // newsApi: NewsApiHttp(),
+                  newsApi: NewsApiDio(),
                   // newsApi: NewsApiRetrofit(Dio()),
                 ),
               ),

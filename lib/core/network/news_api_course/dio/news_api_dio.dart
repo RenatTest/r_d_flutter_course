@@ -7,16 +7,14 @@ class NewsApiDio implements NewsApiBase {
 
   final Dio dio = Dio(BaseOptions(baseUrl: 'https://newsapi.org'));
 
-  static const String _apiKey = String.fromEnvironment('API_KEY');
-
   @override
-  Future<TopNewsDto> getTopNews() async {
+  Future<TopNewsDto> getTopNews({String? apiKey}) async {
     final response = await dio.get<Map<String, dynamic>>(
       '/v2/everything',
       queryParameters: {
         'q': 'Ukraine',
         'sortBy': 'popularity',
-        'apiKey': _apiKey,
+        'apiKey': apiKey,
       },
     );
 

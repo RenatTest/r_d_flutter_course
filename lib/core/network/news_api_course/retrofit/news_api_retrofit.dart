@@ -12,8 +12,8 @@ abstract class NewsApiRetrofit implements NewsApiBase {
   @override
   @GET('/v2/everything')
   Future<TopNewsDto> getTopNews({
+    @Query('apiKey') required String apiKey,
     @Query('q') String? q = 'Ukraine',
     @Query('sortBy') String? sortBy = 'popularity',
-    @Query('apiKey') String? apiKey = const String.fromEnvironment('API_KEY'),
   });
 }
