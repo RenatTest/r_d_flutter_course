@@ -80,6 +80,9 @@ import 'package:r_d_flutter_course/features/state_managment/common_mistakes_scre
 import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/experiment_bloc_screen.dart';
 import 'package:r_d_flutter_course/features/state_managment/simple_example.dart/simple_state_management_screen.dart';
 import 'package:r_d_flutter_course/features/state_managment/state_management_main_screen.dart';
+import 'package:r_d_flutter_course/features/storage/presentation/UI/screens/saving_large_data_screen.dart';
+import 'package:r_d_flutter_course/features/storage/presentation/UI/screens/settings_screen.dart';
+import 'package:r_d_flutter_course/features/storage/presentation/UI/screens/storage_base_screen.dart';
 import 'package:r_d_flutter_course/features/top_news/data/data_source/top_news_data_source.dart';
 import 'package:r_d_flutter_course/features/top_news/data/repository/news_repository.dart';
 import 'package:r_d_flutter_course/features/top_news/presentation/bloc/news_cubit.dart';
@@ -797,6 +800,30 @@ final router = GoRouter(
               ),
             ),
           ],
+        ),
+        // Storage routes
+        GoRoute(
+          path: 'storage',
+          name: ScreenNames.storage,
+          builder: (context, state) => const StorageBaseScreen(),
+          routes: [
+            GoRoute(
+              path: 'settings',
+              name: ScreenNames.storagePageSettings,
+              builder: (context, state) => const SettingsScreen(),
+            ),
+            GoRoute(
+              path: 'saving-large-data',
+              name: ScreenNames.savingLargeData,
+              builder: (context, state) => const SavingLargeDataScreen(),
+            ),
+          ],
+        ),
+
+        GoRoute(
+          path: 'settings',
+          name: ScreenNames.mainPageSettings,
+          builder: (context, state) => const SettingsScreen(),
         ),
       ],
     ),
