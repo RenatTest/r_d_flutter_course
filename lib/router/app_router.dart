@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:r_d_flutter_course/core/network/news_api_course/dio/news_api_dio.dart';
+import 'package:r_d_flutter_course/core/storage/prefs_storage/prefs_storage.dart';
 import 'package:r_d_flutter_course/di/di.dart';
 import 'package:r_d_flutter_course/features/alerts_info/active_alerts_regions/data/repository/active_alerts_regions_repository.dart';
 import 'package:r_d_flutter_course/features/alerts_info/active_alerts_regions/presentation/cubit/active_alerts_regions_cubit.dart';
@@ -753,6 +754,7 @@ final router = GoRouter(
           name: ScreenNames.topNews,
           builder: (context, state) => BlocProvider(
             create: (context) => NewsCubitCourse(
+              prefs: PrefsStorage.instance,
               repository: ArticleRepository(
                 dataSource: TopNewsDataSource(
                   // newsApi: NewsApiFake(),
