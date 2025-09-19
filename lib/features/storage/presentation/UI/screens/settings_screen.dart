@@ -35,7 +35,7 @@ class SettingsScreen extends StatelessWidget {
                     isEnableMode: value,
                   );
                 },
-                activeColor: Colors.red,
+                activeThumbColor: Colors.red,
               ),
             ),
             const Divider(height: 32),
@@ -133,7 +133,7 @@ class _LessonSwitcher extends StatelessWidget {
             onChanged: state.isSettingsLocked
                 ? null
                 : (value) => _onChanged(context, lesson, value),
-            activeColor: Colors.blue,
+            activeThumbColor: Colors.blue,
           ),
         ),
       ],
