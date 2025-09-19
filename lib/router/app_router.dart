@@ -796,8 +796,12 @@ final router = GoRouter(
               name: ScreenNames.checkMyRegion,
               builder: (context, state) => BlocProvider(
                 create: (context) =>
-                    CheckMyRegionCubit(getIt.get<CheckMyRegionRepository>())
-                      ..getRegionsAlerts(0),
+                    CheckMyRegionCubit(
+                        PrefsStorage.instance,
+                        getIt.get<CheckMyRegionRepository>(),
+                      )
+                      ..getRegionsAlerts(0)
+                      ..init(),
                 child: const CheckMyRegionScreen(),
               ),
             ),

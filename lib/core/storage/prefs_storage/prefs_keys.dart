@@ -4,4 +4,6 @@ abstract interface class _PrefsKeys {
   static const String disabledFeatures = 'disabledFeatures';
   static const String pageViewCounter = 'pageViewCounter';
   static const String largeString = 'largeString';
+  static const String regionName = 'regionName';
+  static const String regionIndex = 'regionIndex';
 }

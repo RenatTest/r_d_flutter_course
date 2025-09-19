@@ -38,4 +38,17 @@ class PrefsStorage {
   int getTopPageViewCounter() {
     return _prefs.getInt(_PrefsKeys.pageViewCounter) ?? 0;
   }
+
+  Future<void> setSelectedRegion(String region, int index) async {
+    await _prefs.setString(_PrefsKeys.regionName, region);
+    await _prefs.setInt(_PrefsKeys.regionIndex, index);
+  }
+
+  Future<String> getSelectedRegion() async {
+    return _prefs.getString(_PrefsKeys.regionName) ?? '';
+  }
+
+  Future<int> getSelectedRegionIndex() async {
+    return _prefs.getInt(_PrefsKeys.regionIndex) ?? -1;
+  }
 }
