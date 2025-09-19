@@ -170,3 +170,12 @@
 - https://pub.dev/packages/retrofit
 - https://pub.dev/packages/chopper
 - dio interceptors
+
+16. LESSON 28 STORAGES
+
+- shared_preferences
+- flutter_secure_storage
+- Reading and writing files
+- sqflite
+- drift
+- objectbox

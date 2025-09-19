@@ -115,4 +115,10 @@ abstract class ScreenNames {
   static const alertsInfo = 'alerts-info';
   static const activeAlertsRegions = 'active-alerts-regions';
   static const checkMyRegion = 'check-my-region';
+
+  // Storages
+  static const storagePageSettings = 'storage-page-settings';
+  static const mainPageSettings = 'main-page-settings';
+  static const storage = 'storage';
+  static const savingLargeData = 'saving-large-data';
 }

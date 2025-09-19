@@ -10,12 +10,15 @@ class CheckMyRegionState {
     this.errorMessage,
   });
 
-  CheckMyRegionState.initial()
-    : status = CheckMyRegionStatus.loading,
-      selectedRegion = regions[9],
-      selectedIndex = 10,
-      regionsAlerts = null,
-      errorMessage = null;
+  factory CheckMyRegionState.initial({String? region, int? index}) {
+    return CheckMyRegionState(
+      status: CheckMyRegionStatus.loading,
+      selectedRegion: region == '' ? regions[9] : region,
+      selectedIndex: index == -1 ? 10 : index,
+      regionsAlerts: null,
+      errorMessage: null,
+    );
+  }
 
   final CheckMyRegionStatus status;
   final CheckMyRegionEntity? regionsAlerts;

@@ -13,6 +13,7 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_a
 import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/bloc/counter_bloc_experiment.dart';
 import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/bloc/counter_state_experiment.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
+import 'package:r_d_flutter_course/features/storage/presentation/cubit/settings_cubit.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -28,54 +29,83 @@ class HomeScreen extends StatelessWidget {
             onPressed: () => _showDialog(context),
             icon: const Icon(Icons.numbers),
           ),
+          IconButton(
+            onPressed: () => context.goNamed(ScreenNames.mainPageSettings),
+            icon: const Icon(Icons.settings),
+          ),
         ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            FeatureCard(
-              title: 'Widgets',
-              onTap: () => context.goNamed(ScreenNames.widgets),
-            ),
-            FeatureCard(
-              title: 'Navigation',
-              onTap: () => context.goNamed(ScreenNames.navigation),
-            ),
-            FeatureCard(
-              title: 'State Management',
-              onTap: () => context.goNamed(ScreenNames.stateManagement),
-            ),
-            FeatureCard(
-              title: 'Animations',
-              onTap: () => context.goNamed(ScreenNames.animations),
-            ),
-            FeatureCard(
-              title: 'Error Handling',
-              onTap: () => context.goNamed(ScreenNames.errorHandling),
-            ),
-            FeatureCard(
-              title: 'Architecture',
-              onTap: () => context.goNamed(ScreenNames.architecture),
-            ),
-            FeatureCard(
-              title: 'Rest API',
-              onTap: () => context.goNamed(ScreenNames.restApi),
-            ),
-            FeatureCard(
-              title: 'Rest API homework',
-              onTap: () => context.goNamed(ScreenNames.restApiHomework),
-            ),
-            FeatureCard(
-              title: 'Top News',
-              onTap: () => context.goNamed(ScreenNames.topNews),
-            ),
-            FeatureCard(
-              title: 'Alerts info',
-              onTap: () => context.goNamed(ScreenNames.alertsInfo),
-            ),
-          ],
+        child: BlocBuilder<SettingsCubit, SettingsState>(
+          builder: (context, state) => Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              FeatureCard(
+                title: FeatureNames.widgets.title,
+                isVisible: state.isFeatureEnabled(FeatureNames.widgets.name),
+                onTap: () => context.goNamed(ScreenNames.widgets),
+              ),
+              FeatureCard(
+                title: FeatureNames.navigation.title,
+                isVisible: state.isFeatureEnabled(FeatureNames.navigation.name),
+                onTap: () => context.goNamed(ScreenNames.baseNavigation),
+              ),
+              FeatureCard(
+                title: FeatureNames.stateManagement.title,
+                isVisible: state.isFeatureEnabled(
+                  FeatureNames.stateManagement.name,
+                ),
+                onTap: () => context.goNamed(ScreenNames.stateManagement),
+              ),
+              FeatureCard(
+                title: FeatureNames.animations.title,
+                isVisible: state.isFeatureEnabled(FeatureNames.animations.name),
+                onTap: () => context.goNamed(ScreenNames.animations),
+              ),
+              FeatureCard(
+                title: FeatureNames.errorHandling.title,
+                isVisible: state.isFeatureEnabled(
+                  FeatureNames.errorHandling.name,
+                ),
+                onTap: () => context.goNamed(ScreenNames.errorHandling),
+              ),
+              FeatureCard(
+                title: FeatureNames.architecture.title,
+                isVisible: state.isFeatureEnabled(
+                  FeatureNames.architecture.name,
+                ),
+                onTap: () => context.goNamed(ScreenNames.architecture),
+              ),
+              FeatureCard(
+                title: FeatureNames.restApi.title,
+                isVisible: state.isFeatureEnabled(FeatureNames.restApi.name),
+                onTap: () => context.goNamed(ScreenNames.restApi),
+              ),
+              FeatureCard(
+                title: FeatureNames.restApiHomework.title,
+                isVisible: state.isFeatureEnabled(
+                  FeatureNames.restApiHomework.name,
+                ),
+                onTap: () => context.goNamed(ScreenNames.restApiHomework),
+              ),
+              FeatureCard(
+                title: FeatureNames.topNews.title,
+                isVisible: state.isFeatureEnabled(FeatureNames.topNews.name),
+                onTap: () => context.goNamed(ScreenNames.topNews),
+              ),
+              FeatureCard(
+                title: FeatureNames.alertsInfo.title,
+                isVisible: state.isFeatureEnabled(FeatureNames.alertsInfo.name),
+                onTap: () => context.goNamed(ScreenNames.alertsInfo),
+              ),
+              FeatureCard(
+                title: FeatureNames.storage.title,
+                isVisible: state.isFeatureEnabled(FeatureNames.storage.name),
+                onTap: () => context.goNamed(ScreenNames.storage),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -234,14 +264,39 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+enum FeatureNames {
+  widgets('Widgets'),
+  navigation('Navigation'),
+  stateManagement('State Management'),
+  animations('Animations'),
+  errorHandling('Error Handling'),
+  architecture('Architecture'),
+  restApi('Rest API'),
+  restApiHomework('Rest API homework'),
+  topNews('Top News'),
+  alertsInfo('Alerts info'),
+  storage('Storage');
+
+  const FeatureNames(this.title);
+  final String title;
+}
+
 class FeatureCard extends StatelessWidget {
-  const FeatureCard({required this.title, required this.onTap, super.key});
+  const FeatureCard({
+    required this.title,
+    required this.onTap,
+    this.isVisible = true,
+    super.key,
+  });
 
   final String title;
   final VoidCallback onTap;
+  final bool isVisible;
 
   @override
   Widget build(BuildContext context) {
+    if (!isVisible) return const SizedBox.shrink();
+
     return Card(
       elevation: 2,
       child: InkWell(
@@ -251,11 +306,13 @@ class FeatureCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
+              Expanded(
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
               Icon(

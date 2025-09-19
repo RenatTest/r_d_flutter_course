@@ -5,17 +5,36 @@ import 'package:r_d_flutter_course/features/app/screens/page_names.dart';
 import 'package:r_d_flutter_course/features/top_news/data/repository/models/article_entity.dart';
 import 'package:r_d_flutter_course/features/top_news/presentation/bloc/news_cubit.dart';
 
-class TopNewsScreen extends StatelessWidget {
+class TopNewsScreen extends StatefulWidget {
   const TopNewsScreen({super.key});
+
+  @override
+  State<TopNewsScreen> createState() => _TopNewsScreenState();
+}
+
+class _TopNewsScreenState extends State<TopNewsScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<NewsCubitCourse>().incrementPageViewCounter();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(color: Colors.white, onPressed: context.pop),
-        title: const Text(
-          'Top News',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        title: BlocSelector<NewsCubitCourse, NewsState, int>(
+          selector: (state) => state.pageViewCounter,
+          builder: (context, counter) {
+            return Text(
+              'Top News (views $counter)',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            );
+          },
         ),
         backgroundColor: Colors.blue,
         actions: [

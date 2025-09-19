@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:provider/provider.dart';
+import 'package:r_d_flutter_course/core/storage/prefs_storage/prefs_storage.dart';
+import 'package:r_d_flutter_course/core/storage/secure_storage/secure_storage.dart';
 import 'package:r_d_flutter_course/di/di.dart';
 import 'package:r_d_flutter_course/features/app/internet_connection/internet_connection_cubit.dart';
 import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_%D1%81ubit/cubit/counter_cubit.dart';
@@ -17,6 +19,7 @@ import 'package:r_d_flutter_course/features/homeworks/lesson_19/homework_cubit_a
 import 'package:r_d_flutter_course/features/state_managment/experiment_bloc/bloc/counter_bloc_experiment.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/auth_provider.dart';
 import 'package:r_d_flutter_course/features/state_managment/providers/counter_provider.dart';
+import 'package:r_d_flutter_course/features/storage/presentation/cubit/settings_cubit.dart';
 import 'package:r_d_flutter_course/firebase_options.dart';
 import 'package:r_d_flutter_course/router/app_router.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -34,6 +37,9 @@ void main() async {
   };
 
   WidgetsFlutterBinding.ensureInitialized();
+
+  await PrefsStorage.instance.init();
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   await SentryFlutter.init((options) {
@@ -70,6 +76,10 @@ class FlutterWidgetsApp extends StatelessWidget {
             connectivity: Connectivity(),
             internetConnection: InternetConnection(),
           ),
+        ),
+        BlocProvider(
+          create: (context) =>
+              SettingsCubit(PrefsStorage.instance, SecureStorage.instance),
         ),
       ],
       child: MultiProvider(
