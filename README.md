@@ -175,7 +175,7 @@
 
 - shared_preferences
 - flutter_secure_storage
-- Reading and writing files
+- reading and writing files
 - sqflite
 - drift
 - objectbox
